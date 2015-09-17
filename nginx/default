@@ -1,11 +1,11 @@
-# WWW
 server {
         listen          80;
+        server_name     localhost;
 
         access_log      off;
         error_log       off;
 
-        root /Users/Ian/Sites/goodtunes/www/src/;
+        root /var/www;
         index index.html;
 
         location ~* ^/(.png|.jpg|.gif|.css|.js) {}

@@ -1,0 +1,5 @@
+<ul>
+  <li ng-repeat="playlist in items">
+    <a ui-sref=".playlist({playlist: playlist.id})">{{::playlist.title}}</a>
+  </li>
+</ul>

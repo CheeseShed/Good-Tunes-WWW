@@ -7,13 +7,13 @@
   ],
   "description": "The public facing site of Good Tunes",
   "license": "MIT",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "/libs"
   ],
   "dependencies": {
     "angular": "~1.2.23"
