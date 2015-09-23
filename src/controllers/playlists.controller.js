@@ -1,8 +1,8 @@
 'use strict';
 
-PlaylistsController.$inject = ['playlists', 'PlaylistService'];
+PlaylistsController.$inject = ['playlists', '$state', 'PlaylistService'];
 
-function PlaylistsController(playlists, PlaylistService) {
+function PlaylistsController(playlists, $state, PlaylistService) {
   var vm = this;
 
   vm.playlists = playlists;
@@ -10,7 +10,7 @@ function PlaylistsController(playlists, PlaylistService) {
   vm.create = function (data) {
     PlaylistService.create(data)
       .then(function (playlist) {
-        console.log(playlist);
+        $state.go('playlists.one', {playlist: playlist.id});
       })
       .catch(function (err) {
         console.error(err);

@@ -1,0 +1,9 @@
+<section>
+  <ol class="track-list" ng-show="!!tracks.length">
+    <li ng-repeat="track in tracks" class="track-list__track">
+      <span class="track-list__track-title">{{::track.name}}</span>
+      <span ng-repeat="artist in track.artists" class="track-list__track-artist">{{::artist.name}}</span>
+    </li>
+  </ol>
+  <p ng-show="!tracks.length">{{::emptyListMessage}}</p>
+</section>

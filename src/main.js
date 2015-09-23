@@ -3,6 +3,7 @@
 var angular = require('angular');
 require('angular-resource');
 require('angular-ui-router');
+require('angular-sanitize');
 
 var app = angular.module('goodtunes', ['ngResource', 'ui.router']);
 
@@ -18,9 +19,12 @@ app.service('StorageService', require('./services/storage.service'));
 app.service('PlaylistService', require('./services/playlist.service'));
 app.service('UserService', require('./services/user.service'));
 app.service('TrackService', require('./services/track.service'));
+app.service('spotifyService', require('./services/spotify.service'));
 
 // directives
 app.directive('playlists', require('./components/playlists/playlists.directive'));
+app.directive('spotifySearch', require('./components/spotify-search/spotify-search.directive'));
+app.directive('trackList', require('./components/track-list/track-list.directive'));
 
 app.config([
   '$locationProvider',
@@ -33,10 +37,7 @@ app.config([
     $stateProvider
       .state('base', {
         abstract: true,
-        templateUrl: '/src/views/base.html',
-        data: {
-
-        }
+        templateUrl: '/src/views/base.html'
       })
       .state('home', {
         url: '/',
@@ -55,8 +56,8 @@ app.config([
         controllerAs: 'register'
       })
       .state('playlists', {
-        url: '/playlists',
         templateUrl: '/src/views/playlists.html',
+        abstract: true,
         controller: require('./controllers/playlists.controller'),
         controllerAs: 'playlists',
         resolve: {
@@ -69,18 +70,41 @@ app.config([
           }]
         }
       })
-      .state('playlists.playlist', {
-        url: '/:playlist',
-        templateUrl: '/src/views/playlists.playlist.html',
-        controller: require('./controllers/playlist.controller'),
-        controllerAs: 'playlist',
+      .state('playlists.all', {
+        url: '/playlists',
+        templateUrl: '/src/views/playlists.list.html'
+      })
+      .state('playlists.create', {
+        url: '/playlists/create',
+        templateUrl: '/src/views/playlists.create.html'
+      })
+      .state('playlists.one', {
+        url: '/playlists/:playlist',
+        views: {
+          '@playlists': {
+            templateUrl: '/src/views/playlists.playlist.html',
+            controller: require('./controllers/playlist.controller'),
+            controllerAs: 'playlist',
+            bindToController: true,
+          }
+        },
         resolve: {
-          playlist: ['TrackService', '$stateParams', function (TrackService, $stateParams) {
-            return TrackService.readAll({playlist: $stateParams.playlist})
+          playlist: ['PlaylistService', '$stateParams', function (PlaylistService, $stateParams) {
+            return PlaylistService.readOne({id: $stateParams.playlist})
           }]
         }
       })
-      .state('playlists')
+      .state('playlists.one.donate', {
+        url: '/donate',
+        views: {
+          '@playlists': {
+            templateUrl: '/src/views/playlists.playlist.donate.html',
+            controller: require('./controllers/donate.controller'),
+            controllerAs: 'donate',
+            reloadOnSearch: false
+          }
+        }
+      })
       .state('notFound', {
         url: '/404',
         templateUrl: '/src/views/404.html'

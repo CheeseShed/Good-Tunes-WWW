@@ -1,19 +1,16 @@
 'use strict';
 
-playlistController.$inject = ['$scope', 'playlist'];
+playlistController.$inject = ['playlist'];
 
-function playlistController($scope, playlist) {
+function playlistController(playlistData) {
   var vm = this;
 
-  this.playlist = playlist;
+  function setup() {
+    vm.playlist = playlistData.data.playlist;
+    vm.tracks = playlistData.data.tracks;
+  }
 
-  var titles = playlist.map(function (track) {
-    return track.spotify_id;
-  });
-
-  $scope.titles = titles;
-
-  console.log(titles);
+  setup();
 }
 
 module.exports = playlistController;

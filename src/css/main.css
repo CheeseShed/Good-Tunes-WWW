@@ -1,0 +1,55 @@
+@import url('normalise.css');
+
+/*
+$orange: #fa6346;
+$blue: #225bad;
+$white: #fff;
+*/
+
+body {
+  background: #fa6346;
+}
+
+.button-primary {
+  background: #225bad;
+  border: 0;
+  color: #fff;
+  display: block;
+  padding: 1rem .5rem;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.field {
+  background: #fff;
+  border: 0;
+  border-bottom: 1px solid #fa6346;
+  box-sizing: border-box;
+  margin: 1rem 0;
+  padding: 1rem .5rem;
+  width: 100%;
+}
+
+.track-list {
+  background: #fff;
+  margin: 0;
+  padding: 1rem;
+  list-style: none;
+}
+
+.track-list__track {
+  border-bottom: 1px solid #fa6346;
+  padding: .5rem 0;
+}
+
+.track-list__track-title {
+  color: #225bad;
+  display: block;
+  font-weight: bold;
+}
+
+.track-list__track-artist {
+  color: #225bad;
+  display: inline-block;
+}

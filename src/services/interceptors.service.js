@@ -1,16 +1,20 @@
 'use strict';
 
-httpInterceptors.$inject = ['$q', '$injector', '$window'];
+httpInterceptors.$inject = ['$q', '$injector', '$window', 'config'];
 
-function httpInterceptors($q, $injector, $window) {
+function httpInterceptors($q, $injector, $window, config) {
+  var API_URL = config.API_URL;
+
   return {
     request: function (config) {
       var token = $window.sessionStorage.getItem('accessToken');
 
       config.headers = config.headers || {};
 
-      if (token) {
-        config.headers.Authorization = 'Bearer ' + token;
+      if (config.url.indexOf(API_URL) === 0) {
+        if (token) {
+          config.headers.Authorization = 'Bearer ' + token;
+        }
       }
 
       return config;
