@@ -1,6 +1,7 @@
 'use strict';
 
 var pick = require('lodash/object/pick');
+var clone = require('lodash/lang/clone');
 
 spotifyService.$inject = ['$http', '$q', 'config'];
 

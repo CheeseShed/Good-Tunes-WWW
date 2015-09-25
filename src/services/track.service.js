@@ -8,6 +8,11 @@ function trackService($resource, config) {
   let service = {};
 
   service.$resource = $resource(PATH, {id: '@id'}, {
+    create: {
+      url: config.API_URL + '/tracks',
+      method: 'POST',
+      withCredentials: true
+    },
     readAll: {
       url: config.API_URL + '/tracks',
       isArray: true
@@ -15,8 +20,11 @@ function trackService($resource, config) {
   });
 
   service.readAll = function (data) {
-    console.log(data);
     return service.$resource.readAll(data).$promise;
+  };
+
+  service.create = function (data) {
+    return service.$resource.create(data).$promise;
   };
 
   return service;

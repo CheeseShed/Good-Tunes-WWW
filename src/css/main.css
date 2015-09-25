@@ -40,7 +40,6 @@ body {
 
 .track-list__track {
   border-bottom: 1px solid #fa6346;
-  padding: .5rem 0;
 }
 
 .track-list__track-title {
@@ -51,5 +50,9 @@ body {
 
 .track-list__track-artist {
   color: #225bad;
+  display: inline-block;
+}
+
+.track-list__track .button-primary {
   display: inline-block;
 }

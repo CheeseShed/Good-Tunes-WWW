@@ -1,6 +1,4 @@
-'use strict';
-
-//todo: when the state loads check stateParams to see if there is a query and automatically search for the query
+'use strict'
 
 spotifySearchController.$inject = ['$scope', '$location', 'spotifyService'];
 

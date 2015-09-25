@@ -95,13 +95,26 @@ app.config([
         }
       })
       .state('playlists.one.donate', {
-        url: '/donate',
+        url: '/donate?q',
         views: {
           '@playlists': {
             templateUrl: '/src/views/playlists.playlist.donate.html',
             controller: require('./controllers/donate.controller'),
             controllerAs: 'donate',
-            reloadOnSearch: false
+            reloadOnSearch: false,
+            resolve: {
+              playlistId: ['$stateParams', function ($stateParams) {
+                return $stateParams.playlist;
+              }],
+              searchResults: ['$stateParams', 'spotifyService', function ($stateParams, spotifyService) {
+                var query = $stateParams.q;
+                if (query) {
+                  return spotifyService.search(query)
+                } else {
+                  return false;
+                }
+              }]
+            }
           }
         }
       })
