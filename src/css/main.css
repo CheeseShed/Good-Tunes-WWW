@@ -56,3 +56,80 @@ body {
 .track-list__track .button-primary {
   display: inline-block;
 }
+
+.primary-heading {
+  border-bottom: 3px solid #225bad;
+  color: #fff;
+  display: inline;
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+.secondary-heading {
+  font-size: 2rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+.fundraiser__header {
+  padding: 2rem;
+}
+
+.fundraiser-total {
+  padding: 2rem;
+}
+
+.fundraiser-total .secondary-heading {
+  color: #fff;
+}
+
+.fundraiser-total .fundraiser-total__summary {
+  margin: 1rem auto;
+}
+
+.fundraiser-total .fundraiser-total__summary span {
+  color: #225bad;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.fundraiser-total .fundraiser-total__reached,
+.fundraiser-total .fundraiser-total__target {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.fundraiser-total .fundraiser-total__target-date {
+  color: #fff;
+  font-weight: bold;
+}
+
+.totalator {
+  background: rgba(255, 255, 255, 0.6);
+  height: 1.4rem;
+  margin: 1rem 0;
+  position: relative;
+  width: 100%;
+}
+
+.totalator .totalator__raised {
+  background: #225bad;
+  display: block;
+  height: 1.4rem;
+  z-index: 1;
+}
+
+.totalator .totalator__dividers {
+  background: url(../images/totalator-divider.png) repeat 0 0;
+  display: block;
+  height: 1.4rem;
+  width: 100%;
+  z-index: 2;
+}
+
+.totalator .totalator__raised,
+.totalator .totalator__dividers {
+  left: 0;
+  position: absolute;
+  top: 0;
+}

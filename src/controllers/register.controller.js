@@ -11,7 +11,7 @@ function register($state, userService, storageService) {
         storageService.setAccessToken(profile.token)
       })
       .then(function navigateToPlaylists () {
-        $state.go('profile');
+        $state.go('home');
       })
       .catch(function (err) {
         console.error(err);

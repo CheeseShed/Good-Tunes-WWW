@@ -19,12 +19,15 @@ app.service('StorageService', require('./services/storage.service'));
 app.service('PlaylistService', require('./services/playlist.service'));
 app.service('UserService', require('./services/user.service'));
 app.service('TrackService', require('./services/track.service'));
+app.service('fundraiserService', require('./services/fundraiser.service'));
 app.service('spotifyService', require('./services/spotify.service'));
 
 // directives
 app.directive('playlists', require('./components/playlists/playlists.directive'));
 app.directive('spotifySearch', require('./components/spotify-search/spotify-search.directive'));
 app.directive('trackList', require('./components/track-list/track-list.directive'));
+app.directive('fundraisersList', require('./components/fundraisers-list/fundraisers-list.directive'));
+app.directive('fundraiserTotal', require('./components/fundraiser-total/fundraiser-total.directive'));
 
 app.config([
   '$locationProvider',
@@ -54,6 +57,37 @@ app.config([
         templateUrl: '/src/views/register.html',
         controller: require('./controllers/register.controller'),
         controllerAs: 'register'
+      })
+      .state('fundraisers', {
+        url: '/fundraisers',
+        templateUrl: '/src/views/fundraisers.html',
+        // abstract: true,
+        controller: require('./controllers/fundraisers.controller'),
+        controllerAs: 'fundraisers',
+        resolve: {
+          fundraisers: ['fundraiserService', function (fundraiserService) {
+            return fundraiserService.readAll({
+              skip: 0,
+              limit: 20
+            });
+          }]
+        }
+      })
+      .state('fundraisers.one', {
+        url: '/:id',
+        views: {
+          '@fundraisers': {
+            templateUrl: '/src/views/fundraisers.one.html',
+            controller: require('./controllers/fundraiser.controller'),
+            controllerAs: 'fundraiser',
+            resolve: {
+              fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
+                console.log('fundraiser');
+                return fundraiserService.readOne({id: $stateParams.id});
+              }]
+            }
+          }
+        }
       })
       .state('playlists', {
         templateUrl: '/src/views/playlists.html',
