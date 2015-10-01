@@ -15,6 +15,7 @@ function donateController(fundraiser, $scope, TrackService) {
 
   function donateTrack(track) {
     vm.hasTrackToDonate = true;
+    vm.trackToDonate = track;
     $scope.$broadcast('donate:open', track);
 
     // track = omit(track, '$$hashKey');

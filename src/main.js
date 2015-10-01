@@ -151,69 +151,30 @@ app.config([
           }]
         }
       })
-      .state('playlists', {
-        templateUrl: '/src/views/playlists.html',
-        abstract: true,
-        controller: require('./controllers/playlists.controller'),
-        controllerAs: 'playlists',
-        resolve: {
-          playlists: ['PlaylistService', function (PlaylistService) {
-            return PlaylistService.readAll({
-              skip: 0,
-              limit: 20,
-              sort: 1
-            });
-          }]
-        }
-      })
-      .state('playlists.all', {
-        url: '/playlists',
-        templateUrl: '/src/views/playlists.list.html'
-      })
-      .state('playlists.create', {
-        url: '/playlists/create',
-        templateUrl: '/src/views/playlists.create.html'
-      })
-      .state('playlists.one', {
-        url: '/playlists/:playlist',
-        views: {
-          '@playlists': {
-            templateUrl: '/src/views/playlists.playlist.html',
-            controller: require('./controllers/playlist.controller'),
-            controllerAs: 'playlist',
-            bindToController: true,
-          }
-        },
-        resolve: {
-          playlist: ['PlaylistService', '$stateParams', function (PlaylistService, $stateParams) {
-            return PlaylistService.readOne({id: $stateParams.playlist})
-          }]
-        }
-      })
-      .state('playlists.one.donate', {
-        url: '/donate?q',
-        views: {
-          '@playlists': {
-            templateUrl: '/src/views/playlists.playlist.donate.html',
-            controller: require('./controllers/donate.controller'),
-            controllerAs: 'donate',
-            reloadOnSearch: false,
-            resolve: {
-              playlistId: ['$stateParams', function ($stateParams) {
-                return $stateParams.playlist;
-              }],
-              searchResults: ['$stateParams', 'spotifyService', function ($stateParams, spotifyService) {
-                var query = $stateParams.q;
-                if (query) {
-                  return spotifyService.search(query)
-                } else {
-                  return false;
-                }
-              }]
-            }
-          }
-        }
-      })
+      // .state('playlists.one.donate', {
+      //   url: '/donate?q',
+      //   views: {
+      //     '@playlists': {
+      //       templateUrl: '/src/views/playlists.playlist.donate.html',
+      //       controller: require('./controllers/donate.controller'),
+      //       controllerAs: 'donate',
+      //       reloadOnSearch: false,
+      //       resolve: {
+      //         playlistId: ['$stateParams', function ($stateParams) {
+      //           return $stateParams.playlist;
+      //         }],
+      //         searchResults: ['$stateParams', 'spotifyService', function ($stateParams, spotifyService) {
+      //           var query = $stateParams.q;
+      //           if (query) {
+      //             return spotifyService.search(query)
+      //           } else {
+      //             return false;
+      //           }
+      //         }]
+      //       }
+      //     }
+      //   }
+      // })
       .state('notFound', {
         url: '/404',
         templateUrl: '/src/views/404.html'
