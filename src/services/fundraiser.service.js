@@ -11,6 +11,14 @@ function fundraisers($resource, config) {
     create: {
       method: 'POST',
       withCredentials: true
+    },
+    patch: {
+      method: 'PATCH',
+      withCredentials: true
+    },
+    update: {
+      method: 'PUT',
+      withCredentials: true
     }
   });
 
@@ -24,6 +32,10 @@ function fundraisers($resource, config) {
 
   service.readOne = function (data) {
     return this.$resource.get(data).$promise;
+  };
+
+  service.patch = function (data) {
+    return this.$resource.update(data).$promise;
   };
 
   return service;

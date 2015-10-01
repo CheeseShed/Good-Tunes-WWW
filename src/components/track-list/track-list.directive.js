@@ -13,11 +13,7 @@ function trackListDirective() {
 
       // add the method addTrack to the scope
       scope.addTrack = function (track) {
-        if (alert('Todo: Donation step here')) {
-          scope.trackPressHandler({track: track});
-        } else {
-          alert('You have to donate in order to add a good tune');
-        }
+        scope.trackPressHandler({track: track});
       };
 
     }

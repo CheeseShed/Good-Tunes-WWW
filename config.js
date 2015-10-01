@@ -20,6 +20,7 @@ System.config({
     "angular-resource": "github:angular/bower-angular-resource@1.4.4",
     "angular-sanitize": "github:angular/bower-angular-sanitize@1.4.6",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
+    "angularjs-facebook": "npm:angularjs-facebook@0.2.3",
     "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@0.9.18",
@@ -31,8 +32,15 @@ System.config({
     "github:angular/bower-angular-sanitize@1.4.6": {
       "angular": "github:angular/bower-angular@1.4.6"
     },
+    "github:jspm/nodelibs-path@0.1.0": {
+      "path-browserify": "npm:path-browserify@0.0.0"
+    },
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
+    },
+    "npm:angularjs-facebook@0.2.3": {
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:babel-runtime@5.8.20": {
       "process": "github:jspm/nodelibs-process@0.1.1"
@@ -43,6 +51,9 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:lodash@3.10.1": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     }
   }

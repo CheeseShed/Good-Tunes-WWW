@@ -7,7 +7,7 @@ function httpInterceptors($q, $injector, $window, config) {
 
   return {
     request: function (config) {
-      var token = $window.sessionStorage.getItem('accessToken');
+      var token = $window.sessionStorage.getItem('access_token');
 
       config.headers = config.headers || {};
 

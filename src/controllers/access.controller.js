@@ -10,7 +10,9 @@ function accessController($state, AccessService, StorageService) {
   function login(credentials) {
     AccessService.login(credentials)
       .then(function (user) {
-        StorageService.setAccessToken(user.token);
+        StorageService.setItem('access_level', user.access_level);
+        StorageService.setItem('access_token', user.access_token);
+        StorageService.setItem('user_id', user.id);
         return user;
       })
       .then(function (user) {

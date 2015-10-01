@@ -1,12 +1,10 @@
-<section>
-  <ol class="track-list" ng-show="!!tracks.length">
-    <li ng-repeat="track in tracks" class="track-list__track">
+<ol class="track-list" ng-show="!!tracks.length">
+  <li ng-repeat="track in tracks" class="track-list__track cf">
+    <span class="track-list__track-data">
       <span class="track-list__track-title">{{::track.name}}</span>
       <span ng-repeat="artist in track.artists" class="track-list__track-artist">{{::artist.name}}</span>
-      <button type="button" ng-click="addTrack(track)">
-        Donate
-      </button>
-    </li>
-  </ol>
-  <p ng-show="!tracks.length">{{::emptyListMessage}}</p>
-</section>
+    </span>
+    <button class="button__donate" type="button" ng-click="addTrack(track)">Donate</button>
+  </li>
+</ol>
+<p ng-show="!tracks.length">{{::emptyListMessage}}</p>

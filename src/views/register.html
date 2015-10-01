@@ -1,6 +1,10 @@
 <section class="register">
   <h2>Register</h2>
 
+  <button type="button" ng-click=register.facebookLogin()>Login with Facebook</button>
+
+  <span>or</span>
+
   <form name="registerForm" ng-submit="register.submit(user)">
     <label for="name">Name</label>
     <input class="field" type="text" id="name" name="name" ng-model="user.name">

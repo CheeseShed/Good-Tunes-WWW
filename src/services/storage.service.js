@@ -6,12 +6,16 @@ function storageService($window, $q) {
 
   let service = {};
 
-  service.setAccessToken = function (accessToken) {
-      $window.sessionStorage.setItem('accessToken', accessToken);
+  service.setItem = function (key, value) {
+    $window.sessionStorage.setItem(key, value);
+  };
+
+  service.getItem = function (key) {
+    $window.sessionStorage.getItem(key);
   };
 
   service.getAccessToken = function () {
-    $window.sessionStorage.getItem('accessToken');
+    $window.sessionStorage.getItem('access_token');
   };
 
   return service;

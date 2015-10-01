@@ -1,10 +1,10 @@
 <section class="login">
   <form name="loginForm" ng-submit="access.login(credentials)">
     <label for="email">Email</login>
-    <input class="field" type="text" id="email" name="email" ng-model="credentials.email">
+    <input class="field" type="text" id="email" name="email" ng-model="credentials.email" required>
 
     <label for="password">Password</login>
-    <input class="field" type="password" id="password" name="password" ng-model="credentials.password">
+    <input class="field" type="password" id="password" name="password" ng-model="credentials.password" required>
 
     <button class="button-primary" type="submit" name="button">Login</button>
   </form>
