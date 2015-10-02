@@ -2,9 +2,9 @@
 
 const omit = require('lodash/object/omit');
 
-donateController.$inject = ['fundraiser', '$state', '$scope', 'TrackService', 'AccessService'];
+donateController.$inject = ['fundraiser', '$state', '$scope', 'TrackService', 'AccessService', 'StorageService'];
 
-function donateController(fundraiser, $state, $scope, TrackService, AccessService) {
+function donateController(fundraiser, $state, $scope, TrackService, AccessService, storageService) {
   let vm = this;
 
   vm.fundraiser = fundraiser;
@@ -20,9 +20,12 @@ function donateController(fundraiser, $state, $scope, TrackService, AccessServic
 
   function donateTrack(track) {
 
-    vm.trackToDonate = track;
+    sessionStorage.setItem('trackToDonate', JSON.stringify(track));
 
-    $state.go('fundraisers.one.donate', {fundraiser: fundraiser.id, playlist: fundraiser.playlist});
+    $state.go('fundraisers.one.donate', {
+      fundraiser: fundraiser.id,
+      playlist: fundraiser.playlist
+    });
 
     // if (!AccessService.isAuthenticated()) {
     //   FB.getLoginStatus(function (response) {

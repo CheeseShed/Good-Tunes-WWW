@@ -5,8 +5,6 @@ accessController.$inject = ['$state', '$stateParams', 'AccessService', 'StorageS
 function accessController($state, $stateParams, AccessService, StorageService, facebookService) {
   let vm = this;
 
-  console.log('params', $stateParams);
-
   vm.login = login;
   vm.facebookLogin = facebookLogin;
 

@@ -3,11 +3,11 @@
 trackService.$inject = ['$resource', 'config'];
 
 function trackService($resource, config) {
-  const PATH = config.API_URL + '/tracks';
+  const API_PATH = config.API_URL + '/tracks/:id';
 
   let service = {};
 
-  service.$resource = $resource(PATH, {id: '@id'}, {
+  service.$resource = $resource(API_PATH, {id: '@id'}, {
     create: {
       url: config.API_URL + '/tracks',
       method: 'POST',

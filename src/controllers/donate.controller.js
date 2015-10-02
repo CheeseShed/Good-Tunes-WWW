@@ -1,11 +1,70 @@
 'use strict';
 
-donateController.$inject = ['fundraiser'];
+const has = require('lodash/object/has');
 
-function donateController(fundraiser) {
-  console.log('donate controller');
+donateController.$inject = ['fundraiser', '$q', '$scope', '$state', '$stateParams', 'StorageService', 'TrackService', 'donationService'];
 
-  this.fundraiser = fundraiser;
+function donateController(fundraiser, $q, $scope, $state, $stateParams, storageService, trackService, donationService) {
+  let vm = this;
+
+  function setup() {
+    vm.fundraiser = fundraiser;
+    vm.trackToDonate = JSON.parse(storageService.getItem('trackToDonate'));
+
+    if (!vm.trackToDonate) {
+      navigateToAddState();
+    }
+
+    $scope.$on('donate:complete', donationCompleteHandler);
+  }
+
+  function donateTrack(track) {
+    console.log(track)
+    //trackService.create()
+  }
+
+  function donationCompleteHandler(event, donation) {
+    // should do a check here
+    // should move crowdrise specific code into it's own controller if other donation providers are added
+    // donateTrack(vm.trackToDonate, donation);
+      console.log(vm.trackToDonate);
+
+
+
+    let track = {
+      playlist: vm.fundraiser.playlist,
+      name: vm.trackToDonate.name,
+      spotify_id: vm.trackToDonate.id,
+      duration_ms: vm.trackToDonate.duration_ms,
+      link: vm.trackToDonate.href,
+      artists: vm.trackToDonate.artists
+    };
+
+    trackService
+      .create(track)
+      .then(function (response) {
+        return donationService.create({
+          track: response.id,
+          fundraiser: vm.fundraiser.id,
+          amount: donation.amount
+        });
+      })
+      .then(function (response) {
+        $state.go('fundraisers.one.thankyou', {fundraisers: $stateParams.fundraiser, playlist: $stateParams.playlist});
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+  }
+
+  function navigateToAddState() {
+    $state.go('fundraisers.one.add', {
+      fundraiser: $stateParams.fundraiser,
+      playlist: $stateParams.playlist
+    });
+  }
+
+  setup();
 }
 
 module.exports = donateController;

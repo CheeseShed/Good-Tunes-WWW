@@ -19,6 +19,7 @@ app.service('StorageService', require('./services/storage.service'));
 app.service('playlistService', require('./services/playlist.service'));
 app.service('UserService', require('./services/user.service'));
 app.service('TrackService', require('./services/track.service'));
+app.service('donationService', require('./services/donation.service'));
 app.service('fundraiserService', require('./services/fundraiser.service'));
 app.service('spotifyService', require('./services/spotify.service'));
 app.service('facebookService', require('./services/facebook.service'));
@@ -174,23 +175,21 @@ app.config([
           roles: [20]
         }
       })
-            // reloadOnSearch: false,
-      //       resolve: {
-      //         playlistId: ['$stateParams', function ($stateParams) {
-      //           return $stateParams.playlist;
-      //         }],
-      //         searchResults: ['$stateParams', 'spotifyService', function ($stateParams, spotifyService) {
-      //           var query = $stateParams.q;
-      //           if (query) {
-      //             return spotifyService.search(query)
-      //           } else {
-      //             return false;
-      //           }
-      //         }]
-      //       }
-      //     }
-      //   }
-      // })
+      .state('fundraisers.one.thankyou', {
+        url: '/thank-you',
+        views: {
+          '@fundraisers': {
+            controller: require('./controllers/fundraiser.controller'),
+            controllerAs: 'fundraiser',
+            templateUrl: '/src/views/fundraisers.thankyou.html'
+          }
+        },
+        resolve: {
+          fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
+            return fundraiserService.readOne({id: $stateParams.fundraiser});
+          }]
+        },
+      })
       .state('notFound', {
         url: '/404',
         templateUrl: '/src/views/404.html'

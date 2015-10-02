@@ -24,19 +24,18 @@ function crowdriseDirective(config, $window) {
         crowdriseScript.src = config.CROWDRISE_URL + scope.account + '/';
         crowdriseScript.async = true;
         document.querySelector('.crowdrise-widget').appendChild(crowdriseScript);
+
+        addCrowdriseCallback();
       };
 
       function addCrowdriseCallback() {
         $window.crowdriseCallback = function (response) {
+          console.log(response);
           scope.$emit('donate:complete', response);
         };
       }
 
-      // scope.$on('donate:open', function (event, track) {
-        // console.log(event, track)
-        addCrowdriseWidget();
-        addCrowdriseCallback();
-      // });
+      addCrowdriseWidget();
     }
   };
 }
