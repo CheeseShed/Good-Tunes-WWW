@@ -1,0 +1,22 @@
+<div class="fundraiser-total">
+
+  <h2 class="secondary-heading">{{::name}}'s reached...</h2>
+
+  <div class="fundraiser-total__summary">
+    <span class="fundraiser-total__reached">{{::symbol}}{{::raised}}</span>
+    <span>of</span>
+    <span class="fundraiser-total__target">{{::symbol}}{{::target}}</span>
+  </div>
+
+  <div class="totalator">
+    <span class="totalator__raised" style="width: {{::percentageRaised}}%;"></span>
+    <span class="totalator__dividers"></span>
+  </div>
+
+  <span class="fundraiser-total__target-date">{{::targetDate}} to go</span>
+
+  <ul>
+    <li>Todo: Share on Twitter</li>
+    <li>Todo: Share on Facebook</li>
+  </ul>
+</div>

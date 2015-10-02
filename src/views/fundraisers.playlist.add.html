@@ -1,0 +1,12 @@
+<section class="donate">
+  <div class="donate__search" ng-show="!search.hasTrackToDonate">
+    <spotify-search></spotify-search>
+
+    <track-list track-press-handler="search.donateTrack(track)" tracks="tracks" empty-list-message="Good Tunes"></track-list>
+  </div>
+
+  <!-- <crowdrise
+    ng-show="search.hasTrackToDonate"
+    account="search.fundraiser.attributes.donation_provider_account_id">
+  </crowdrise> -->
+</section>

@@ -1,0 +1,12 @@
+<h3>View: playlists.playlist.html</h3>
+
+<h2>Title: {{playlist.playlist.title}}</h2>
+
+<nav>
+  <a ui-sref="playlists.one.donate">Donate a song now</a>
+</nav>
+
+<track-list
+  tracks="playlist.tracks"
+  empty-list-message="Be the first to donate a good tune to fill up the playlist.">
+</track-list>

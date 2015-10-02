@@ -1,0 +1,26 @@
+<form name="fundraiserEditForm" ng-submit="fundraiser.update(fundraiser)">
+  <label for="title">Title of your fundraiser</label>
+  <input class="field" type="text" id="title" name="title" ng-model="fundraiser.title">
+
+  <label for="charity">Who are you fundraising for?</label>
+  <input class="field" type="text" id="charity" name="charity" ng-model="fundraiser.charity">
+
+  <label for="description">Why are you fundraising?</label>
+  <textarea class="field" type="text" id="description" name="description" ng-model="fundraiser.description"></textarea>
+
+  <label for="currency">What currency are you raising money in?</label>
+  <input class="field" type="text" id="currency" name="currency" ng-model="fundraiser.currency" disabled="disabled">
+
+  <label for="target">How much money are you trying to raise?</label>
+  <input class="field" type="text" id="target" name="target" ng-model="fundraiser.target">
+
+  <label for="targetDate">When do you need to reach your target?</label>
+  <input class="field" type="text" id="targetDate" name="targetDate" ng-model="fundraiser.target_date">
+
+  <button class="button-primary" type="submit" name="submit">Save changes</button>
+
+  <p>
+    <a ui-sref="fundraisers()">Cancel changes</a>
+  </p>
+
+</form>
