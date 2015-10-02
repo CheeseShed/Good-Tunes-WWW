@@ -12,12 +12,20 @@ function accessService($resource, config, storageService) {
     login: {
       method: 'POST',
       url: config.API_URL + '/login'
+    },
+    facebookLogin: {
+      method: 'POST',
+      url: config.API_URL + '/auth/facebook'
     }
   });
 
   service.login = function (data) {
     return this.$resource.login(data).$promise;
-  }
+  };
+
+  service.facebookLogin = function (data) {
+    return this.$resource.facebookLogin(data).$promise;
+  };
 
   service.isAuthenticated = function () {
     return !!storageService.getItem('access_token');

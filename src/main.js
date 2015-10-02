@@ -21,6 +21,7 @@ app.service('UserService', require('./services/user.service'));
 app.service('TrackService', require('./services/track.service'));
 app.service('fundraiserService', require('./services/fundraiser.service'));
 app.service('spotifyService', require('./services/spotify.service'));
+app.service('facebookService', require('./services/facebook.service'));
 
 // directives
 app.directive('playlists', require('./components/playlists/playlists.directive'));
@@ -53,7 +54,11 @@ app.config([
         url: '/login',
         templateUrl: '/src/views/login.html',
         controller: require('./controllers/access.controller'),
-        controllerAs: 'access'
+        controllerAs: 'access',
+        params: {
+          toState: 'home',
+          toParams: {}
+        }
       })
       .state('register', {
         url: '/register',
@@ -112,10 +117,10 @@ app.config([
             }
           }
         },
-        // data: {
-        //   roles: [20],
-        //   isOwner: true
-        // }
+        data: {
+          roles: [20],
+          isOwner: true
+        }
       })
       .state('fundraisers.one.playlist', {
         url: '/playlists/:playlist',
@@ -135,13 +140,13 @@ app.config([
           }
         }
       })
-      .state('fundraisers.one.donate', {
-        url: '/playlists/:playlist/donate',
+      .state('fundraisers.one.add', {
+        url: '/playlists/:playlist/add?q',
         views: {
           '@fundraisers': {
-            templateUrl: '/src/views/playlists.playlist.donate.html',
-            controller: require('./controllers/donate.controller'),
-            controllerAs: 'donate',
+            templateUrl: '/src/views/fundraisers.playlist.add.html',
+            controller: require('./controllers/search.controller'),
+            controllerAs: 'search',
             reloadOnSearch: false
           }
         },
@@ -151,14 +156,25 @@ app.config([
           }]
         }
       })
-      // .state('playlists.one.donate', {
-      //   url: '/donate?q',
-      //   views: {
-      //     '@playlists': {
-      //       templateUrl: '/src/views/playlists.playlist.donate.html',
-      //       controller: require('./controllers/donate.controller'),
-      //       controllerAs: 'donate',
-      //       reloadOnSearch: false,
+      .state('fundraisers.one.donate', {
+        url: '/playlists/:playlist/donate?provider',
+        views: {
+          '@fundraisers': {
+            templateUrl: '/src/views/fundraisers.playlist.donate.html',
+            controller: require('./controllers/donate.controller'),
+            controllerAs: 'donate'
+          }
+        },
+        resolve: {
+          fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
+            return fundraiserService.readOne({id: $stateParams.fundraiser});
+          }]
+        },
+        data: {
+          roles: [20]
+        }
+      })
+            // reloadOnSearch: false,
       //       resolve: {
       //         playlistId: ['$stateParams', function ($stateParams) {
       //           return $stateParams.playlist;
@@ -185,7 +201,8 @@ app.config([
       $httpProvider.interceptors.push('httpInterceptors');
   }]);
 
-app.run(['$rootScope', '$state', 'AccessService', function ($rootScope, $state, AccessService) {
+app.run(['$rootScope', '$window', '$state', '$stateParams', 'config', 'facebookService', 'AccessService', function ($rootScope, $window, $state, $stateParams, config, facebookService, AccessService) {
+
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
     let roles = [];
 
@@ -194,12 +211,41 @@ app.run(['$rootScope', '$state', 'AccessService', function ($rootScope, $state, 
     }
 
     if (roles.length) {
+
+      console.log('isAuthenticated', AccessService.isAuthenticated());
+      console.log('roles', roles);
+      console.log('isAuthorised', AccessService.isAuthorised(roles));
+
       if (!AccessService.isAuthenticated() && !AccessService.isAuthorised(roles)) {
-        console.log('Todo: Not Authorised or Authenticated');
+        // stop the transition to the state
         event.preventDefault();
+
+        // go to the login state with the toState and params as a query
+        $state.go('login', {toState: toState.name, toParams: toParams}, {location: 'replace'});
       }
     }
   });
+
+  $window.fbAsyncInit = function () {
+
+    FB.init({
+      appId: config.FACEBOOK_APP_ID,
+      status: true,
+      xfbml: false,
+      version: 'v2.4'
+    });
+
+    facebookService.watchAuthenticationStatusChange();
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
 }]);
 
 angular.element(document).ready(function () {

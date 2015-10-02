@@ -1,4 +1,9 @@
 <section class="login">
+
+  <button class="button-primary" type="button" ng-click="access.facebookLogin()">Facebook Login</button>
+
+  <p>Or:</p>
+
   <form name="loginForm" ng-submit="access.login(credentials)">
     <label for="email">Email</login>
     <input class="field" type="text" id="email" name="email" ng-model="credentials.email" required>

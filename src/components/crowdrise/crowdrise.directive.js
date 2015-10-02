@@ -32,11 +32,11 @@ function crowdriseDirective(config, $window) {
         };
       }
 
-      scope.$on('donate:open', function (event, track) {
-        console.log(event, track)
+      // scope.$on('donate:open', function (event, track) {
+        // console.log(event, track)
         addCrowdriseWidget();
         addCrowdriseCallback();
-      });
+      // });
     }
   };
 }
