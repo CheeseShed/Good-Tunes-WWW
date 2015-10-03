@@ -7,8 +7,6 @@ function fundraiserFormDirective() {
     scope: {
       model: '='
     }
-    // controller: require('./fundraiser-form.controller'),
-    // controllerAs: 'form'
   };
 }
 
