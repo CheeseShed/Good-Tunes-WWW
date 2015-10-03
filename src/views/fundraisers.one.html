@@ -1,34 +1,39 @@
-<a ui-sref="fundraisers.one.edit({id: fundraiser.fundraiser.id})">Edit</a>
+<a style="position:absolute" ui-sref="fundraisers.one.edit({id: fundraiser.fundraiser.id})">Edit</a>
 
 <header class="fundraiser__header">
-  <h1 class="primary-heading">{{::fundraiser.fundraiser.title}}</h1>
+  <div class="primary-heading-wrapper">
+    <h1 class="primary-heading">{{::fundraiser.fundraiser.title}}</h1>
+  </div>
 </header>
 
 <div class="fundraiser-pictures">
   <img src="/src/images/ben.jpg" class="fundraiser-pictures__picture" alt="" />
 </div>
 
-<div class="fundraiser__description">
-  <h2>Why is {{::fundraiser.fundraiser.user.name}} doing this?</h2>
-  {{::fundraiser.fundraiser.description}}
-</div>
+<div class="fundraiser__non-img__wrapper">
 
-<div class="fundraiser__summary">
-  <p>Use music and your wallet to support {{::fundraiser.fundraiser.user.name}} as he raises money for {{::fundraiser.fundraiser.charity}}</p>
-</div>
+  <div class="fundraiser__summary">
+    <p>Use music and your wallet to support {{::fundraiser.fundraiser.user.name}} as he raises money for {{::fundraiser.fundraiser.charity}}</p>
+  </div>
 
-<div class="wrapper">
-  <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give music and money now</a>
-</div>
+  <div class="wrapper">
+    <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> and <b>$</b> now</a>
+  </div>
 
-<fundraiser-total
-  name="fundraiser.fundraiser.user.name"
-  symbol="fundraiser.fundraiser.currency"
-  target="fundraiser.fundraiser.target"
-  raised="fundraiser.fundraiser.raised"
-  date="fundraiser.fundraiser.target_date">
-</fundraiser-total>
+  <div class="fundraiser__description">
+    <h2>Why is {{::fundraiser.fundraiser.user.name}} doing this?</h2>
+    <!--{{::fundraiser.fundraiser.description}}-->
+  </div>
 
-<div class="wrapper">
-  <a class="button-primary" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
+  <fundraiser-total
+    name="fundraiser.fundraiser.user.name"
+    symbol="fundraiser.fundraiser.currency"
+    target="fundraiser.fundraiser.target"
+    raised="fundraiser.fundraiser.raised"
+    date="fundraiser.fundraiser.target_date">
+  </fundraiser-total>
+
+  <div class="wrapper">
+    <a class="button-primary" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
+  </div>
 </div>

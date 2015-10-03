@@ -54,6 +54,10 @@ h1,h2 {
   width: 100%;
 }
 
+.button__donate b {
+  color: #fa6346;
+}
+
 .field {
   background: #fff;
   border: 0;
@@ -104,12 +108,18 @@ h1,h2 {
   width: auto;
 }
 
+.primary-heading-wrapper {
+  background: url(../images/heading-underline.png) 0 0px;
+  padding-right: 30%;
+  padding-bottom: 30px;
+}
+
 .primary-heading {
-  border-bottom: 3px solid #225bad;
   color: #fff;
   display: inline;
   font-size: 3rem;
   font-weight: normal;
+  line-height: 132%;
 }
 
 .secondary-heading {
@@ -119,7 +129,7 @@ h1,h2 {
 }
 
 .fundraiser__header {
-  padding: 2rem;
+  padding: 4rem 5rem 5rem 5rem;
 }
 
 .fundraiser-pictures .fundraiser-pictures__picture {
@@ -134,9 +144,15 @@ h1,h2 {
   padding: 2rem;
 }
 
+.fundraiser__description h2 {
+  text-decoration: underline;
+}
+
 .fundraiser__summary {
-  color: #225bad;
+  color: #fff;
   margin: 2rem;
+  font-size: 1.5rem;
+  line-height: 130%;
 }
 
 .fundraiser-total {
@@ -211,4 +227,78 @@ h1,h2 {
 .good-tunes-powered {
   margin: 2rem auto;
   text-align: center;
+}
+
+.primary-heading {
+  font-size: 2.8rem;
+}
+
+.fundraiser__header {
+  padding: 1rem 2rem 1rem 2rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 850px) {
+  .blue {
+    display: block;
+  }
+  .red {
+    display: none;
+  }
+}
+
+@media (min-width: 851px) {
+
+
+  .fundraiser__header,
+  .fundraiser__non-img__wrapper {
+    clear: left;
+    float: left;
+    width: 30%;
+  }
+
+  .fundraiser-pictures {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    left: 30%;
+    top: 10px;
+    overflow: hidden;
+  }
+
+  .fundraiser__header {
+    padding-bottom: 0;
+  }
+
+  .fundraiser__summary {
+    margin-top: 0;
+  }
+
+  .fundraiser__summary p {
+    margin: 0;
+  }
+
+  .fundraiser__description {
+    padding: 0.1rem 2rem;
+    font-size: 0.5rem;
+  }
+
+  .good-tunes-powered {
+    clear: left;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    margin: 0;
+  }
+
+  .primary-heading-wrapper {
+    padding-right: 34%;
+  }
+
+  .blue {
+    display: none;
+  }
+  .red {
+    display: block;
+  }
 }
