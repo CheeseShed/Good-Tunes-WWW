@@ -10,6 +10,11 @@
   <img src="/src/images/ben.jpg" class="fundraiser-pictures__picture" alt="" />
 </div>
 
+<div class="fundraiser__description__text" ng-show="overlayVisible">
+  <span class="fundraiser__description__text__close" ng-click="toggleOverlay()">X</span>    
+  {{::fundraiser.fundraiser.description}}
+</div>
+
 <div class="fundraiser__non-img__wrapper">
 
   <div class="fundraiser__summary">
@@ -21,8 +26,7 @@
   </div>
 
   <div class="fundraiser__description">
-    <h2>Why is {{::fundraiser.fundraiser.user.name}} doing this?</h2>
-    <!--{{::fundraiser.fundraiser.description}}-->
+    <h2 ng-click="toggleOverlay()">Why is {{::name}} doing this?</h2>
   </div>
 
   <fundraiser-total

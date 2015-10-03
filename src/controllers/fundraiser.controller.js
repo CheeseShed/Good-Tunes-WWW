@@ -1,10 +1,16 @@
 'use strict';
 
-fundraiserController.$inject = ['fundraiser', 'fundraiserService', 'playlistService'];
+fundraiserController.$inject = ['$scope', 'fundraiser', 'fundraiserService', 'playlistService'];
 
-function fundraiserController(fundraiser, fundraiserService, playlistService) {
+function fundraiserController($scope, fundraiser, fundraiserService, playlistService) {
   var vm = this;
   this.fundraiser = fundraiser;
+  
+  $scope.overlayVisible = false;
+  
+  $scope.toggleOverlay = function() {
+    $scope.overlayVisible = !$scope.overlayVisible;
+  };
 
   this.update = function (model) {
     this.fundraiser.$update(function (model) {
