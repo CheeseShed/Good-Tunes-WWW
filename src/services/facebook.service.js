@@ -44,7 +44,9 @@ function facebookService($q) {
         if (response.status === 'connected') {
           defer.resolve(response.authResponse);
         } else if (response.status === 'not_authorized' || response.status === 'unknown') {
-          FB.login({scope: 'email'});
+          FB.login(function (response) {
+            defer.resolve(response.authResponse);
+          }, {scope: 'public_profile,email'});
         } else {
           defer.reject();
         }
