@@ -12,6 +12,7 @@
     <script type="text/javascript">
       System.import('src/main');
     </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
 
@@ -20,8 +21,17 @@
     </div>
 
     <div class="good-tunes-powered">
-      <img src="/src/images/good-tunes-blue.png" alt="Powered by Good Tunes" height="165" width="162" />
+      <img class="blue" src="/src/images/good-tunes-blue.png" alt="Powered by Good Tunes" height="165" width="162" />
+      <img class="red" src="/src/images/good-tunes-red.png" alt="Powered by Good Tunes" height="165" width="162" />
     </div>
 
+    <div style="clear: left"></div>
+
+    <script>
+    function userDonationCb(obj){
+      alert('wooop thanks for donating pc');
+      console.log(obj);
+    }
+    </script>
   </body>
 </html>
