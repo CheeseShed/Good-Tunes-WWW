@@ -2,7 +2,9 @@
 
 const moment = require('moment');
 
-function fundraiserTotalDirective() {
+fundraiserTotalDirective.$inject = ['config'];
+
+function fundraiserTotalDirective(config) {
   return {
     templateUrl: '/src/components/fundraiser-total/fundraiser-total.template.html',
     restrict: 'E',
@@ -25,6 +27,8 @@ function fundraiserTotalDirective() {
 
       scope.targetDate = moment(scope.date).fromNow(true);
       scope.percentageRaised = calculateAmountRaised(scope.raised, scope.target);
+
+      scope.symbol = config.CURRENCIES[scope.symbol];
     }
   };
 }

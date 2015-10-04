@@ -7,11 +7,7 @@ function fundraiserPlaylistController($scope, fundraiser, playlist) {
 
   function setup() {
     vm.playlist = playlist.data.playlist;
-
-    console.log('foo!');
-    console.log(vm.playlist);
     vm.tracks = playlist.data.tracks;
-    console.log(vm.tracks);
     vm.fundraiser = fundraiser;
   }
 
