@@ -7,7 +7,8 @@ function trackListDirective() {
     scope: {
       tracks: '=', // two way binding
       emptyListMessage: '@', // one way binding
-      trackPressHandler: '&' // expression
+      trackPressHandler: '&', // expression
+      showButton: '=?'
     },
     link: function (scope) {
 
@@ -16,7 +17,13 @@ function trackListDirective() {
         scope.trackPressHandler({track: track});
       };
 
-    }
+      scope.showDonateButton = function(){
+        // show donate button unless directed specifically not to
+        var show = angular.isDefined(scope.showButton) ? scope.showButton : true;
+        return show;
+      };
+
+    },
   };
 }
 

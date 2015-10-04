@@ -178,6 +178,18 @@ h1,h2 {
   text-decoration: underline;
 }
 
+.playlist__description__text h1 {
+  color: #225bad;
+  margin: 0;
+  display: block;
+  padding: 0 0.5rem;
+}
+
+.playlist__description__text .track-list {
+  background: none;
+  padding: 1rem 0;
+}
+
 .fundraiser__summary {
   color: #fff;
   margin: 2rem;
@@ -275,6 +287,25 @@ h1,h2 {
   .red {
     display: none;
   }
+
+  .playlist__header,
+  .playlist-pictures,
+  .playlist__non-img__wrapper .fundraiser__summary,
+  .playlist__non-img__wrapper .fundraiser__description,
+  .playlist__non-img__wrapper .fundraiser-total  {
+    display: none;
+  }
+
+  .playlist__description__text {
+    position: static;
+    background: rgb(255, 255, 255);
+  }
+
+  .playlist__non-img__wrapper {
+    clear: both;
+  }
+
+  .playlist__description__text,
 }
 
 @media (min-width: 851px) {

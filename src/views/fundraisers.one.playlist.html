@@ -1,8 +1,44 @@
-<section class="playlist">
-  <h1 class="primary-heading">{{::playlist.fundraiser.title}}</h1>
+<div class="fundraiser__description__text playlist__description__text">
+  <section class="playlist">
+	  <h1 class="primary-heading">{{::playlist.fundraiser.title}}</h1>
 
-  <track-list
-    tracks="playlist.tracks"
-    empty-list-message="Be the first to donate a good tune to fill up the playlist.">
-  </track-list>
-</section>
+	  <track-list
+	    tracks="playlist.tracks" show-button="false" 
+	    empty-list-message="Be the first to donate a good tune to fill up the playlist.">
+	  </track-list>
+  </section>
+</div>
+
+<header class="fundraiser__header playlist__header">
+  <div class="primary-heading-wrapper">
+    <h1 class="primary-heading">{{::playlist.fundraiser.title}}</h1>
+  </div>
+</header>
+
+<div class="fundraiser-pictures playlist-pictures">
+  <img src="/src/images/ben.jpg" class="fundraiser-pictures__picture" alt="" />
+</div>
+
+<div class="fundraiser__non-img__wrapper playlist__non-img__wrapper">
+
+  <div class="fundraiser__summary">
+    <p>Use music and your wallet to support {{::playlist.fundraiser.user.name}} as he raises money for {{::fundraiser.fundraiser.charity}}</p>
+  </div>
+
+  <div class="wrapper">
+    <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> and <b>$</b> now</a>
+  </div>
+
+  <div class="fundraiser__description">
+    <h2 ng-click="toggleOverlay()">Why is {{::name}} doing this?</h2>
+  </div>
+
+  <fundraiser-total
+    name="playlist.fundraiser.user.name"
+    symbol="playlist.fundraiser.currency"
+    target="playlist.fundraiser.target"
+    raised="playlist.fundraiser.raised"
+    date="playlist.fundraiser.target_date">
+  </fundraiser-total>
+
+</div>
