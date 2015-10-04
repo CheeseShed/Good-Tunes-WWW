@@ -1,8 +1,17 @@
 <header class="fundraiser__header">
-  <h1 class="primary-heading">{{::fundraiser.fundraiser.title}}</h1>
+  <div class="primary-heading-wrapper thank-you">
+    <h1 class="primary-heading">Thank you for donating!</h1>
+  </div>
 </header>
 
-<h2>Thank you for donating</h2>
+ <div class="fundraiser__non-img__wrapper">
+  <div class="fundraiser__summary thank-you">
+  Your track's been added to the mix.
+  </div>
+
+  <div class="wrapper">
+  <a class="button-primary" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Go to the full mix...</a>
+</div>
 
 <div class="fundraiser-pictures">
   <img src="/src/images/ben.jpg" class="fundraiser-pictures__picture" alt="" />

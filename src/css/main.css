@@ -197,6 +197,10 @@ h1,h2 {
   line-height: 130%;
 }
 
+.fundraiser__summary.thank-you {
+  margin: 0 2rem;
+}
+
 .fundraiser-total {
   margin: 2rem;
 }
@@ -305,7 +309,9 @@ h1,h2 {
     clear: both;
   }
 
-  .playlist__description__text,
+  .primary-heading-wrapper.thank-you {
+    padding-bottom: 10px;
+  }
 }
 
 @media (min-width: 851px) {
