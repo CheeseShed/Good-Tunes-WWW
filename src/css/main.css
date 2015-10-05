@@ -224,6 +224,12 @@ h1,h2 {
   margin: 1rem 2rem;
 }
 
+.fundraiser-total a {
+  display: block;
+  float: right;
+  width: 24px;
+}
+
 .fundraiser-total .secondary-heading {
   color: #fff;
 }
