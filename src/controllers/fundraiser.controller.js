@@ -12,6 +12,10 @@ function fundraiserController($scope, fundraiser, fundraiserService, playlistSer
     $scope.overlayVisible = !$scope.overlayVisible;
   };
 
+  $scope.toggleSearchOverlay = function() {
+    $scope.searchOverlayVisible = !$scope.searchOverlayVisible;
+  };
+
   this.update = function (model) {
     this.fundraiser.$update(function (model) {
       console.log(model);
