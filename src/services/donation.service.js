@@ -3,9 +3,9 @@
 donationService.$inject = ['$resource', 'config']
 
 function donationService($resource, config) {
-  const API_PATH = config.API_URL + '/donations/:id';
+  var API_PATH = config.API_URL + '/donations/:id';
 
-  let service = {};
+  var service = {};
 
   service.$resource = $resource(API_PATH, {id: '@id'}, {
     create: {

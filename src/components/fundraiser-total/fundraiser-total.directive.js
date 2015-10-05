@@ -1,6 +1,6 @@
 'use strict';
 
-const moment = require('moment');
+var moment = require('moment');
 
 fundraiserTotalDirective.$inject = ['config'];
 
@@ -17,11 +17,11 @@ function fundraiserTotalDirective(config) {
     },
     link: function (scope) {
 
-      let toNumber = function (value) {
+      var toNumber = function (value) {
         return parseInt(value, 10);
       };
 
-      let calculateAmountRaised = function (raisedAmount, targetAmount) {
+      var calculateAmountRaised = function (raisedAmount, targetAmount) {
         return (toNumber(raisedAmount || 0) / toNumber(targetAmount || 0)) * 100;
       };
 

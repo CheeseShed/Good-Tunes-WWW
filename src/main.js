@@ -1,9 +1,9 @@
 'use strict';
 
-const angular = require('angular');
-const ngResource = require('angular-resource');
-const uiRouter = require('angular-ui-router');
-const sanitize = require('angular-sanitize');
+var angular = require('angular');
+var ngResource = require('angular-resource');
+var uiRouter = require('angular-ui-router');
+var sanitize = require('angular-sanitize');
 
 angular.module('goodtunes', ['ngResource', 'ui.router']);
 

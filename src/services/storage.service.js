@@ -4,7 +4,7 @@ storageService.$inject = ['$window', '$q'];
 
 function storageService($window, $q) {
 
-  let service = {};
+  var service = {};
 
   service.setItem = function (key, value) {
     return $window.sessionStorage.setItem(key, value);

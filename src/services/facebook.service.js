@@ -3,7 +3,7 @@
 facebookService.$inject = ['$q'];
 
 function facebookService($q) {
-  let service = {};
+  var service = {};
 
   service.watchAuthenticationStatusChange = function () {
     FB.Event.subscribe('auth.statusChange', function (response) {
@@ -12,7 +12,7 @@ function facebookService($q) {
   };
 
   service.getLoginStatus = function () {
-    let defer = $q.defer();
+    var defer = $q.defer();
 
     FB.getLoginStatus(function (response) {
       if (response.status === 'connected') {
@@ -28,7 +28,7 @@ function facebookService($q) {
   };
 
   service.getInfo = function () {
-    let defer = $q.defer();
+    var defer = $q.defer();
 
     FB.api('/me', {fields: 'id,name,email,first_name,last_name,gender,link,verified,picture'}, function (response) {
       defer.resolve(response);
@@ -38,7 +38,7 @@ function facebookService($q) {
   };
 
   service.login = function () {
-    let defer = $q.defer();
+    var defer = $q.defer();
 
     FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {

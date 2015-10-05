@@ -23,7 +23,7 @@ function httpInterceptors($q, $injector, $window, config) {
       return response;
     },
     responseError: function (response) {
-      let $state = $injector.get('$state');
+      var $state = $injector.get('$state');
 
       if (response.status === 401) {
         $state.go('login');

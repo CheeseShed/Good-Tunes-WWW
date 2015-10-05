@@ -1,12 +1,12 @@
 'use strict';
 
-const includes = require('lodash/collection/includes');
+var includes = require('lodash/collection/includes');
 
 accessService.$inject = ['$resource', 'config', 'StorageService'];
 
 function accessService($resource, config, storageService) {
 
-  let service = {};
+  var service = {};
 
   service.$resource = $resource(config.API_URL, {}, {
     login: {
@@ -32,7 +32,7 @@ function accessService($resource, config, storageService) {
   };
 
   service.isAuthorised = function (roles) {
-    const accessLevel = storageService.getItem('access_level') || null;
+    var accessLevel = storageService.getItem('access_level') || null;
     return includes(roles, accessLevel);
   };
 

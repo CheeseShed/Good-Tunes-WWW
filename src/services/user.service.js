@@ -4,9 +4,9 @@ userService.$inject = ['$resource', 'config'];
 
 function userService($resource, config) {
 
-  const PATH = config.API_URL + '/users/:id';
+  var PATH = config.API_URL + '/users/:id';
 
-  let service = {};
+  var service = {};
 
   service.$resource = $resource(PATH, {id: '@id'}, {
     register: {

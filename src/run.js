@@ -5,7 +5,7 @@ runForestRun.$inject = ['$rootScope', '$window', '$state', 'config', 'facebookSe
 function runForestRun($rootScope, $window, $state, config, facebookService, AccessService) {
 
   function stateChangeStartHandler(event, toState, toParams) {
-    let roles = [];
+    var roles = [];
 
     if (toState.data && toState.data.roles) {
       roles = roles.concat(toState.data.roles);

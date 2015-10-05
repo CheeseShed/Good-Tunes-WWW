@@ -3,7 +3,7 @@
 accessController.$inject = ['$state', '$stateParams', 'AccessService', 'StorageService', 'facebookService'];
 
 function accessController($state, $stateParams, AccessService, StorageService, facebookService) {
-  let vm = this;
+  var vm = this;
 
   vm.login = login;
   vm.facebookLogin = facebookLogin;
@@ -37,7 +37,7 @@ function accessController($state, $stateParams, AccessService, StorageService, f
       })
       .then(facebookService.getInfo)
       .then(function (response) {
-        let payload = {
+        var payload = {
           id: response.id,
           name: response.name,
           first_name: response.first_name,
