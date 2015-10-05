@@ -15,8 +15,8 @@
   </div>
 </header>
 
-<div class="fundraiser-pictures playlist-pictures">
-  <img src="/src/images/ben.jpg" class="fundraiser-pictures__picture" alt="" />
+<div class="fundraiser-pictures playlist-pictures" style="background:url('/src/images/ben.jpg') 50% / cover">
+  
 </div>
 
 <div class="fundraiser__non-img__wrapper playlist__non-img__wrapper">
@@ -26,11 +26,11 @@
   </div>
 
   <div class="wrapper">
-    <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> and <b>$</b> now</a>
+    <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> + <b>$</b> now</a>
   </div>
 
   <div class="fundraiser__description">
-    <h2 ng-click="toggleOverlay()">Why is {{::name}} doing this?</h2>
+    <h2 ng-click="toggleOverlay()">Why am I doing this?</h2>
   </div>
 
   <fundraiser-total
