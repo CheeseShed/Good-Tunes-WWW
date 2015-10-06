@@ -4,8 +4,8 @@ playlistService.$inject = ['$resource', 'config'];
 
 function playlistService($resource, config) {
 
-  const PATH = config.API_URL + '/playlists/:id'
-  let service = {};
+  var PATH = config.API_URL + '/playlists/:id'
+  var service = {};
 
   service.$resource = $resource(PATH, {id: '@id'}, {
     create: {

@@ -10,10 +10,10 @@ function crowdriseDirective(config, $window) {
       account: '='
     },
     link: function (scope, elem) {
-      const crowdriseWidgetId = 'crowdrise' + scope.account;
+      var crowdriseWidgetId = 'crowdrise' + scope.account;
 
-      let addCrowdriseWidget = function () {
-        let crowdriseScript;
+      var addCrowdriseWidget = function () {
+        var crowdriseScript;
 
         if (document.querySelector('#' + crowdriseWidgetId)) {
           return;

@@ -8,6 +8,7 @@ $white: #fff;
 
 body {
   background: #fa6346;
+  font-family: "NeueHaasGroteskText W01";
 }
 
 .cf:before,
@@ -25,7 +26,7 @@ h1,h2 {
 }
 
 .wrapper {
-  margin: 2rem;
+  margin: 0 2rem;
 }
 
 .login {
@@ -48,10 +49,22 @@ h1,h2 {
   box-sizing: border-box;
   color: #225bad;
   display: block;
-  padding: 1rem .5rem;
+  padding: 0.5rem;
   text-align: center;
   text-decoration: none;
   width: 100%;
+  font-family: "NHaasGroteskTXW01-75Bd";
+}
+
+.button__donate b {
+  color: #fa6346;
+}
+
+@media (max-width: 850px) {
+  .button__donate {
+    background: #225bad;
+    color: #fff;
+  }
 }
 
 .field {
@@ -69,6 +82,13 @@ h1,h2 {
   margin: 0;
   padding: 1rem;
   list-style: none;
+}
+
+@media screen and (min-width: 851px) {
+  .playlist__description__text {
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .track-list__track {
@@ -104,22 +124,60 @@ h1,h2 {
   width: auto;
 }
 
+.primary-heading-wrapper {
+  background: url(../images/heading-underline.png) 0 0px;
+  padding-right: 30%;
+  padding-bottom: 30px;
+}
+
 .primary-heading {
-  border-bottom: 3px solid #225bad;
   color: #fff;
   display: inline;
   font-size: 3rem;
   font-weight: normal;
+  line-height: 132%;
 }
 
 .secondary-heading {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: normal;
   margin: 0;
 }
 
 .fundraiser__header {
-  padding: 2rem;
+  padding: 4rem 5rem 5rem 5rem;
+}
+
+.fundraiser__description__text {
+  background: rgba(255,255,255,0.8);
+  color: #225bad;
+  display: block;
+  position: fixed;
+  z-index: 20;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  left: 30%;
+  top: 10px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  padding: 20px 10px;
+}
+
+.wrapper {
+  font-size: 1.5rem;
+}
+
+.fundraiser__description__text .fundraiser__description__text__close {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  color: #fa6346;
+  font-size: 3rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  cursor: pointer;
 }
 
 .fundraiser-pictures .fundraiser-pictures__picture {
@@ -129,18 +187,49 @@ h1,h2 {
 }
 
 .fundraiser__description {
-  background: #fff;
   color: #225bad;
-  padding: 2rem;
+  padding: 0;
+  cursor: pointer;
+  border-bottom: 4px solid #fff;
+  margin: 0 2rem;
+  padding: 0 0 1rem 0;
+}
+
+.fundraiser__description h2 {
+  text-decoration: underline;
+}
+
+.playlist__description__text h1 {
+  color: #225bad;
+  margin: 0;
+  display: block;
+  padding: 0 0.5rem;
+}
+
+.playlist__description__text .track-list {
+  background: none;
+  padding: 1rem 0;
 }
 
 .fundraiser__summary {
-  color: #225bad;
+  color: #fff;
   margin: 2rem;
+  font-size: 1.5rem;
+  line-height: 130%;
+}
+
+.fundraiser__summary.thank-you {
+  margin: 0 2rem 2rem 2rem;
 }
 
 .fundraiser-total {
-  margin: 2rem;
+  margin: 1rem 2rem;
+}
+
+.fundraiser-total a {
+  display: block;
+  float: right;
+  width: 24px;
 }
 
 .fundraiser-total .secondary-heading {
@@ -159,13 +248,13 @@ h1,h2 {
 
 .fundraiser-total .fundraiser-total__reached,
 .fundraiser-total .fundraiser-total__target {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 3.1rem;
+  font-family: "NHaasGroteskTXW01-75Bd";
 }
 
 .fundraiser-total .fundraiser-total__target-date {
   color: #fff;
-  font-weight: bold;
+  font-family: "NHaasGroteskTXW01-75Bd";
 }
 
 .totalator {
@@ -174,6 +263,14 @@ h1,h2 {
   margin: 1rem 0;
   position: relative;
   width: 100%;
+}
+
+.totalator span {
+  line-height: 25px;
+}
+
+.fundraiser-total span:nth-of-type(2) {
+  float: right;
 }
 
 .totalator .totalator__raised {
@@ -211,4 +308,147 @@ h1,h2 {
 .good-tunes-powered {
   margin: 2rem auto;
   text-align: center;
+}
+
+.primary-heading {
+  font-size: 2.8rem;
+}
+
+.fundraiser__header {
+  padding: 1rem 2rem 1rem 2rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 850px) {
+
+  .fundraiser-pictures {
+    min-height: 300px;
+  }
+
+  .track-list {
+    padding: 0;
+  }
+
+  .track-list__track-title,
+  .track-list__track-artist {
+    font-size: 1rem;
+  }
+
+  .track-list__track {
+    padding: 0.5rem 0;
+  }
+
+  .track-list__track .button__donate {
+    padding: 0 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .track-list__track-title {
+    line-height: 1.4rem;
+  }
+
+  .track-list__track-data {
+    line-height: 0.8em;
+  }
+
+  .blue {
+    display: inline;
+  }
+
+  .red {
+    display: none;
+  }
+
+  .playlist__header,
+  .playlist-pictures,
+  .playlist__non-img__wrapper .fundraiser__summary,
+  .playlist__non-img__wrapper .fundraiser__description,
+  .playlist__non-img__wrapper .fundraiser-total  {
+    display: none;
+  }
+
+  .playlist__description__text,
+  .add__description__text,
+  .donate__description__text {
+    position: static;
+    background: rgb(255, 255, 255);
+  }
+
+  .playlist__non-img__wrapper {
+    clear: both;
+  }
+
+  .primary-heading-wrapper.thank-you {
+    padding-bottom: 10px;
+  }
+
+  .crowdrise-widget {
+    width: auto;
+  }
+
+  .crowdrise-widget>div:nth-of-type(2) {
+    width: auto !important;
+  }
+}
+
+@media (min-width: 851px) {
+
+  .mix-button {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    margin: 2rem;
+  }
+
+  .fundraiser__header,
+  .fundraiser__non-img__wrapper {
+    clear: left;
+    float: left;
+    width: 30%;
+  }
+
+  .fundraiser-pictures {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    left: 30%;
+    top: 10px;
+    overflow: hidden;
+  }
+
+  .fundraiser__header {
+    padding-bottom: 0;
+  }
+
+  .fundraiser__summary {
+    margin-top: 0;
+  }
+
+  .fundraiser__summary p {
+    margin: 0;
+  }
+
+  .fundraiser__description {
+    font-size: 0.5rem;
+  }
+
+  .good-tunes-powered {
+    clear: left;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    margin: 0;
+    z-index: 10;
+  }
+
+  .primary-heading-wrapper {
+    padding-right: 34%;
+  }
+
+  .blue {
+    display: none;
+  }
+  .red {
+    display: block;
+  }
 }

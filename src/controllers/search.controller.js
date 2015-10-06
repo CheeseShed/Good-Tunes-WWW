@@ -1,11 +1,11 @@
 'use strict';
 
-const omit = require('lodash/object/omit');
+var omit = require('lodash/object/omit');
 
 donateController.$inject = ['fundraiser', '$state', '$scope', 'TrackService', 'AccessService', 'StorageService'];
 
 function donateController(fundraiser, $state, $scope, TrackService, AccessService, storageService) {
-  let vm = this;
+  var vm = this;
 
   vm.fundraiser = fundraiser;
   vm.trackToDonate = null;

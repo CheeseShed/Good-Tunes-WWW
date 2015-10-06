@@ -1,12 +1,36 @@
-<section class="donate">
-  <div class="donate__search" ng-show="!search.hasTrackToDonate">
-    <spotify-search></spotify-search>
+<div class="fundraiser__description__text add__description__text">
+  <section class="donate">
+	  <div class="donate__search" ng-show="!search.hasTrackToDonate">
+	    <spotify-search></spotify-search>
+	    <track-list track-press-handler="search.donateTrack(track)" tracks="tracks" empty-list-message="Good Tunes"></track-list>
+	  </div>
+  </section>
+</div>
 
-    <track-list track-press-handler="search.donateTrack(track)" tracks="tracks" empty-list-message="Good Tunes"></track-list>
+<header class="fundraiser__header">
+  <div class="primary-heading-wrapper">
+    <h1 class="primary-heading">{{::search.fundraiser.title}}</h1>
+  </div>
+</header>
+
+<div class="fundraiser-pictures" style="background:url('/src/images/ben.jpg') 50% / cover">
+</div>
+
+<div class="fundraiser__non-img__wrapper">
+
+  <div class="fundraiser__summary">
+    <p>Use music and your wallet to support {{::search.fundraiser.user.name}} as he raises money for {{::search.fundraiser.charity}}</p>
   </div>
 
-  <!-- <crowdrise
-    ng-show="search.hasTrackToDonate"
-    account="search.fundraiser.attributes.donation_provider_account_id">
-  </crowdrise> -->
-</section>
+  <div class="fundraiser__description">
+    <h2 ng-click="toggleOverlay()">Why am I doing this?</h2>
+  </div>
+
+  <fundraiser-total
+    name="search.fundraiser.user.name"
+    symbol="search.fundraiser.currency"
+    target="search.fundraiser.target"
+    raised="search.fundraiser.raised"
+    date="search.fundraiser.target_date">
+  </fundraiser-total>
+</div>

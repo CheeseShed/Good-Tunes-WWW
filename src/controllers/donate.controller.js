@@ -1,11 +1,11 @@
 'use strict';
 
-const has = require('lodash/object/has');
+var has = require('lodash/object/has');
 
 donateController.$inject = ['fundraiser', '$q', '$scope', '$state', '$stateParams', 'StorageService', 'TrackService', 'donationService'];
 
 function donateController(fundraiser, $q, $scope, $state, $stateParams, storageService, trackService, donationService) {
-  let vm = this;
+  var vm = this;
 
   function setup() {
     vm.fundraiser = fundraiser;
@@ -31,7 +31,7 @@ function donateController(fundraiser, $q, $scope, $state, $stateParams, storageS
 
 
 
-    let track = {
+    var track = {
       playlist: vm.fundraiser.playlist,
       name: vm.trackToDonate.name,
       spotify_id: vm.trackToDonate.id,
