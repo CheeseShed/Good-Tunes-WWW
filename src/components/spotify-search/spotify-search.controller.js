@@ -7,7 +7,6 @@ function spotifySearchController($scope, $location, spotifyService) {
 
   function searchSpotify(search) {
 
-    console.log('1');
     var query = search.q;
 
     spotifyService.search(query)

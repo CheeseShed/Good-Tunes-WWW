@@ -29,13 +29,6 @@ h1,h2 {
   margin: 0 2rem;
 }
 
-.mix-button {
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  margin: 2rem;
-}
-
 .login {
   margin: 2em;
 }
@@ -318,9 +311,41 @@ h1,h2 {
 }
 
 @media (max-width: 850px) {
-  .blue {
-    display: block;
+  
+  .fundraiser-pictures {
+    min-height: 300px;
   }
+
+  .track-list {
+    padding: 0;
+  }
+
+  .track-list__track-title,
+  .track-list__track-artist {
+    font-size: 1rem;
+  }
+
+  .track-list__track {
+    padding: 0.5rem 0;
+  }
+
+  .track-list__track .button__donate {
+    padding: 0 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .track-list__track-title {
+    line-height: 1.4rem;
+  }
+
+  .track-list__track-data {
+    line-height: 0.8em;
+  }
+
+  .blue {
+    display: inline;
+  }
+
   .red {
     display: none;
   }
@@ -333,7 +358,9 @@ h1,h2 {
     display: none;
   }
 
-  .playlist__description__text {
+  .playlist__description__text,
+  .add__description__text,
+  .donate__description__text {
     position: static;
     background: rgb(255, 255, 255);
   }
@@ -345,9 +372,24 @@ h1,h2 {
   .primary-heading-wrapper.thank-you {
     padding-bottom: 10px;
   }
+
+  .crowdrise-widget {
+    width: auto;
+  }
+
+  .crowdrise-widget>div:nth-of-type(2) {
+    width: auto !important;
+  }
 }
 
 @media (min-width: 851px) {
+
+  .mix-button {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    margin: 2rem;
+  }
 
   .fundraiser__header,
   .fundraiser__non-img__wrapper {
