@@ -6,8 +6,7 @@
   </div>
 </header>
 
-<div class="fundraiser-pictures">
-  <img src="/src/images/ben.jpg" class="fundraiser-pictures__picture" alt="" />
+<div class="fundraiser-pictures" style="background:url('/src/images/ben.jpg') 50% / cover">
 </div>
 
 <div class="fundraiser__description__text" ng-show="overlayVisible">
@@ -22,11 +21,11 @@
   </div>
 
   <div class="wrapper">
-    <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> and <b>$</b> now</a>
+    <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> + <b>$</b> now</a>
   </div>
 
   <div class="fundraiser__description">
-    <h2 ng-click="toggleOverlay()">Why is {{::name}} doing this?</h2>
+    <h2 ng-click="toggleOverlay()">Why am I doing this?</h2>
   </div>
 
   <fundraiser-total
@@ -37,7 +36,7 @@
     date="fundraiser.fundraiser.target_date">
   </fundraiser-total>
 
-  <div class="wrapper">
+  <div class="wrapper mix-button">
     <a class="button-primary" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
   </div>
 </div>
