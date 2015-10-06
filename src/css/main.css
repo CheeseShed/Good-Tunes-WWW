@@ -60,6 +60,13 @@ h1,h2 {
   color: #fa6346;
 }
 
+@media (max-width: 850px) {
+  .button__donate {
+    background: #225bad;
+    color: #fff;
+  }
+}
+
 .field {
   background: #fff;
   border: 0;
@@ -77,9 +84,11 @@ h1,h2 {
   list-style: none;
 }
 
-.playlist__description__text {
-  overflow-y: scroll; /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;
+@media screen and (min-width: 851px) {
+  .playlist__description__text {
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .track-list__track {
@@ -311,7 +320,7 @@ h1,h2 {
 }
 
 @media (max-width: 850px) {
-  
+
   .fundraiser-pictures {
     min-height: 300px;
   }

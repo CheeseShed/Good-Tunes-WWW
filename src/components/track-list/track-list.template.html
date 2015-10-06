@@ -4,6 +4,8 @@
       <span class="track-list__track-title">{{::track.name}}</span>
       <span ng-repeat="artist in track.artists" class="track-list__track-artist">{{::artist.name}}</span>
     </span>
+
+    <span ng-if="track.user && track.user.name">from {{::track.user.name}}</span>
     <button class="button__donate" type="button" ng-click="addTrack(track)" ng-show="showDonateButton()">Donate</button>
   </li>
 </ol>

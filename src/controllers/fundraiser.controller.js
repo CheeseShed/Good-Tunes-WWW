@@ -4,10 +4,10 @@ fundraiserController.$inject = ['$scope', 'fundraiser', 'fundraiserService', 'pl
 
 function fundraiserController($scope, fundraiser, fundraiserService, playlistService) {
   var vm = this;
-  this.fundraiser = fundraiser;
-  
+  vm.fundraiser = fundraiser;
+
   $scope.overlayVisible = false;
-  
+
   $scope.toggleOverlay = function() {
     $scope.overlayVisible = !$scope.overlayVisible;
   };
