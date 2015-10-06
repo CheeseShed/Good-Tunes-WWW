@@ -319,7 +319,50 @@ h1,h2 {
   box-sizing: border-box;
 }
 
+::-webkit-input-placeholder {
+   color: #225bad;
+   font-size: 15px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #225bad; 
+   font-size: 15px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #225bad;
+   font-size: 15px;  
+}
+
+:-ms-input-placeholder {  
+   color: #225bad;
+   font-size: 15px; 
+}
+
+.donate__search input {
+  padding: 0.5rem 0;
+}
+
+#musiclabel {
+  width: 80px;
+  height: 80px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  display: block;
+  color: #fff;
+  background: #255bad;
+  text-align: center;
+  line-height: 70px;
+  font-size: 50px;
+  margin: 0;
+}
+
 @media (max-width: 850px) {
+
+  .donate {
+    padding: 0;
+  }
 
   .fundraiser-pictures {
     min-height: 300px;
@@ -363,7 +406,16 @@ h1,h2 {
   .playlist-pictures,
   .playlist__non-img__wrapper .fundraiser__summary,
   .playlist__non-img__wrapper .fundraiser__description,
-  .playlist__non-img__wrapper .fundraiser-total  {
+  .playlist__non-img__wrapper .fundraiser-total,
+  .donate__fundraiser__non-img__wrapper,
+  .donate__fundraiser-pictures,
+  .donate__fundraiser__header  {
+    display: none;
+  }
+
+  .add__fundraiser__header,
+  .add__fundraiser-pictures,
+  .add__fundraiser__non-img__wrapper {
     display: none;
   }
 
@@ -372,6 +424,23 @@ h1,h2 {
   .donate__description__text {
     position: static;
     background: rgb(255, 255, 255);
+  }
+
+  .fundraiser__description__text {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px 30px 30px 30px;
+  }
+
+  .fundraiser__description__text .fundraiser__description__text__close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #fa6346;
+    fill: currentColor;
+    transform: rotateZ(45deg);
   }
 
   .playlist__non-img__wrapper {
