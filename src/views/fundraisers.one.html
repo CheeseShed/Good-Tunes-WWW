@@ -1,5 +1,3 @@
-<a style="position:absolute" ui-sref="fundraisers.one.edit({id: fundraiser.fundraiser.id})">Edit</a>
-
 <header class="fundraiser__header">
   <div class="primary-heading-wrapper">
     <h1 class="primary-heading">{{::fundraiser.fundraiser.title}}</h1>
@@ -10,7 +8,7 @@
 </div>
 
 <div class="fundraiser__description__text" ng-show="overlayVisible">
-  <span class="fundraiser__description__text__close" ng-click="toggleOverlay()">X</span>    
+  <span class="fundraiser__description__text__close" ng-click="toggleOverlay()">X</span>
   {{::fundraiser.fundraiser.description}}
 </div>
 

@@ -1,6 +1,6 @@
 'use strict';
 
-varomit = require('lodash/object/omit');
+var omit = require('lodash/object/omit');
 
 donateController.$inject = ['fundraiser', '$state', '$scope', 'TrackService', 'AccessService', 'StorageService'];
 
