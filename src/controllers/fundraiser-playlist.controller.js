@@ -9,6 +9,8 @@ function fundraiserPlaylistController($scope, fundraiser, playlist) {
     vm.playlist = playlist.data.playlist;
     vm.tracks = playlist.data.tracks;
     vm.fundraiser = fundraiser;
+    vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
+    vm.gender = vm.person === 'ben' ? 'he' : 'she';
   }
 
   setup();

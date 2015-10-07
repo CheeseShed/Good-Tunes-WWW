@@ -13,13 +13,13 @@
   </div>
 </header>
 
-<div class="fundraiser-pictures add__fundraiser-pictures" style="background:url('/src/images/ben.jpg') 50% / cover">
+<div class="fundraiser-pictures add__fundraiser-pictures" style="background:url('/src/images/{{::search.person}}.jpg') 50% / cover">
 </div>
 
 <div class="fundraiser__non-img__wrapper add__fundraiser__non-img__wrapper">
 
   <div class="fundraiser__summary">
-    <p>Use music and your wallet to support {{::search.fundraiser.user.name}} as he raises money for {{::search.fundraiser.charity}}</p>
+    <p>Use music and your wallet to support {{::search.fundraiser.user.name}} as {{::search.gender}} raises money for {{::search.fundraiser.charity}}</p>
   </div>
 
   <div class="fundraiser__description">

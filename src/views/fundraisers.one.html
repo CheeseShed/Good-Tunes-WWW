@@ -4,7 +4,7 @@
   </div>
 </header>
 
-<div class="fundraiser-pictures" style="background:url('/src/images/ben.jpg') 50% / cover">
+<div class="fundraiser-pictures" style="background:url('/src/images/{{::fundraiser.person}}.jpg') 50% / cover">
 </div>
 
 <div class="fundraiser__description__text" ng-show="overlayVisible">
@@ -26,7 +26,7 @@
 <div class="fundraiser__non-img__wrapper">
 
   <div class="fundraiser__summary">
-    <p>Use music and your wallet to support {{::fundraiser.fundraiser.user.name}} as he raises money for {{::fundraiser.fundraiser.charity}}</p>
+    <p>Use music and your wallet to support {{::fundraiser.fundraiser.user.name}} as {{::fundraiser.gender}} raises money for {{::fundraiser.fundraiser.charity}}</p>
   </div>
 
   <div class="wrapper">
