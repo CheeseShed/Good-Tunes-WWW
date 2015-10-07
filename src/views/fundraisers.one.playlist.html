@@ -3,7 +3,7 @@
 	  <h1 class="primary-heading">{{::playlist.fundraiser.title}}</h1>
 
 	  <track-list
-	    tracks="playlist.tracks" show-button="false" 
+	    tracks="playlist.tracks" show-button="false"
 	    empty-list-message="Be the first to donate a good tune to fill up the playlist.">
 	  </track-list>
   </section>
@@ -15,14 +15,14 @@
   </div>
 </header>
 
-<div class="fundraiser-pictures playlist-pictures" style="background:url('/src/images/ben.jpg') 50% / cover">
-  
+<div class="fundraiser-pictures playlist-pictures" style="background:url('/src/images/{{::playlist.person}}.jpg') 50% / cover">
+
 </div>
 
 <div class="fundraiser__non-img__wrapper playlist__non-img__wrapper">
 
   <div class="fundraiser__summary">
-    <p>Use music and your wallet to support {{::playlist.fundraiser.user.name}} as he raises money for {{::fundraiser.fundraiser.charity}}</p>
+    <p>Use music and your wallet to support {{::playlist.fundraiser.user.name}} as {{::playlist.gender}} raises money for {{::fundraiser.fundraiser.charity}}</p>
   </div>
 
   <div class="wrapper">

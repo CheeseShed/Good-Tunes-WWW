@@ -4,7 +4,10 @@ fundraiserController.$inject = ['$scope', 'fundraiser', 'fundraiserService', 'pl
 
 function fundraiserController($scope, fundraiser, fundraiserService, playlistService) {
   var vm = this;
+
   vm.fundraiser = fundraiser;
+  vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
+  vm.gender = vm.person === 'ben' ? 'he' : 'she';
 
   $scope.overlayVisible = false;
 

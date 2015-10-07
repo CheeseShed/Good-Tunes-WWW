@@ -8,6 +8,8 @@ function donateController(fundraiser, $state, $scope, TrackService, AccessServic
   var vm = this;
 
   vm.fundraiser = fundraiser;
+  vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
+  vm.gender = vm.person === 'ben' ? 'he' : 'she';
   vm.trackToDonate = null;
   vm.hasTrackToDonate = false;
 

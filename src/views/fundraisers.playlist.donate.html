@@ -1,25 +1,25 @@
 <div class="fundraiser__description__text donate__description__text">
   <section class="donate">
-  <h2>Donate</h2>
+  <h2 id="musiclabel">$</h2>
   <crowdrise
     account="donate.fundraiser.attributes.donation_provider_account_id">
   </crowdrise>
 </section>
 </div>
 
-<header class="fundraiser__header">
+<header class="fundraiser__header donate__fundraiser__header">
   <div class="primary-heading-wrapper">
     <h1 class="primary-heading">{{::donate.fundraiser.title}}</h1>
   </div>
 </header>
 
-<div class="fundraiser-pictures" style="background:url('/src/images/ben.jpg') 50% / cover">
+<div class="fundraiser-pictures donate__fundraiser-pictures" style="background:url('/src/images/{{::donate.person}}.jpg') 50% / cover">
 </div>
 
-<div class="fundraiser__non-img__wrapper">
+<div class="fundraiser__non-img__wrapper donate__fundraiser__non-img__wrapper">
 
   <div class="fundraiser__summary">
-    <p>Use music and your wallet to support {{::donate.fundraiser.user.name}} as he raises money for {{::donate.fundraiser.charity}}</p>
+    <p>Use music and your wallet to support {{::donate.fundraiser.user.name}} as {{::donate.gender}} raises money for {{::donate.fundraiser.charity}}</p>
   </div>
 
   <div class="fundraiser__description">

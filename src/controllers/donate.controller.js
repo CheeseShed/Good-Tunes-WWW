@@ -10,6 +10,8 @@ function donateController(fundraiser, $q, $scope, $state, $stateParams, storageS
   function setup() {
     vm.fundraiser = fundraiser;
     vm.trackToDonate = JSON.parse(storageService.getItem('trackToDonate'));
+    vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
+    vm.gender = vm.person === 'ben' ? 'he' : 'she';
 
     if (!vm.trackToDonate) {
       navigateToAddState();
