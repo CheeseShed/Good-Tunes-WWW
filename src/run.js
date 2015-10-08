@@ -4,6 +4,10 @@ runForestRun.$inject = ['$rootScope', '$window', '$state', 'config', 'facebookSe
 
 function runForestRun($rootScope, $window, $state, config, facebookService, AccessService) {
 
+  var scrollToTop = function () {
+    $window.scrollTo(0, 0);
+  };
+
   function stateChangeStartHandler(event, toState, toParams) {
     var roles = [];
 
@@ -22,6 +26,10 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
     }
   }
 
+  var viewContentLoadingHandler = function () {
+    scrollToTop();
+  };
+
   function fbAsyncInit() {
     FB.init({
       appId: config.FACEBOOK_APP_ID,
@@ -34,6 +42,7 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
   }
 
   $rootScope.$on('$stateChangeStart', stateChangeStartHandler);
+  $rootScope.$on('$viewContentLoading', viewContentLoadingHandler);
 
   // facebook start
   $window.fbAsyncInit = fbAsyncInit;
