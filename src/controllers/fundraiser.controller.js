@@ -1,8 +1,8 @@
 'use strict';
 
-fundraiserController.$inject = ['$scope', 'fundraiser', 'fundraiserService', 'playlistService'];
+fundraiserController.$inject = ['$rootScope', '$scope', 'fundraiser', 'fundraiserService', 'playlistService'];
 
-function fundraiserController($scope, fundraiser, fundraiserService, playlistService) {
+function fundraiserController($rootScope, $scope, fundraiser, fundraiserService, playlistService) {
   var vm = this;
 
   vm.fundraiser = fundraiser;

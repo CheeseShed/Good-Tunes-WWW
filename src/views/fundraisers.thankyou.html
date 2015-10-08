@@ -1,18 +1,5 @@
-<header class="fundraiser__header">
-  <div class="primary-heading-wrapper thank-you">
-    <h1 class="primary-heading">Thank you for donating!</h1>
-  </div>
-</header>
-
- <div class="fundraiser__non-img__wrapper">
-  <div class="fundraiser__summary thank-you">
-  Your track's been added to the mix.
-  </div>
-
-  <div class="wrapper">
-  <a class="button-primary" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
-</div>
-
-<div class="fundraiser-pictures">
-  <img src="/src/images/{{::fundraiser.person}}.jpg" class="fundraiser-pictures__picture" alt="" />
+<div class="fundraiser-details__inner">
+  <h2>Thank you for donating!</h2>
+  <p>Your track's been added to the mix.</p>
+  <p><a class="button-primary" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a></p>
 </div>
