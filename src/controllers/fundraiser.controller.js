@@ -1,15 +1,21 @@
 'use strict';
 
-fundraiserController.$inject = ['$rootScope', '$scope', 'fundraiser', 'fundraiserService', 'playlistService'];
+fundraiserController.$inject = ['$scope', '$state', '$sce', 'fundraiser', 'playlistService'];
 
-function fundraiserController($rootScope, $scope, fundraiser, fundraiserService, playlistService) {
+function fundraiserController($scope, $state, $sce, fundraiser, playlistService) {
   var vm = this;
+  var stateToCheck = 'fundraisers.one';
 
   vm.fundraiser = fundraiser;
   vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
   vm.gender = vm.person === 'ben' ? 'he' : 'she';
+  vm.description = $sce.trustAsHtml(fundraiser.description);
 
   $scope.overlayVisible = false;
+
+  this.hasMask = function () {
+    return $state.current.name !== stateToCheck;
+  };
 
   $scope.toggleOverlay = function() {
     $scope.overlayVisible = !$scope.overlayVisible;
@@ -17,12 +23,6 @@ function fundraiserController($rootScope, $scope, fundraiser, fundraiserService,
 
   $scope.toggleSearchOverlay = function() {
     $scope.searchOverlayVisible = !$scope.searchOverlayVisible;
-  };
-
-  this.update = function (model) {
-    this.fundraiser.$update(function (model) {
-      console.log(model);
-    });
   };
 
   this.fetchPlaylist = function (id) {

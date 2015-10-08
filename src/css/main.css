@@ -15,6 +15,10 @@ body {
   font-family: "NeueHaasGroteskText W01";
 }
 
+a {
+  color: #225bad;
+}
+
 .cf:before,
 .cf:after {
     content: " ";
@@ -634,5 +638,52 @@ h1,h2 {
     top: 0;
     width: calc(100% - 10px);
     z-index: 20;
+  }
+}
+
+.fundraiser-why,
+.fundraiser-why p {
+  color: #225bad;
+  font-size: 1.5rem;
+}
+
+.backToFundraiser {
+  display: block;
+  height: 50px;
+  margin: 23px 0 0;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 60px;
+}
+
+.backToFundraiser span {
+  display: none;
+}
+
+.backToFundraiser::before,
+.backToFundraiser::after {
+  background: #fa6346;
+  content: '';
+  display: block;
+  height: 50px;
+  position: absolute;
+  width: 1px;
+}
+
+.backToFundraiser::before {
+  right: 30px;
+  transform: rotate(45deg);
+}
+
+.backToFundraiser::after {
+  right: 30px;
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 769px) {
+  .fundraiser-details .playlist,
+  .fundraiser-details .fundraiser-why {
+    margin: 0 3.125rem 0 0;
   }
 }

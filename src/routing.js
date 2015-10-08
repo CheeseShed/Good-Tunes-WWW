@@ -6,13 +6,16 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('base', {
-      abstract: true,
-      templateUrl: '/src/views/base.html'
-    })
     .state('home', {
       url: '/',
-      templateUrl: '/src/views/base.html'
+      controller: require('./controllers/home.controller'),
+      controllerAs: 'home',
+      templateUrl: '/src/views/base.html',
+      resolve: {
+        fundraisers: ['fundraiserService', function (fundraiserService) {
+          return fundraiserService.readAll();
+        }]
+      }
     })
     .state('login', {
       url: '/login',
@@ -33,24 +36,6 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
     .state('fundraisers', {
       template: '<ui-view />',
       abstract: true
-    })
-    .state('fundraisers.all', {
-      url: '/fundraisers',
-      views: {
-        '@fundraisers': {
-          templateUrl: '/src/views/fundraisers.html',
-          controller: require('./controllers/fundraisers.controller'),
-          controllerAs: 'fundraisers',
-          resolve: {
-            fundraisers: ['fundraiserService', function (fundraiserService) {
-              return fundraiserService.readAll({
-                skip: 0,
-                limit: 20
-              });
-            }]
-          }
-        }
-      }
     })
     .state('fundraisers.one', {
       url: '/fundraisers/:fundraiser',
@@ -84,6 +69,14 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       data: {
         roles: [20],
         isOwner: true
+      }
+    })
+    .state('fundraisers.one.why', {
+      url: '/why',
+      views: {
+        'fundraiser@fundraisers.one': {
+          templateUrl: '/src/views/fundraisers.one.why.html'
+        }
       }
     })
     .state('fundraisers.one.playlist', {

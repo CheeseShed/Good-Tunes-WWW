@@ -20,7 +20,9 @@
 
     <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> + <b>$</b> now</a>
 
-    <h2 ng-click="toggleOverlay()">Why am I doing this?</h2>
+    <p>
+      <a ui-sref="fundraisers.one.why({fundraiser: fundraiser.fundraiser.id})">Why am I doing this?</a>
+    </p>
 
     <fundraiser-total
       name="fundraiser.fundraiser.user.name"
@@ -36,10 +38,13 @@
 
   <section class="fundraiser-background-pictures">
     <div class="fundraiser-picture" style="background-image: url(/src/images/{{::fundraiser.person}}.jpg);"></div>
-    <div class="fundraiser-picture__mask"></div>
+    <div ng-show="fundraiser.hasMask()" class="fundraiser-picture__mask"></div>
   </section>
 
   <section class="fundraiser-details">
-      <div ui-view="fundraiser"></div>
+    <a class="backToFundraiser" ng-show="fundraiser.hasMask()" ui-sref="fundraisers.one({fundraiser: fundraiser.fundraiser.id})">
+      <span>Back to {{::fundraiser.fundraiser.title}}</span>
+    </a>
+    <div ui-view="fundraiser"></div>
   </section>
 </div>
