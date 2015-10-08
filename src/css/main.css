@@ -6,9 +6,17 @@ $blue: #225bad;
 $white: #fff;
 */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: #fa6346;
   font-family: "NeueHaasGroteskText W01";
+}
+
+a {
+  color: #225bad;
 }
 
 .cf:before,
@@ -19,6 +27,14 @@ body {
 
 .cf:after {
     clear: both;
+}
+
+.fundraiser-options {
+  background: #fff;
+}
+
+.page {
+  position: relative;
 }
 
 h1,h2 {
@@ -46,18 +62,23 @@ h1,h2 {
 
 .button__donate {
   background: #fff;
-  box-sizing: border-box;
   color: #225bad;
   display: block;
+  font-size: 1.5rem;
   padding: 0.5rem;
   text-align: center;
   text-decoration: none;
-  width: 100%;
   font-family: "NHaasGroteskTXW01-75Bd";
 }
 
 .button__donate b {
   color: #fa6346;
+}
+
+@media (max-width: 768px) {
+  .button__donate {
+    margin: 0 1.875rem;
+  }
 }
 
 @media (max-width: 850px) {
@@ -77,17 +98,20 @@ h1,h2 {
   width: 100%;
 }
 
+.fundraiser-details .field {
+  background: transparent;
+}
+
 .track-list {
   background: #fff;
   margin: 0;
-  padding: 1rem;
+  padding: 0;
   list-style: none;
 }
 
-@media screen and (min-width: 851px) {
-  .playlist__description__text {
-    overflow-y: scroll; /* has to be scroll, not auto */
-    -webkit-overflow-scrolling: touch;
+@media (min-width: 769px) {
+  .track-list {
+    background: transparent;
   }
 }
 
@@ -99,8 +123,9 @@ h1,h2 {
 
 .track-list__track-data {
   display: block;
+  font-size: 1.5rem;
   float: left;
-  width: 75%;
+  width: 50%;
 }
 
 .track-list__track-title {
@@ -112,6 +137,14 @@ h1,h2 {
 .track-list__track-artist {
   color: #225bad;
   display: inline-block;
+}
+
+.track-list__donor {
+  color: #225bad;
+  float: right;
+  font-size: 1.5rem;
+  text-align: right;
+  width: 45%;
 }
 
 .track-list__track .button__donate {
@@ -126,8 +159,7 @@ h1,h2 {
 
 .primary-heading-wrapper {
   background: url(../images/heading-underline.png) 0 0px;
-  padding-right: 30%;
-  padding-bottom: 30px;
+  padding: 0 30% 3px 0;
 }
 
 .primary-heading {
@@ -144,24 +176,14 @@ h1,h2 {
   margin: 0;
 }
 
-.fundraiser__header {
-  padding: 4rem 5rem 5rem 5rem;
+.fundraiser-header {
+  margin: 1.875rem 0;
 }
 
-.fundraiser__description__text {
-  background: rgba(255,255,255,0.8);
-  color: #225bad;
-  display: block;
-  position: fixed;
-  z-index: 20;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  left: 30%;
-  top: 10px;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  padding: 20px 10px;
+@media (max-width: 768px) {
+  .fundraiser-header {
+    margin: 1.875rem;
+  }
 }
 
 .wrapper {
@@ -191,7 +213,6 @@ h1,h2 {
   padding: 0;
   cursor: pointer;
   border-bottom: 4px solid #fff;
-  margin: 0 2rem;
   padding: 0 0 1rem 0;
 }
 
@@ -213,9 +234,15 @@ h1,h2 {
 
 .fundraiser__summary {
   color: #fff;
-  margin: 2rem;
+  margin: 2rem 0;
   font-size: 1.5rem;
   line-height: 130%;
+}
+
+@media (max-width: 768px) {
+  .fundraiser__summary {
+    margin: 2rem 1.875rem;
+  }
 }
 
 .fundraiser__summary.thank-you {
@@ -223,7 +250,13 @@ h1,h2 {
 }
 
 .fundraiser-total {
-  margin: 1rem 2rem;
+  margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .fundraiser-total {
+    margin: 1rem 1.875rem;
+  }
 }
 
 .fundraiser-total a {
@@ -295,11 +328,6 @@ h1,h2 {
   top: 0;
 }
 
-.donate {
-  background: #fff;
-  padding: 2rem;
-}
-
 .crowdrise-widget {
   margin: 0 auto;
   width: 300px;
@@ -315,36 +343,32 @@ h1,h2 {
   font-size: 2.8rem;
 }
 
-.fundraiser__header {
-  padding: 1rem 2rem 1rem 2rem;
-  box-sizing: border-box;
-}
-
 ::-webkit-input-placeholder {
    color: #225bad;
    font-size: 15px;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #225bad; 
+   color: #225bad;
    font-size: 15px;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
    color: #225bad;
-   font-size: 15px;  
+   font-size: 15px;
 }
 
-:-ms-input-placeholder {  
+:-ms-input-placeholder {
    color: #225bad;
-   font-size: 15px; 
+   font-size: 15px;
 }
 
 .donate__search input {
   padding: 0.5rem 0;
 }
 
-#musiclabel {
+#musiclabel,
+#dollarlabel {
   width: 80px;
   height: 80px;
   -webkit-border-radius: 40px;
@@ -357,6 +381,16 @@ h1,h2 {
   line-height: 70px;
   font-size: 50px;
   margin: 0;
+}
+
+#musiclabel span {
+  display: inline-block;
+  margin: 4px 0 0 -8px;
+}
+
+#dollarlabel span {
+  display: inline-block;
+  margin: 5px 0 0;
 }
 
 @media (max-width: 850px) {
@@ -463,14 +497,6 @@ h1,h2 {
 
 @media (min-width: 851px) {
 
-  .mix-button {
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
-    margin: 2rem;
-  }
-
-  .fundraiser__header,
   .fundraiser__non-img__wrapper {
     clear: left;
     float: left;
@@ -503,22 +529,162 @@ h1,h2 {
   }
 
   .good-tunes-powered {
-    clear: left;
+    display: none;
+    /*clear: left;
     position: fixed;
     right: 20px;
     top: 20px;
     margin: 0;
-    z-index: 10;
+    z-index: 10;*/
   }
 
-  .primary-heading-wrapper {
+  /*.primary-heading-wrapper {
     padding-right: 34%;
-  }
+  }*/
 
   .blue {
     display: none;
   }
   .red {
     display: block;
+  }
+}
+
+.fundraiser-overview {
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .fundraiser-overview {
+    float: left;
+    padding: 0 1.875rem;
+    margin: 0 0 1.875rem;
+    width: 30%;
+  }
+}
+
+.fundraiser-details {
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .fundraiser-details {
+    float: right;
+    padding-right: 10px;
+    position: relative;
+    width: 70%;
+    z-index: 20;
+  }
+
+  .fundraiser-details::before,
+  .fundraiser-details::after {
+    background: #fa6346;
+    content: '';
+    height: 10px;
+    position: fixed;
+    right: 0;
+    width: 70%;
+    z-index: 20;
+  }
+
+  .fundraiser-details::after {
+    bottom: 0;
+  }
+
+  .fundraiser-details__inner {
+    padding: 1.875rem;
+  }
+}
+
+.fundraiser-pictures .fundraiser-picture img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .fundraiser-pictures {
+    display: none;
+  }
+}
+
+.fundraiser-background-pictures {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .fundraiser-background-pictures {
+    display: block;
+    float: right;
+    padding-right: 10px;
+    position: fixed;
+    right: 0;
+    width: 70%;
+    z-index: 10;
+  }
+
+  .fundraiser-background-pictures .fundraiser-picture {
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    z-index: 10;
+  }
+
+  .fundraiser-background-pictures .fundraiser-picture__mask {
+    background: rgba(255, 255, 255, 0.8);
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    width: calc(100% - 10px);
+    z-index: 20;
+  }
+}
+
+.fundraiser-why,
+.fundraiser-why p {
+  color: #225bad;
+  font-size: 1.5rem;
+}
+
+.backToFundraiser {
+  display: block;
+  height: 50px;
+  margin: 23px 0 0;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 60px;
+}
+
+.backToFundraiser span {
+  display: none;
+}
+
+.backToFundraiser::before,
+.backToFundraiser::after {
+  background: #fa6346;
+  content: '';
+  display: block;
+  height: 50px;
+  position: absolute;
+  width: 1px;
+}
+
+.backToFundraiser::before {
+  right: 30px;
+  transform: rotate(45deg);
+}
+
+.backToFundraiser::after {
+  right: 30px;
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 769px) {
+  .fundraiser-details .playlist,
+  .fundraiser-details .fundraiser-why {
+    margin: 0 3.125rem 0 0;
   }
 }

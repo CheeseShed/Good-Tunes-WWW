@@ -1,36 +1,8 @@
-<div class="fundraiser__description__text donate__description__text">
-  <section class="donate">
-  <h2 id="musiclabel">$</h2>
-  <crowdrise
-    account="donate.fundraiser.attributes.donation_provider_account_id">
-  </crowdrise>
-</section>
-</div>
-
-<header class="fundraiser__header donate__fundraiser__header">
-  <div class="primary-heading-wrapper">
-    <h1 class="primary-heading">{{::donate.fundraiser.title}}</h1>
+<div class="fundraiser-details__inner">
+  <div class="donate">
+    <h2 id="dollarlabel"><span>$</span></h2>
+    <crowdrise
+      account="donate.fundraiser.attributes.donation_provider_account_id">
+    </crowdrise>
   </div>
-</header>
-
-<div class="fundraiser-pictures donate__fundraiser-pictures" style="background:url('/src/images/{{::donate.person}}.jpg') 50% / cover">
-</div>
-
-<div class="fundraiser__non-img__wrapper donate__fundraiser__non-img__wrapper">
-
-  <div class="fundraiser__summary">
-    <p>Use music and your wallet to support {{::donate.fundraiser.user.name}} as {{::donate.gender}} raises money for {{::donate.fundraiser.charity}}</p>
-  </div>
-
-  <div class="fundraiser__description">
-    <h2 ng-click="toggleOverlay()">Why am I doing this?</h2>
-  </div>
-
-  <fundraiser-total
-    name="donate.fundraiser.user.name"
-    symbol="donate.fundraiser.currency"
-    target="donate.fundraiser.target"
-    raised="donate.fundraiser.raised"
-    date="donate.fundraiser.target_date">
-  </fundraiser-total>
 </div>

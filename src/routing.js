@@ -6,13 +6,16 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('base', {
-      abstract: true,
-      templateUrl: '/src/views/base.html'
-    })
     .state('home', {
       url: '/',
-      templateUrl: '/src/views/base.html'
+      controller: require('./controllers/home.controller'),
+      controllerAs: 'home',
+      templateUrl: '/src/views/base.html',
+      resolve: {
+        fundraisers: ['fundraiserService', function (fundraiserService) {
+          return fundraiserService.readAll();
+        }]
+      }
     })
     .state('login', {
       url: '/login',
@@ -34,28 +37,10 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       template: '<ui-view />',
       abstract: true
     })
-    .state('fundraisers.all', {
-      url: '/fundraisers',
-      views: {
-        '@fundraisers': {
-          templateUrl: '/src/views/fundraisers.html',
-          controller: require('./controllers/fundraisers.controller'),
-          controllerAs: 'fundraisers',
-          resolve: {
-            fundraisers: ['fundraiserService', function (fundraiserService) {
-              return fundraiserService.readAll({
-                skip: 0,
-                limit: 20
-              });
-            }]
-          }
-        }
-      }
-    })
     .state('fundraisers.one', {
       url: '/fundraisers/:fundraiser',
-      views: {
-        '@fundraisers': {
+      // views: {
+      //   '@fundraisers': {
           templateUrl: '/src/views/fundraisers.one.html',
           controller: require('./controllers/fundraiser.controller'),
           controllerAs: 'fundraiser',
@@ -64,8 +49,8 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
               return fundraiserService.readOne({id: $stateParams.fundraiser, populate: 'user'});
             }]
           }
-        }
-      }
+      //   }
+      // }
     })
     .state('fundraisers.one.edit', {
       url: '/edit',
@@ -86,10 +71,18 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         isOwner: true
       }
     })
+    .state('fundraisers.one.why', {
+      url: '/why',
+      views: {
+        'fundraiser@fundraisers.one': {
+          templateUrl: '/src/views/fundraisers.one.why.html'
+        }
+      }
+    })
     .state('fundraisers.one.playlist', {
       url: '/playlists/:playlist',
       views: {
-        '@fundraisers': {
+        'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.one.playlist.html',
           controller: require('./controllers/fundraiser-playlist.controller'),
           controllerAs: 'playlist',
@@ -107,7 +100,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
     .state('fundraisers.one.add', {
       url: '/playlists/:playlist/add?q',
       views: {
-        '@fundraisers': {
+        'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.add.html',
           controller: require('./controllers/search.controller'),
           controllerAs: 'search',
@@ -123,7 +116,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
     .state('fundraisers.one.donate', {
       url: '/playlists/:playlist/donate?provider',
       views: {
-        '@fundraisers': {
+        'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.donate.html',
           controller: require('./controllers/donate.controller'),
           controllerAs: 'donate'
@@ -141,7 +134,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
     .state('fundraisers.one.thankyou', {
       url: '/thank-you',
       views: {
-        '@fundraisers': {
+        'fundraiser@fundraisers.one': {
           controller: require('./controllers/fundraiser.controller'),
           controllerAs: 'fundraiser',
           templateUrl: '/src/views/fundraisers.thankyou.html'

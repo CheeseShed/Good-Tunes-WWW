@@ -20,19 +20,8 @@ function donateController(fundraiser, $q, $scope, $state, $stateParams, storageS
     $scope.$on('donate:complete', donationCompleteHandler);
   }
 
-  function donateTrack(track) {
-    console.log(track)
-    //trackService.create()
-  }
-
   function donationCompleteHandler(event, donation) {
-    // should do a check here
-    // should move crowdrise specific code into it's own controller if other donation providers are added
-    // donateTrack(vm.trackToDonate, donation);
-      console.log(vm.trackToDonate);
-
-
-
+    // Todo: Move crowdrise specific code to it's own controller for future provider expansion
     var track = {
       playlist: vm.fundraiser.playlist,
       name: vm.trackToDonate.name,
@@ -52,7 +41,10 @@ function donateController(fundraiser, $q, $scope, $state, $stateParams, storageS
         });
       })
       .then(function (response) {
-        $state.go('fundraisers.one.thankyou', {fundraisers: $stateParams.fundraiser, playlist: $stateParams.playlist});
+        $state.go('fundraisers.one.thankyou', {
+          fundraisers: $stateParams.fundraiser,
+          playlist: $stateParams.playlist
+        });
       })
       .catch(function (err) {
         console.error(err);

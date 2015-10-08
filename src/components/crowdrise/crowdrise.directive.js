@@ -30,7 +30,6 @@ function crowdriseDirective(config, $window) {
 
       function addCrowdriseCallback() {
         $window.crowdriseCallback = function (response) {
-          console.log(response);
           scope.$emit('donate:complete', response);
         };
       }

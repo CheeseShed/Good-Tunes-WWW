@@ -1,15 +1,11 @@
-<h1>Base</h1>
-<nav>
-  <ul>
-    <li>
-      <a ui-sref="login">Sign in</a>
-    </li>
-    <li>
-      <a ui-sref="register">Create a new account</a>
-    </li>
-    <li>
-      <a ui-sref="fundraisers.all">Fundraisers</a>
-    </li>
-  </ul>
-</nav>
-<div ui-view="main"></div>
+<section class="homepage">
+
+  <div class="fundraiser-campaign" ng-repeat="fundraiser in home.fundraisers">
+
+    <div class="fundraiser-campaign__picture">
+      <a ui-sref="fundraisers.one({fundraiser: fundraiser.id})">{{::fundraiser.title}}</a>
+    </div>
+
+  </div>
+
+</section>

@@ -1,51 +1,52 @@
-<header class="fundraiser__header">
-  <div class="primary-heading-wrapper">
-    <h1 class="primary-heading">{{::fundraiser.fundraiser.title}}</h1>
-  </div>
-</header>
+<div class="page cf">
 
-<div class="fundraiser-pictures" style="background:url('/src/images/{{::fundraiser.person}}.jpg') 50% / cover">
-</div>
+  <section class="fundraiser-overview">
 
-<div class="fundraiser__description__text" ng-show="overlayVisible">
-  <span class="fundraiser__description__text__close" ng-click="toggleOverlay()">
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-   width="64px" height="64px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-<g>
-  <g>
-    <path d="M26,15h-9V6c0-0.552-0.448-1-1-1s-1,0.448-1,1v9H6c-0.552,0-1,0.448-1,1s0.448,1,1,1h9v9c0,0.553,0.448,1,1,1s1-0.447,1-1
-      v-9h9c0.553,0,1-0.448,1-1S26.553,15,26,15z"/>
-  </g>
-</g>
-</svg>
+    <header class="fundraiser-header">
+      <div class="primary-heading-wrapper">
+        <h1 class="primary-heading">{{::fundraiser.fundraiser.title}}</h1>
+      </div>
+    </header>
 
-  </span>
-  {{::fundraiser.fundraiser.description}}
-</div>
+    <div class="fundraiser-pictures">
+      <div class="fundraiser-picture">
+         <img src="/src/images/{{::fundraiser.person}}.jpg" alt="">
+       </div>
+    </div>
 
-<div class="fundraiser__non-img__wrapper">
+    <div class="fundraiser__summary">
+      <p>Use music and your wallet to support {{::fundraiser.fundraiser.user.name}} as {{::fundraiser.gender}} raises money for {{::fundraiser.fundraiser.charity}}</p>
+    </div>
 
-  <div class="fundraiser__summary">
-    <p>Use music and your wallet to support {{::fundraiser.fundraiser.user.name}} as {{::fundraiser.gender}} raises money for {{::fundraiser.fundraiser.charity}}</p>
-  </div>
-
-  <div class="wrapper">
     <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> + <b>$</b> now</a>
-  </div>
 
-  <div class="fundraiser__description">
-    <h2 ng-click="toggleOverlay()">Why am I doing this?</h2>
-  </div>
+    <p>
+      <a ui-sref="fundraisers.one.why({fundraiser: fundraiser.fundraiser.id})">Why am I doing this?</a>
+    </p>
 
-  <fundraiser-total
-    name="fundraiser.fundraiser.user.name"
-    symbol="fundraiser.fundraiser.currency"
-    target="fundraiser.fundraiser.target"
-    raised="fundraiser.fundraiser.raised"
-    date="fundraiser.fundraiser.target_date">
-  </fundraiser-total>
+    <fundraiser-total
+      name="fundraiser.fundraiser.user.name"
+      symbol="fundraiser.fundraiser.currency"
+      target="fundraiser.fundraiser.target"
+      raised="fundraiser.fundraiser.raised"
+      date="fundraiser.fundraiser.target_date">
+    </fundraiser-total>
 
-  <div class="wrapper mix-button">
-    <a class="button-primary" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
-  </div>
+    <p>
+      <a class="button-primary mix-button" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
+    </p>
+
+  </section>
+
+  <section class="fundraiser-background-pictures">
+    <div class="fundraiser-picture" style="background-image: url(/src/images/{{::fundraiser.person}}.jpg);"></div>
+    <div ng-show="fundraiser.hasMask()" class="fundraiser-picture__mask"></div>
+  </section>
+
+  <section class="fundraiser-details">
+    <a class="backToFundraiser" ng-show="fundraiser.hasMask()" ui-sref="fundraisers.one({fundraiser: fundraiser.fundraiser.id})">
+      <span>Back to {{::fundraiser.fundraiser.title}}</span>
+    </a>
+    <div ui-view="fundraiser"></div>
+  </section>
 </div>
