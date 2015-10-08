@@ -21,7 +21,7 @@ function crowdriseDirective(config, $window) {
 
         crowdriseScript = document.createElement('script');
         crowdriseScript.id = crowdriseWidgetId;
-        crowdriseScript.src = config.CROWDRISE_URL + scope.account + '/';
+        crowdriseScript.src = config.CROWDRISE_URL + scope.account + '/?callback=crowdriseCallback';
         crowdriseScript.async = true;
         document.querySelector('.crowdrise-widget').appendChild(crowdriseScript);
 
