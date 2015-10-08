@@ -688,3 +688,59 @@ h1,h2 {
     margin: 0 3.125rem 0 0;
   }
 }
+
+.homepage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.homepage .goodtunes {
+  position: absolute;
+  left: 50%;
+  bottom: 1.875rem;
+  height: 176px;
+  transform: translateX(-50%);
+  width: 173px;
+}
+
+.homepage .fundraiser {
+  height: 100vh;
+  float: left;
+  position: relative;
+  width: 50%;
+}
+
+.homepage .fundraiser a {
+  display: block;
+  position: absolute;
+  top: 0;
+  text-decoration: none;
+  width: 70%;
+}
+
+.homepage .fundraiser__picture {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+}
+
+.homepage .ben .fundraiser__picture {
+  background-position: right top;
+}
+
+.homepage .fundraiser__title {
+  background: url(../images/heading-underline.png) 0 0px;
+  font-size: 2.8rem;
+  padding: 0 0 3px 0;
+  margin: 1.875rem;
+  z-index: 20;
+}
+
+.homepage .fundraiser__title span {
+  display: inline;
+  line-height: 132%;
+}
