@@ -339,6 +339,12 @@ h1,h2 {
   text-align: center;
 }
 
+@media (min-width: 769px) {
+  .good-tunes-powered {
+    display: none;
+  }
+}
+
 .primary-heading {
   font-size: 2.8rem;
 }
@@ -528,15 +534,15 @@ h1,h2 {
     font-size: 0.5rem;
   }
 
-  .good-tunes-powered {
-    display: none;
+  /*.good-tunes-powered {
+    display: none;*/
     /*clear: left;
     position: fixed;
     right: 20px;
     top: 20px;
     margin: 0;
     z-index: 10;*/
-  }
+  /*}*/
 
   /*.primary-heading-wrapper {
     padding-right: 34%;
@@ -623,6 +629,18 @@ h1,h2 {
     z-index: 10;
   }
 
+  .fundraiser-background-pictures::before {
+    content: '';
+    background: url('../images/good-tunes-red.png') no-repeat 0 0;
+    display: block;
+    height: 176px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 173px;
+    z-index: 15;
+  }
+
   .fundraiser-background-pictures .fundraiser-picture {
     background-repeat: no-repeat;
     background-position: top center;
@@ -669,7 +687,7 @@ h1,h2 {
   display: block;
   height: 50px;
   position: absolute;
-  width: 1px;
+  width: 3px;
 }
 
 .backToFundraiser::before {
@@ -689,43 +707,68 @@ h1,h2 {
   }
 }
 
+/* VIEW: HOMEPAGE */
 .homepage {
   position: relative;
   width: 100%;
-  height: 100vh;
 }
 
 .homepage .goodtunes {
-  position: absolute;
-  left: 50%;
-  bottom: 1.875rem;
-  height: 176px;
-  transform: translateX(-50%);
-  width: 173px;
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .homepage {
+    height: 100vh;
+  }
+
+  .homepage .goodtunes {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 1.875rem;
+    height: 176px;
+    transform: translateX(-50%);
+    width: 173px;
+  }
 }
 
 .homepage .fundraiser {
-  height: 100vh;
-  float: left;
+  height: 50vh;
   position: relative;
-  width: 50%;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .homepage .fundraiser {
+    float: left;
+    height: 100vh;
+    width: 50%;
+  }
 }
 
 .homepage .fundraiser a {
   display: block;
   position: absolute;
+  bottom: 0;
   top: 0;
   text-decoration: none;
-  width: 70%;
+  width: 100%;
 }
 
 .homepage .fundraiser__picture {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  height: 100vh;
+  height: 50vh;
   width: 100%;
   z-index: 10;
+}
+
+@media (min-width: 769px) {
+  .homepage .fundraiser__picture {
+    height: 100vh;
+  }
 }
 
 .homepage .ben .fundraiser__picture {
@@ -733,14 +776,47 @@ h1,h2 {
 }
 
 .homepage .fundraiser__title {
-  background: url(../images/heading-underline.png) 0 0px;
-  font-size: 2.8rem;
-  padding: 0 0 3px 0;
-  margin: 1.875rem;
+  background: #fff;
+  bottom: 0;
+  display: block;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 1rem 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
   z-index: 20;
+}
+
+@media (min-width: 769px) {
+  .homepage .fundraiser__title {
+    background: url(../images/heading-underline.png) 0 0px;
+    bottom: initial;
+    font-size: 2.8rem;
+    margin: 1.875rem;
+    padding: 0 0 3px 0;
+    text-align: left;
+    width: 70%;
+    top: 0;
+  }
 }
 
 .homepage .fundraiser__title span {
   display: inline;
   line-height: 132%;
+}
+
+.good-tunes-info {
+  font-size: .75rem;
+  text-align: center;
+}
+
+@media (min-width: 769px) {
+  .good-tunes-info {
+    width: 30%;
+  }
+}
+
+.good-tunes-info a {
+  color: #000;
 }
