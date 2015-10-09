@@ -339,6 +339,12 @@ h1,h2 {
   text-align: center;
 }
 
+@media (min-width: 769px) {
+  .good-tunes-powered {
+    display: none;
+  }
+}
+
 .primary-heading {
   font-size: 2.8rem;
 }
@@ -528,15 +534,15 @@ h1,h2 {
     font-size: 0.5rem;
   }
 
-  .good-tunes-powered {
-    display: none;
+  /*.good-tunes-powered {
+    display: none;*/
     /*clear: left;
     position: fixed;
     right: 20px;
     top: 20px;
     margin: 0;
     z-index: 10;*/
-  }
+  /*}*/
 
   /*.primary-heading-wrapper {
     padding-right: 34%;
@@ -623,6 +629,18 @@ h1,h2 {
     z-index: 10;
   }
 
+  .fundraiser-background-pictures::before {
+    content: '';
+    background: url('../images/good-tunes-red.png') no-repeat 0 0;
+    display: block;
+    height: 176px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 173px;
+    z-index: 15;
+  }
+
   .fundraiser-background-pictures .fundraiser-picture {
     background-repeat: no-repeat;
     background-position: top center;
@@ -669,7 +687,7 @@ h1,h2 {
   display: block;
   height: 50px;
   position: absolute;
-  width: 1px;
+  width: 3px;
 }
 
 .backToFundraiser::before {
