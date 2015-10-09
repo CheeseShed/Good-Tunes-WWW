@@ -8,7 +8,7 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
     $window.scrollTo(0, 0);
   };
 
-  function stateChangeStartHandler(event, toState, toParams) {
+  var stateChangeStartHandler = function (event, toState, toParams) {
     var roles = [];
 
     if (toState.data && toState.data.roles) {

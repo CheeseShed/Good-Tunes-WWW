@@ -25,13 +25,19 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       params: {
         toState: 'home',
         toParams: {}
+      },
+      data: {
+        pageTitle: 'Login'
       }
     })
     .state('register', {
       url: '/register',
       templateUrl: '/src/views/register.html',
       controller: require('./controllers/register.controller'),
-      controllerAs: 'register'
+      controllerAs: 'register',
+      data: {
+        pageTitle: 'Register'
+      }
     })
     .state('fundraisers', {
       template: '<ui-view />',
@@ -39,18 +45,17 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
     })
     .state('fundraisers.one', {
       url: '/fundraisers/:fundraiser',
-      // views: {
-      //   '@fundraisers': {
-          templateUrl: '/src/views/fundraisers.one.html',
-          controller: require('./controllers/fundraiser.controller'),
-          controllerAs: 'fundraiser',
-          resolve: {
-            fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-              return fundraiserService.readOne({id: $stateParams.fundraiser, populate: 'user'});
-            }]
-          }
-      //   }
-      // }
+      templateUrl: '/src/views/fundraisers.one.html',
+      controller: require('./controllers/fundraiser.controller'),
+      controllerAs: 'fundraiser',
+      resolve: {
+        fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
+          return fundraiserService.readOne({id: $stateParams.fundraiser, populate: 'user'});
+        }]
+      },
+      data: {
+        hideOverviewPanel: false
+      }
     })
     .state('fundraisers.one.edit', {
       url: '/edit',
@@ -77,6 +82,9 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.one.why.html'
         }
+      },
+      data: {
+        hideOverviewPanel: true
       }
     })
     .state('fundraisers.one.playlist', {
@@ -95,6 +103,9 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
             }]
           }
         }
+      },
+      data: {
+        hideOverviewPanel: true
       }
     })
     .state('fundraisers.one.add', {
@@ -111,6 +122,9 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
           return fundraiserService.readOne({id: $stateParams.fundraiser});
         }]
+      },
+      data: {
+        hideOverviewPanel: true
       }
     })
     .state('fundraisers.one.donate', {
@@ -128,7 +142,8 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         }]
       },
       data: {
-        roles: [20]
+        roles: [20],
+        hideOverviewPanel: true
       }
     })
     .state('fundraisers.one.thankyou', {
@@ -145,6 +160,9 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
           return fundraiserService.readOne({id: $stateParams.fundraiser});
         }]
       },
+      data: {
+        hideOverviewPanel: true
+      }
     })
     .state('notFound', {
       url: '/404',
