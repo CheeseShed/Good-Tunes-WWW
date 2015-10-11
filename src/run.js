@@ -34,7 +34,7 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
     FB.init({
       appId: config.FACEBOOK_APP_ID,
       status: true,
-      xfbml: false,
+      xfbml: true,
       version: 'v2.4'
     });
 

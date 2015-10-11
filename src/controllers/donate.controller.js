@@ -1,7 +1,5 @@
 'use strict';
 
-var has = require('lodash/object/has');
-
 donateController.$inject = ['fundraiser', '$q', '$scope', '$state', '$stateParams', 'StorageService', 'TrackService', 'donationService'];
 
 function donateController(fundraiser, $q, $scope, $state, $stateParams, storageService, trackService, donationService) {
