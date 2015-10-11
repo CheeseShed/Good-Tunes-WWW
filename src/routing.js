@@ -17,6 +17,10 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         }]
       }
     })
+    .state('about', {
+      url: '/wtf',
+      templateUrl: '/src/views/about.html'
+    })
     .state('login', {
       url: '/login',
       templateUrl: '/src/views/login.html',

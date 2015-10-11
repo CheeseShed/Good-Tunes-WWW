@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-good-tunes>
   <head>
     <meta charset="utf-8">
     <title>Good Tunes</title>
@@ -18,7 +18,7 @@
   </head>
   <body>
 
-    <div data-good-tunes>
+    <div>
       <div ui-view>
     </div>
 
@@ -27,7 +27,9 @@
       <img class="red" src="/src/images/good-tunes-red.png" alt="Powered by Good Tunes" height="165" width="162" />
     </div>
 
-    <p class="good-tunes-info">The Good Tunes Project – <a href="mailto:team@goodtunes.org">team@goodtunes.org</a></p>
+    <footer class="site-footer">
+      <p class="good-tunes-info">The Good Tunes Project – <a href="mailto:team@goodtunes.org">team@goodtunes.org</a> – <a ui-sref="about">What is this Good Tunes</a></p>
+    </footer>
 
     <script src="http://platform.twitter.com/widgets.js"></script>
   </body>
