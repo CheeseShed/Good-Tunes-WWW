@@ -260,6 +260,10 @@ h1,h2 {
   line-height: 1.5;
 }
 
+.fundraiser__summary p {
+  font-size: 1.25rem;
+}
+
 @media (max-width: 768px) {
   .fundraiser__summary {
     margin: 1rem 1.875rem;
@@ -288,6 +292,7 @@ h1,h2 {
 
 .fundraiser-total .secondary-heading {
   color: #fff;
+  font-size: 1.25rem;
   margin-bottom: 0;
 }
 
