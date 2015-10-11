@@ -15,6 +15,16 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         fundraisers: ['fundraiserService', function (fundraiserService) {
           return fundraiserService.readAll();
         }]
+      },
+      data: {
+        og: {
+          title: 'Good Tunes',
+          type: 'website',
+          url: 'http://www.goodtunes.org',
+          site_name: 'Good Tunes',
+          description: 'Donate music to your friends raising money for charity',
+          image: 'http://www.goodtunes.org/src/images/good-tunes.png'
+        }
       }
     })
     .state('about', {
@@ -58,7 +68,14 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         }]
       },
       data: {
-        hideOverviewPanel: false
+        hideOverviewPanel: false,
+        og: {
+          title: 'Good Tunes',
+          type: 'website',
+          url: 'http://www.goodtunes.org',
+          site_name: 'Good Tunes',
+          description: 'Donate music to your friends raising money for charity'
+        }
       }
     })
     .state('fundraisers.one.edit', {
@@ -154,9 +171,9 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       url: '/thank-you',
       views: {
         'fundraiser@fundraisers.one': {
-          controller: require('./controllers/fundraiser.controller'),
-          controllerAs: 'fundraiser',
-          templateUrl: '/src/views/fundraisers.thankyou.html'
+          templateUrl: '/src/views/fundraisers.thankyou.html',
+          controller: require('./controllers/thankyou.controller'),
+          controllerAs: 'thankyou'
         }
       },
       resolve: {

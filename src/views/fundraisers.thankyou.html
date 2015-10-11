@@ -1,5 +1,6 @@
 <div class="fundraiser-details__inner">
-  <h2>Thank you for donating!</h2>
-  <p>Your track's been added to the mix.</p>
+  <h2>Thank you {{::thankyou.profile.first_name}} for donating!</h2>
+  <p>{{::thankyou.donatedTrack.name}} been added to the mix.</p>
   <p><a class="button-primary" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a></p>
+  <div class="fb-like" data-href="{{::thankyou.sharingUrl}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 </div>

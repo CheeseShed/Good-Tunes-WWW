@@ -190,7 +190,7 @@ h1,h2 {
 }
 
 .fundraiser-header {
-  margin: 3px 0 1rem 0;
+  margin: 1.5rem 0 1rem 0;
 }
 
 .fundraiser-header h1 {
@@ -882,4 +882,12 @@ h1,h2 {
 
 .search-form .form-button span {
   display: none;
+}
+
+@media (min-width: 769px) {
+  .search-form .form-button {
+    font-size: 1.5rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem
+  }
 }

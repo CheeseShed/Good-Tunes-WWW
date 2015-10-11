@@ -14,6 +14,10 @@ function storageService($window, $q) {
     return $window.sessionStorage.getItem(key);
   };
 
+  service.removeItem = function (key) {
+    return $window.sessionStorage.getItem(key);
+  };
+
   service.getAccessToken = function () {
     return $window.sessionStorage.getItem('access_token');
   };
