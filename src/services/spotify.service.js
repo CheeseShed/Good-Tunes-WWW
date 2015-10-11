@@ -11,7 +11,7 @@ function spotifyService($http, $q, config) {
 
   service.search = function (query) {
     return $q(function (resolve, reject) {
-      $http.get(SPOTIFY_API_URL + '/search?q=' + query + '&type=track')
+      $http.get(SPOTIFY_API_URL + '/search?q=' + query + '&type=artist,track&limit=50&market=GB')
         .then(function (response) {
           return response.data.tracks.items;
         })
