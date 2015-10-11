@@ -1,5 +1,11 @@
-<form name="spotifyForm" ng-submit="spotify.search(search)">
-  <label id="musiclabel" for="q"><span>♫</span></label>
-  <input type="text" name="q" id="q" ng-model="search.q" class="field" placeholder="Search for a song or artist… e.g. 'Madonna'" required>
-  <button type="submit" class="button-primary">Search</button>
+<form class="search-form cf" name="spotifyForm" ng-submit="spotify.search(search)">
+
+  <div class="form-field">
+    <label class="form-label" for="q">Search Spotify</label>
+    <input type="search" name="q" id="q" ng-model="search.q" class="field" placeholder="Search for a song or artist" required autocomplete="on" autofocus="true">
+  </div>
+
+  <button type="submit" class="fa fa-search form-button button-primary">
+    <span>Search</span>
+  </button>
 </form>

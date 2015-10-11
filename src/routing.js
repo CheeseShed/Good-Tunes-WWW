@@ -118,8 +118,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.add.html',
           controller: require('./controllers/search.controller'),
-          controllerAs: 'search',
-          reloadOnSearch: false
+          controllerAs: 'search'
         }
       },
       resolve: {
@@ -129,7 +128,8 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       },
       data: {
         hideOverviewPanel: true
-      }
+      },
+      reloadOnSearch: false
     })
     .state('fundraisers.one.donate', {
       url: '/playlists/:playlist/donate?provider',

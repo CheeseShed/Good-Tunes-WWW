@@ -63,7 +63,8 @@ h1,h2 {
   background: #fff;
   color: #225bad;
   display: block;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin: 0;
   padding: 0.5rem;
   text-align: center;
   text-decoration: none;
@@ -106,6 +107,7 @@ h1,h2 {
   margin: 0;
   padding: 0;
   list-style: none;
+  line-height: 1.5;
 }
 
 @media (min-width: 769px) {
@@ -118,24 +120,26 @@ h1,h2 {
   border-bottom: 1px solid #fa6346;
   clear: both;
   padding: .5rem;
+  position: relative;
 }
 
 .track-list__track-data {
   display: block;
-  font-size: 1.5rem;
   float: left;
-  width: 50%;
+  width: 70%;
 }
 
 .track-list__track-title {
   color: #225bad;
   display: block;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .track-list__track-artist {
   color: #225bad;
   display: inline-block;
+  font-size: 0.8125rem;
 }
 
 .track-list__donor {
@@ -152,8 +156,20 @@ h1,h2 {
   color: #fff;
   display: inline-block;
   float: right;
+  font-size: 1rem;
+  margin: 0;
   padding: .5rem;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: auto;
+}
+
+@media (min-width: 769px) {
+  .track-list__track .button__donate {
+    right: .5rem;
+  }
 }
 
 .primary-heading-wrapper {
@@ -416,21 +432,8 @@ h1,h2 {
     padding: 0;
   }
 
-  .track-list__track-title,
-  .track-list__track-artist {
-    font-size: 1rem;
-  }
-
   .track-list__track {
     padding: 0.5rem 0;
-  }
-
-  .track-list__track-title {
-    line-height: 1.4rem;
-  }
-
-  .track-list__track-data {
-    line-height: 0.8em;
   }
 
   .blue {
@@ -854,4 +857,37 @@ h1,h2 {
 
 .site-footer a {
   color: #225bad;
+}
+
+/* search */
+.search-form {
+  border-bottom: 1px solid #fa6346;
+}
+
+.search-form .form-field {
+  float: left;
+  width: 85%;
+}
+
+.search-form .form-field .form-label {
+  display: none;
+}
+
+.search-form .form-field input[type="search"] {
+  border-bottom: 0;
+  box-sizing: border-box;
+  line-height: 1;
+  margin: 0;
+  padding: 14px 0;
+}
+
+.search-form .form-button {
+  background: transparent;
+  color: #225bad;
+  float: right;
+  width: 15%;
+}
+
+.search-form .form-button span {
+  display: none;
 }

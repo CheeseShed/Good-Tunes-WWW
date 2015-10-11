@@ -13,6 +13,9 @@ function spotifySearchController($scope, $location, spotifyService) {
       .then(function (tracks) {
         $scope.tracks = tracks;
       })
+      .then(function () {
+        $location.search({q: query})
+      })
       .catch(function (err) {
         console.err(err);
       });
