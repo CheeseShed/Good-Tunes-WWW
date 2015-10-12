@@ -12,13 +12,14 @@ function donateController(fundraiser, $q, $scope, $state, $stateParams, storageS
     vm.gender = vm.person === 'ben' ? 'he' : 'she';
 
     if (!vm.trackToDonate) {
-      navigateToAddState();
+      navigateToState('fundraisers.one.add');
     }
 
+    $scope.$on('donate:addtrack', donationAddTrackHandler);
     $scope.$on('donate:complete', donationCompleteHandler);
   }
 
-  function donationCompleteHandler(event, donation) {
+  function donationAddTrackHandler(event, track) {
     // Todo: Move crowdrise specific code to it's own controller for future provider expansion
     var track = {
       playlist: vm.fundraiser.playlist,
@@ -32,25 +33,33 @@ function donateController(fundraiser, $q, $scope, $state, $stateParams, storageS
     trackService
       .create(track)
       .then(function (response) {
-        return donationService.create({
-          track: response.id,
-          fundraiser: vm.fundraiser.id,
-          amount: donation.amount
-        });
-      })
-      .then(function (response) {
-        $state.go('fundraisers.one.thankyou', {
-          fundraisers: $stateParams.fundraiser,
-          playlist: $stateParams.playlist
-        });
+        storageService.setItem('donatedTrack', JSON.stringify(response));
+        console.log('track donated');
+        console.log(response);
       })
       .catch(function (err) {
         console.error(err);
       });
   }
 
-  function navigateToAddState() {
-    $state.go('fundraisers.one.add', {
+  function donationCompleteHandler(event, donation) {
+    var donatedTrack = JSON.parse(storageService.getItem('donatedTrack'));
+
+    donationService.create({
+        track: donatedTrack.id,
+        fundraiser: vm.fundraiser.id,
+        amount: donation.amount
+      })
+      .then(function () {
+        navigateToState('fundraisers.one.thankyou');
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+  }
+
+  function navigateToState(stateName) {
+    $state.go(stateName, {
       fundraiser: $stateParams.fundraiser,
       playlist: $stateParams.playlist
     });

@@ -26,12 +26,17 @@ function crowdriseDirective(config, $window) {
         document.querySelector('.crowdrise-widget').appendChild(crowdriseScript);
 
         addCrowdriseCallback();
+        donateTrack();
       };
 
       function addCrowdriseCallback() {
         $window.crowdriseCallback = function (response) {
           scope.$emit('donate:complete', response);
         };
+      }
+
+      function donateTrack() {
+        scope.$emit('donate:addtrack');
       }
 
       addCrowdriseWidget();
