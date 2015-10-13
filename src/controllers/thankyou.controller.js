@@ -6,7 +6,7 @@ function thankyouController($window, $scope, $state, $stateParams, storageServic
   var vm = this;
 
   var setup = function () {
-    vm.donatedTrack = JSON.parse(storageService.getItem('trackToDonate'));
+    vm.donatedTrack = JSON.parse(storageService.getItem('donatedTrack'));
     vm.sharingUrl = 'http://www.goodtunes.com/fundraisers/' + $stateParams.fundraiser;
 
     if (!vm.donatedTrack) {
@@ -18,7 +18,7 @@ function thankyouController($window, $scope, $state, $stateParams, storageServic
   };
 
   function clearTrackToDonate() {
-    storageService.removeItem('trackToDonate');
+    storageService.removeItem('donatedTrack');
   }
 
   function enableSharingPlugins() {
