@@ -33,6 +33,7 @@ function donateController(fundraiser, $q, $scope, $state, $stateParams, storageS
     trackService
       .create(track)
       .then(function (response) {
+        storageService.removeItem('trackToDonate');
         storageService.setItem('donatedTrack', JSON.stringify(response));
         console.log('track donated');
         console.log(response);

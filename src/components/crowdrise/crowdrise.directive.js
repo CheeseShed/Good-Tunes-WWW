@@ -11,6 +11,7 @@ function crowdriseDirective(config, $window) {
     },
     link: function (scope, elem) {
       var crowdriseWidgetId = 'crowdrise' + scope.account;
+      var hasDonated = false;
 
       var addCrowdriseWidget = function () {
         var crowdriseScript;
@@ -31,7 +32,9 @@ function crowdriseDirective(config, $window) {
 
       function addCrowdriseCallback() {
         $window.crowdriseCallback = function (response) {
-          scope.$emit('donate:complete', response);
+          if (!hasDonated) {
+            scope.$emit('donate:complete', response);
+          }
         };
       }
 
