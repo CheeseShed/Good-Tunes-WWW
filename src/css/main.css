@@ -738,7 +738,18 @@ h1,h2 {
 }
 
 .homepage .goodtunes {
+  text-align: center;
+}
+
+.homepage .goodtunes img {
   display: none;
+}
+
+.homepage .goodtunes a {
+  background: #fff;
+  display: block;
+  font-size: 1.5rem;
+  padding: .25rem;
 }
 
 @media (min-width: 769px) {
@@ -747,13 +758,22 @@ h1,h2 {
   }
 
   .homepage .goodtunes {
-    display: block;
     position: absolute;
     left: 50%;
     bottom: 1.875rem;
-    height: 176px;
+    /*height: 176px;*/
     transform: translateX(-50%);
-    width: 173px;
+    /*width: 173px;*/
+    z-index: 10;
+  }
+
+  .homepage .goodtunes img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .homepage .goodtunes a {
+    margin: 0 0 .5rem;
   }
 }
 
