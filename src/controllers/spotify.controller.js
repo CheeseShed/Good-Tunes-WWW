@@ -44,9 +44,7 @@ function spotifyController(fundraiser, $window, $scope, $stateParams, $q, config
       .readOne({id: fundraiser.playlist})
       .then(makeArrayOfSpotifyURIs)
       .then(replaceTracksInPlaylist)
-      .then(function (response) {
-        console.log(response);
-      })
+      .then(getPlaylistTracks)
       .catch(function (err) {
         vm.error = err.message;
       });
@@ -60,12 +58,12 @@ function spotifyController(fundraiser, $window, $scope, $stateParams, $q, config
 
   function replaceTracksInPlaylist(tracks) {
     return $q(function (resolve, reject) {
-      sapi.replaceTracksInPlaylist(SPOTIFY_USER_ID, SPOTIFY_PLAYLIST_ID, tracks, function (err, response) {
+      sapi.replaceTracksInPlaylist(SPOTIFY_USER_ID, SPOTIFY_PLAYLIST_ID, tracks, function (err) {
         if (err) {
           return reject(err);
         }
 
-        return resolve(response);
+        return resolve();
       });
     });
   }
@@ -80,9 +78,13 @@ function spotifyController(fundraiser, $window, $scope, $stateParams, $q, config
         return {name: item.track.name};
       });
 
-      $scope.$apply(function () {
-        vm.tracks = tracks;
-      });
+      updateTracksList(tracks);
+    });
+  }
+
+  function updateTracksList(tracks) {
+    $scope.$apply(function () {
+      vm.tracks = tracks;
     });
   }
 
