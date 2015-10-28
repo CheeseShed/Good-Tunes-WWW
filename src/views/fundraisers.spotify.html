@@ -1,0 +1,18 @@
+<div class="fundraiser-details__inner">
+  <h1>Sync your Good Tunes Spotify playlist</h1>
+  <button class="button-primary" ng-if="!spotify.hasAccessToken" ng-click="spotify.requestAuthorisation()">Sign in with Spotify</button>
+
+  <div class="spotify-profile" ng-if="spotify.hasAccessToken">
+    <h2>Hi, {{::spotify.profile.id}}</h2>
+    <p><img src="{{::spotify.profile.image}}" alt="" /></p>
+    <button class="button-primary" ng-click="spotify.syncPlaylistHandler()">Sync Good Tunes Playlist</button>
+  </div>
+
+  <p><strong>{{spotify.error}}</strong></p>
+
+  <div class="spotify_playlist">
+    <ul>
+      <li ng-repeat="track in spotify.tracks">{{track.name}}</li>
+    </ul>
+  </div>
+</div>

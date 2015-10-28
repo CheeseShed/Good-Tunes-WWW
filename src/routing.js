@@ -185,6 +185,24 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         hideOverviewPanel: true
       }
     })
+    .state('fundraisers.one.spotify', {
+      url: '/spotify',
+      views: {
+        'fundraiser@fundraisers.one': {
+          templateUrl: '/src/views/fundraisers.spotify.html',
+          controller: require('./controllers/spotify.controller'),
+          controllerAs: 'spotify'
+        }
+      },
+      data: {
+        roles: [20],
+        isOwner: true
+      }
+    })
+    .state('auth', {
+      url: '/auth/spotify',
+      templateUrl: '/src/views/auth.spotify.html'
+    })
     .state('notFound', {
       url: '/404',
       templateUrl: '/src/views/404.html'

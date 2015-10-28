@@ -1,8 +1,8 @@
 'use strict';
 
-runForestRun.$inject = ['$rootScope', '$window', '$state', 'config', 'facebookService', 'AccessService'];
+runForestRun.$inject = ['$rootScope', '$window', '$state', 'config', 'facebookService', 'AccessService', 'StorageService'];
 
-function runForestRun($rootScope, $window, $state, config, facebookService, AccessService) {
+function runForestRun($rootScope, $window, $state, config, facebookService, AccessService, storageService) {
 
   var scrollToTop = function () {
     $window.scrollTo(0, 0);
@@ -10,6 +10,18 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
 
   var stateChangeStartHandler = function (event, toState, toParams) {
     var roles = [];
+
+    if (toState.name === 'auth') {
+      var spotifyAuthorisation = getHashParams($window.location.hash);
+      var targetStateParams = JSON.parse(storageService.getItem('spotify_auth_state_params'));
+
+      storageService.removeItem('spotify_auth_state_params');
+      storageService.setItem('spotify_authorisation', JSON.stringify(spotifyAuthorisation));
+
+      $state.go('fundraisers.one.spotify', targetStateParams);
+
+      return event.preventDefault();
+    }
 
     if (toState.data && toState.data.roles) {
       roles = roles.concat(toState.data.roles);
@@ -54,6 +66,20 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+}
+
+/**
+ * Obtains parameters from the hash of the URL
+ * @return Object
+ */
+function getHashParams(query) {
+  var hashParams = {};
+  var e, r = /([^&;=]+)=?([^&;]*)/g,
+      q = query.substring(1);
+  while ( e = r.exec(q)) {
+     hashParams[e[1]] = decodeURIComponent(e[2]);
+  }
+  return hashParams;
 }
 
 module.exports = runForestRun;

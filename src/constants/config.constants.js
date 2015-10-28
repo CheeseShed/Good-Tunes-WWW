@@ -8,5 +8,8 @@ module.exports = {
   CURRENCIES: {
   	'GBP': '£',
   	'USD': '$'
-  }
+  },
+  SPOTIFY_CLIENT_ID: '749c68a0f00345d5ae89330ae9e384a2',
+  SPOTIFY_REDIRECT_URI: 'http://localhost:7080/auth/spotify',
+  SPOTIFY_SCOPES: 'playlist-modify-public'
 };
