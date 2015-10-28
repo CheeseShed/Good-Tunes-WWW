@@ -22,6 +22,14 @@ function storageService($window, $q) {
     return $window.sessionStorage.getItem('access_token');
   };
 
+  service.storeItem = function (key, value) {
+    return $window.localStorage.setItem(key, value);
+  };
+
+  service.getStoredItem = function (key) {
+    return $window.localStorage.getItem(key);
+  };
+
   return service;
 }
 

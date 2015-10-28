@@ -16,6 +16,7 @@ System.config({
 
 System.config({
   "map": {
+    "JMPerez/spotify-web-api-js": "github:JMPerez/spotify-web-api-js@0.15.0",
     "angular": "github:angular/bower-angular@1.4.6",
     "angular-resource": "github:angular/bower-angular-resource@1.4.4",
     "angular-sanitize": "github:angular/bower-angular-sanitize@1.4.6",
