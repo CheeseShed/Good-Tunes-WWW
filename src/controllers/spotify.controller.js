@@ -7,11 +7,15 @@ spotifyController.$inject = ['fundraiser', '$window', '$scope', '$stateParams', 
 function spotifyController(fundraiser, $window, $scope, $stateParams, $q, config, storageService, playlistService) {
   var vm = this;
   var spotifyAuthorisation = JSON.parse(storageService.getItem('spotify_authorisation'));
-  var accessToken = spotifyAuthorisation.access_token;
+  var accessToken;
   var storedState = storageService.getItem('spotify_auth_state');
   var sapi;
   var SPOTIFY_USER_ID = fundraiser.spotify_user_id;
-  var SPOTIFY_PLAYLIST_ID = fundraiser.spotify_playlist_id
+  var SPOTIFY_PLAYLIST_ID = fundraiser.spotify_playlist_id;
+
+  if (spotifyAuthorisation) {
+    accessToken = spotifyAuthorisation.access_token;
+  }
 
   vm.hasAccessToken = false;
   vm.profile = {};
