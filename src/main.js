@@ -35,7 +35,8 @@ angular.module('goodtunes')
   .directive('fundraisersList', require('./components/fundraisers-list/fundraisers-list.directive'))
   .directive('fundraiserTotal', require('./components/fundraiser-total/fundraiser-total.directive'))
   .directive('fundraiserForm', require('./components/fundraiser-form/fundraiser-form.directive'))
-  .directive('crowdrise', require('./components/crowdrise/crowdrise.directive'));
+  .directive('crowdrise', require('./components/crowdrise/crowdrise.directive'))
+  .directive('spotifyPlayer', require('./components/spotify-player/spotify-player.directive'));
 
 // configure the routing and then start the app
 angular.module('goodtunes')

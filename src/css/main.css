@@ -571,7 +571,7 @@ h1,h2 {
 
 .fundraiser-details__inner {
   background: #fff;
-  padding: 5rem 1.875rem 1.875rem;
+  padding: 5rem 1.875rem 6.875rem;
 }
 
 .fundraiser-details__inner p {
@@ -941,4 +941,23 @@ h1,h2 {
     padding-top: .75rem;
     padding-bottom: .75rem
   }
+}
+
+.spotify-player {
+  bottom: 10px;
+  height: 80px;
+  position: fixed;
+  right: 10px;
+  width: calc(70% - 10px);
+  z-index: 30;
+}
+
+.spotify-player iframe,
+.spotify-player embed,
+.spotify-player object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
