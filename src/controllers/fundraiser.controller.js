@@ -13,7 +13,7 @@ function fundraiserController($scope, $state, $sce, $window, fundraiser, playlis
     vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
     vm.gender = vm.person === 'ben' ? 'he' : 'she';
     vm.description = $sce.trustAsHtml(fundraiser.description);
-
+    console.log(vm.fundraiser)
     $scope.overlayVisible = false;
 
     mediaQuery.addListener(mediaQueryEventHandler);
