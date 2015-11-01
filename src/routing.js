@@ -199,6 +199,17 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
         isOwner: true
       }
     })
+    .state('fundraisers.one.map', {
+      url: '/map',
+      views: {
+        'fundraiser@fundraisers.one': {
+          templateUrl: '/src/views/fundraisers.map.html'
+        }
+      },
+      data: {
+        hideOverviewPanel: true
+      }
+    })
     .state('auth', {
       url: '/auth/spotify',
       templateUrl: '/src/views/auth.spotify.html'
