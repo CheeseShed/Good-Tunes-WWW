@@ -10,7 +10,7 @@
     "rules": {
         "indent": [
             "error",
-            4
+            2
         ],
         "linebreak-style": [
             "error",
@@ -23,6 +23,22 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "block-scoped-var": [
+            "error"
+        ],
+        "curly": [
+            "error",
+            "all"
+        ],
+        "eqeqeq": 2,
+        "guard-for-in": 2,
+        "no-alert": 2,
+        "no-empty-function": 2,
+        "no-proto": 2,
+        "no-redeclare": 2,
+        "radix": 2,
+        "vars-on-top": 2,
+        "space-before-function-paren": ["error", "never"]
     }
 }
