@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
-homeController.$inject = ['fundraisers'];
+homeController.$inject = ['fundraisers']
 
-function homeController(fundraisers) {
-  var vm = this;
+function homeController (fundraisers) {
+  var vm = this
 
   var setup = function () {
-    vm.fundraisers = fundraisers;
+    vm.fundraisers = fundraisers
     console.log(fundraisers)
-  };
+  }
 
-  setup();
+  setup()
 }
 
-module.exports = homeController;
+module.exports = homeController

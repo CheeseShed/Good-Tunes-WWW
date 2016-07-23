@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-routing.$inject = ['$locationProvider', '$urlRouterProvider', '$stateProvider', '$httpProvider'];
+routing.$inject = ['$locationProvider', '$urlRouterProvider', '$stateProvider', '$httpProvider']
 
-function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpProvider) {
-  $locationProvider.html5Mode(true);
+function routing ($locationProvider, $urlRouterProvider, $stateProvider, $httpProvider) {
+  $locationProvider.html5Mode(true)
 
   $stateProvider
     .state('home', {
@@ -13,7 +13,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       templateUrl: '/src/views/base.html',
       resolve: {
         fundraisers: ['fundraiserService', function (fundraiserService) {
-          return fundraiserService.readAll();
+          return fundraiserService.readAll()
         }]
       },
       data: {
@@ -64,7 +64,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       controllerAs: 'fundraiser',
       resolve: {
         fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser, populate: 'user'});
+          return fundraiserService.readOne({id: $stateParams.fundraiser, populate: 'user'})
         }]
       },
       data: {
@@ -87,7 +87,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
           controllerAs: 'fundraiser',
           resolve: {
             fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-              return fundraiserService.readOne({id: $stateParams.fundraiser});
+              return fundraiserService.readOne({id: $stateParams.fundraiser})
             }]
           }
         }
@@ -117,10 +117,10 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
           controllerAs: 'playlist',
           resolve: {
             fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-              return fundraiserService.readOne({id: $stateParams.fundraiser});
+              return fundraiserService.readOne({id: $stateParams.fundraiser})
             }],
             playlist: ['$stateParams', 'playlistService', function ($stateParams, playlistService) {
-              return playlistService.readOne({id: $stateParams.playlist});
+              return playlistService.readOne({id: $stateParams.playlist})
             }]
           }
         }
@@ -140,7 +140,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       },
       resolve: {
         fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser});
+          return fundraiserService.readOne({id: $stateParams.fundraiser})
         }]
       },
       data: {
@@ -159,7 +159,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       },
       resolve: {
         fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser});
+          return fundraiserService.readOne({id: $stateParams.fundraiser})
         }]
       },
       data: {
@@ -178,7 +178,7 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       },
       resolve: {
         fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser});
+          return fundraiserService.readOne({id: $stateParams.fundraiser})
         }]
       },
       data: {
@@ -217,11 +217,11 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
     .state('notFound', {
       url: '/404',
       templateUrl: '/src/views/404.html'
-    });
+    })
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/')
 
-  $httpProvider.interceptors.push('httpInterceptors');
+  $httpProvider.interceptors.push('httpInterceptors')
 }
 
-module.exports = routing;
+module.exports = routing

@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-function playlistsDirective() {
+function playlistsDirective () {
   return {
     templateUrl: '/src/components/playlists/playlists.template.html',
     restrict: 'E',
     scope: {
       items: '='
     }
-  };
+  }
 }
 
-module.exports = playlistsDirective;
+module.exports = playlistsDirective

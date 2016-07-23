@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-fundraisersController.$inject = ['fundraisers'];
+fundraisersController.$inject = ['fundraisers']
 
-function fundraisersController(fundraisers) {
-  this.fundraisers = fundraisers;
+function fundraisersController (fundraisers) {
+  this.fundraisers = fundraisers
 }
 
-module.exports = fundraisersController;
+module.exports = fundraisersController

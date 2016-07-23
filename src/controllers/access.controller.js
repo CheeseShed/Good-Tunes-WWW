@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 accessController.$inject = [
   '$state',
@@ -7,42 +7,42 @@ accessController.$inject = [
   'AccessService',
   'StorageService',
   'facebookService'
-];
+]
 
-function accessController($state, $stateParams, AccessService, StorageService, facebookService) {
-  var vm = this;
+function accessController ($state, $stateParams, AccessService, StorageService, facebookService) {
+  var vm = this
 
-  vm.login = login;
-  vm.facebookLogin = facebookLogin;
+  vm.login = login
+  vm.facebookLogin = facebookLogin
 
-  function navigateToState(user) {
-    $state.go($state.params.toState, $state.params.toParams);
+  function navigateToState (user) {
+    $state.go($state.params.toState, $state.params.toParams)
   }
 
-  function storeUserDetails(user) {
-    StorageService.setItem('access_level', user.access_level);
-    StorageService.setItem('access_token', user.access_token);
-    StorageService.setItem('user_id', user.id);
+  function storeUserDetails (user) {
+    StorageService.setItem('access_level', user.access_level)
+    StorageService.setItem('access_token', user.access_token)
+    StorageService.setItem('user_id', user.id)
   }
 
-  function login(credentials) {
+  function login (credentials) {
     AccessService.login(credentials)
       .then(function (user) {
-        console.log(user);
-        storeUserDetails(user);
-        return user;
+        console.log(user)
+        storeUserDetails(user)
+        return user
       })
       .then(navigateToState)
       .catch(function (err) {
-        console.log(err);
+        console.log(err)
         // $error(err);
-      });
+      })
   }
 
-  function facebookLogin() {
+  function facebookLogin () {
     facebookService.login()
       .then(function (response) {
-        StorageService.setItem('facebook', angular.toJson(response));
+        StorageService.setItem('facebook', angular.toJson(response))
       })
       .then(facebookService.getInfo)
       .then(function (response) {
@@ -55,19 +55,19 @@ function accessController($state, $stateParams, AccessService, StorageService, f
           link: response.link,
           picture: response.picture.data.url,
           verified: response.verified
-        };
+        }
 
-        return AccessService.facebookLogin(payload);
+        return AccessService.facebookLogin(payload)
       })
       .then(function (user) {
-        storeUserDetails(user);
+        storeUserDetails(user)
       })
       .then(navigateToState)
       .catch(function (err) {
         console.log(err)
         // $error(err);
-      });
+      })
   }
 }
 
-module.exports = accessController;
+module.exports = accessController

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   API_URL: 'http://localhost:3010/v1',
@@ -12,4 +12,4 @@ module.exports = {
   SPOTIFY_CLIENT_ID: '749c68a0f00345d5ae89330ae9e384a2',
   SPOTIFY_REDIRECT_URI: 'http://localhost:3010/auth/spotify',
   SPOTIFY_SCOPES: 'playlist-modify-public'
-};
+}
