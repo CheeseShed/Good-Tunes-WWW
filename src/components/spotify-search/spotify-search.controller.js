@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 spotifySearchController.$inject = ['$scope', '$location', 'spotifyService'];
 
@@ -14,7 +14,7 @@ function spotifySearchController($scope, $location, spotifyService) {
         $scope.tracks = tracks;
       })
       .then(function () {
-        $location.search({q: query})
+        $location.search({q: query});
       })
       .catch(function (err) {
         console.err(err);

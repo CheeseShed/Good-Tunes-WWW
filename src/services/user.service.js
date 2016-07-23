@@ -19,7 +19,6 @@ function userService($resource, config) {
   };
 
   service.readOne = function (data) {
-    console.log(data);
     return this.$resource.get(data).$promise;
   };
 

@@ -1,3 +1,5 @@
+/* global FB */
+
 'use strict';
 
 runForestRun.$inject = ['$rootScope', '$window', '$state', 'config', 'facebookService', 'AccessService', 'StorageService'];
@@ -10,13 +12,12 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
 
   var stateChangeStartHandler = function (event, toState, toParams) {
     var roles = [];
+    var spotifyAuthorisation = getHashParams($window.location.hash);
+    var targetStateParams = angular.fromJson(storageService.getItem('spotify_auth_state_params'));
 
     if (toState.name === 'auth') {
-      var spotifyAuthorisation = getHashParams($window.location.hash);
-      var targetStateParams = JSON.parse(storageService.getItem('spotify_auth_state_params'));
-
       storageService.removeItem('spotify_auth_state_params');
-      storageService.setItem('spotify_authorisation', JSON.stringify(spotifyAuthorisation));
+      storageService.setItem('spotify_authorisation', angular.toJson(spotifyAuthorisation));
 
       $state.go('fundraisers.one.spotify', targetStateParams);
 
@@ -36,7 +37,7 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
         $state.go('login', {toState: toState.name, toParams: toParams}, {location: 'replace'});
       }
     }
-  }
+  };
 
   var viewContentLoadingHandler = function () {
     scrollToTop();
@@ -59,11 +60,11 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
   // facebook start
   $window.fbAsyncInit = fbAsyncInit;
 
-  (function(d, s, id){
+  (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
+    if (d.getElementById(id)) { return; }
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
+    js.src = '//connect.facebook.net/en_US/sdk.js';
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 }
@@ -75,9 +76,9 @@ function runForestRun($rootScope, $window, $state, config, facebookService, Acce
 function getHashParams(query) {
   var hashParams = {};
   var e, r = /([^&;=]+)=?([^&;]*)/g,
-      q = query.substring(1);
-  while ( e = r.exec(q)) {
-     hashParams[e[1]] = decodeURIComponent(e[2]);
+    q = query.substring(1);
+  while (e = r.exec(q)) {
+    hashParams[e[1]] = decodeURIComponent(e[2]);
   }
   return hashParams;
 }

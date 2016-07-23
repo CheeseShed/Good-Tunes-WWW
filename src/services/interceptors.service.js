@@ -35,7 +35,7 @@ function httpInterceptors($q, $injector, $window, config) {
 
       return $q.reject(response);
     }
-  }
+  };
 }
 
 module.exports = httpInterceptors;

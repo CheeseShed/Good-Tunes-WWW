@@ -1,6 +1,6 @@
 'use strict';
 
-donationService.$inject = ['$resource', 'config']
+donationService.$inject = ['$resource', 'config'];
 
 function donationService($resource, config) {
   var API_PATH = config.API_URL + '/donations/:id';

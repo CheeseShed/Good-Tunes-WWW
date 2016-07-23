@@ -38,7 +38,7 @@ function spotifyService($http, $q, config) {
         .catch(function (err) {
           reject(err);
         });
-      });
+    });
   };
 
   return service;

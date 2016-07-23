@@ -1,13 +1,23 @@
 'use strict';
 
-donateController.$inject = ['fundraiser', '$q', '$scope', '$state', '$stateParams', 'StorageService', 'TrackService', 'donationService'];
+donateController.$inject = [
+  'fundraiser',
+  '$q',
+  '$scope',
+  '$state',
+  '$stateParams',
+  '$error',
+  'StorageService',
+  'TrackService',
+  'donationService'
+];
 
-function donateController(fundraiser, $q, $scope, $state, $stateParams, storageService, trackService, donationService) {
+function donateController(fundraiser, $q, $scope, $state, $stateParams, $error, storageService, trackService, donationService) {
   var vm = this;
 
   function setup() {
     vm.fundraiser = fundraiser;
-    vm.trackToDonate = JSON.parse(storageService.getItem('trackToDonate'));
+    vm.trackToDonate = angular.fromJson(storageService.getItem('trackToDonate'));
     vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
     vm.gender = vm.person === 'ben' ? 'he' : 'she';
 
@@ -34,28 +44,26 @@ function donateController(fundraiser, $q, $scope, $state, $stateParams, storageS
       .create(track)
       .then(function (response) {
         storageService.removeItem('trackToDonate');
-        storageService.setItem('donatedTrack', JSON.stringify(response));
-        console.log('track donated');
-        console.log(response);
+        storageService.setItem('donatedTrack', angular.toJson(response));
       })
       .catch(function (err) {
-        console.error(err);
+        $error(err);
       });
   }
 
   function donationCompleteHandler(event, donation) {
-    var donatedTrack = JSON.parse(storageService.getItem('donatedTrack'));
+    var donatedTrack = angular.fromJson(storageService.getItem('donatedTrack'));
 
     donationService.create({
-        track: donatedTrack.id,
-        fundraiser: vm.fundraiser.id,
-        amount: donation.amount
-      })
+      track: donatedTrack.id,
+      fundraiser: vm.fundraiser.id,
+      amount: donation.amount
+    })
       .then(function () {
         navigateToState('fundraisers.one.thankyou');
       })
       .catch(function (err) {
-        console.error(err);
+        $error(err);
       });
   }
 

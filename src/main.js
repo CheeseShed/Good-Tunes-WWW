@@ -45,7 +45,7 @@ angular.module('goodtunes')
   .run(require('./run'));
 
 angular.element(document).ready(function () {
-  angular.bootstrap(document.querySelector('[data-good-tunes]'),[
+  angular.bootstrap(document.querySelector('[data-good-tunes]'), [
     'goodtunes'
   ], {
     strictDi: true

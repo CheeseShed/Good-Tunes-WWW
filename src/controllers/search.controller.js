@@ -33,7 +33,7 @@ function donateController(fundraiser, $state, $scope, TrackService, AccessServic
     //   FB.getLoginStatus(function (response) {
     //     console.log('response');
         // if (response.status === 'connected') {
-          //broadcastDonate(track);
+          // broadcastDonate(track);
         // } else if (response.status === 'not_authorized') {
           // FB.login();
         // } else {

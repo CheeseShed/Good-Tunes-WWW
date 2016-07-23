@@ -13,7 +13,6 @@ function fundraiserController($scope, $state, $sce, $window, fundraiser, playlis
     vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
     vm.gender = vm.person === 'ben' ? 'he' : 'she';
     vm.description = $sce.trustAsHtml(fundraiser.description);
-    console.log(vm.fundraiser)
     $scope.overlayVisible = false;
 
     mediaQuery.addListener(mediaQueryEventHandler);
@@ -37,11 +36,11 @@ function fundraiserController($scope, $state, $sce, $window, fundraiser, playlis
     return $state.current.data.hideOverviewPanel && isSmallView();
   };
 
-  $scope.toggleOverlay = function() {
+  $scope.toggleOverlay = function () {
     $scope.overlayVisible = !$scope.overlayVisible;
   };
 
-  $scope.toggleSearchOverlay = function() {
+  $scope.toggleSearchOverlay = function () {
     $scope.searchOverlayVisible = !$scope.searchOverlayVisible;
   };
 

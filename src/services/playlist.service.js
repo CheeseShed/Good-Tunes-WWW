@@ -4,7 +4,7 @@ playlistService.$inject = ['$resource', 'config'];
 
 function playlistService($resource, config) {
 
-  var PATH = config.API_URL + '/playlists/:id'
+  var PATH = config.API_URL + '/playlists/:id';
   var service = {};
 
   service.$resource = $resource(PATH, {id: '@id'}, {
@@ -20,15 +20,15 @@ function playlistService($resource, config) {
     }
   });
 
-  service.create = function(data) {
+  service.create = function (data) {
     return service.$resource.create(data).$promise;
   };
 
-  service.readAll = function(data) {
+  service.readAll = function (data) {
     return service.$resource.readAll(data).$promise;
   };
 
-  service.readOne = function(data) {
+  service.readOne = function (data) {
     return service.$resource.get(data).$promise;
   };
 

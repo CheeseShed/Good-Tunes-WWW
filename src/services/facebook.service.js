@@ -1,3 +1,5 @@
+/* global FB */
+
 'use strict';
 
 facebookService.$inject = ['$q'];
@@ -7,7 +9,7 @@ function facebookService($q) {
 
   service.watchAuthenticationStatusChange = function () {
     FB.Event.subscribe('auth.statusChange', function (response) {
-      console.log('statusChange', response);
+      // console.log('statusChange', response);
     });
   };
 
@@ -41,15 +43,15 @@ function facebookService($q) {
     var defer = $q.defer();
 
     FB.getLoginStatus(function (response) {
-        if (response.status === 'connected') {
+      if (response.status === 'connected') {
+        defer.resolve(response.authResponse);
+      } else if (response.status === 'not_authorized' || response.status === 'unknown') {
+        FB.login(function (response) {
           defer.resolve(response.authResponse);
-        } else if (response.status === 'not_authorized' || response.status === 'unknown') {
-          FB.login(function (response) {
-            defer.resolve(response.authResponse);
-          }, {scope: 'public_profile,email'});
-        } else {
-          defer.reject();
-        }
+        }, {scope: 'public_profile,email'});
+      } else {
+        defer.reject();
+      }
     });
 
     return defer.promise;

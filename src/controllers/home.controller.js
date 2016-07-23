@@ -7,6 +7,7 @@ function homeController(fundraisers) {
 
   var setup = function () {
     vm.fundraisers = fundraisers;
+    console.log(fundraisers)
   };
 
   setup();

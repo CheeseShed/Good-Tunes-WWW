@@ -16,7 +16,6 @@ function fundraiserTotalDirective(config) {
       date: '='
     },
     link: function (scope) {
-
       var toNumber = function (value) {
         return parseInt(value, 10);
       };

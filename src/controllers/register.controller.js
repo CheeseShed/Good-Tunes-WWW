@@ -14,9 +14,9 @@ function register($state, userService, storageService) {
   vm.submit = function (user) {
     userService.register(user)
       .then(function setAccessToken(profile) {
-        storageService.setAccessToken(profile.token)
+        storageService.setAccessToken(profile.token);
       })
-      .then(function navigateToPlaylists () {
+      .then(function navigateToPlaylists() {
         $state.go('home');
       })
       .catch(function (err) {

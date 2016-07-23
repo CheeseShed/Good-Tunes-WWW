@@ -2,11 +2,9 @@
   "name": "Good-Tunes-WWW",
   "version": "0.0.0",
   "description": "The public site for Good Tunes",
-  "main": "index.js",
   "scripts": {
-    "test:lint": "./node_modules/.bin/eslint --config .eslintrc.json ./src/**/*.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "jspm install"
+    "deploy:js": "./node_modules/.bin/jspm bundle-sfx ./src/main ./bundle.js --minify --skip-source-maps",
+    "lint": "./node_modules/.bin/eslint --config .eslintrc.json ./src/**/*.js"
   },
   "repository": {
     "type": "git",

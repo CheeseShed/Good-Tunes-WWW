@@ -219,9 +219,9 @@ function routing($locationProvider, $urlRouterProvider, $stateProvider, $httpPro
       templateUrl: '/src/views/404.html'
     });
 
-    $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/');
 
-    $httpProvider.interceptors.push('httpInterceptors');
+  $httpProvider.interceptors.push('httpInterceptors');
 }
 
 module.exports = routing;
