@@ -1,15 +1,15 @@
-'use strict';
+'use strict'
 
-function addSpotifyPlayerWidget(runnerId) {
-  var widget = document.createElement('iframe');
-  widget.src = 'http://liveresults.nyrr.org/e/NY2015#/tracker/' + runnerId;
-  widget.id = 'map';
-  widget.setAttribute('frameborder', '0');
-  widget.setAttribute('allowtransparency', true);
-  document.querySelector('.map').appendChild(widget);
+function addSpotifyPlayerWidget (runnerId) {
+  var widget = document.createElement('iframe')
+  widget.src = 'http://liveresults.nyrr.org/e/NY2015#/tracker/' + runnerId
+  widget.id = 'map'
+  widget.setAttribute('frameborder', '0')
+  widget.setAttribute('allowtransparency', true)
+  document.querySelector('.map').appendChild(widget)
 }
 
-function mapDirective() {
+function mapDirective () {
   return {
     restrict: 'E',
     templateUrl: '/src/components/map/map.template.html',
@@ -18,10 +18,10 @@ function mapDirective() {
     },
     link: function (scope) {
       if (!document.querySelector('#map')) {
-        addSpotifyPlayerWidget(scope.runnerId);
+        addSpotifyPlayerWidget(scope.runnerId)
       }
     }
-  };
+  }
 }
 
-module.exports = mapDirective;
+module.exports = mapDirective

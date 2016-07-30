@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var moment = require('moment');
+var moment = require('moment')
 
-fundraiserTotalDirective.$inject = ['config'];
+fundraiserTotalDirective.$inject = ['config']
 
-function fundraiserTotalDirective(config) {
+function fundraiserTotalDirective (config) {
   return {
     templateUrl: '/src/components/fundraiser-total/fundraiser-total.template.html',
     restrict: 'E',
@@ -16,21 +16,20 @@ function fundraiserTotalDirective(config) {
       date: '='
     },
     link: function (scope) {
-
       var toNumber = function (value) {
-        return parseInt(value, 10);
-      };
+        return parseInt(value, 10)
+      }
 
       var calculateAmountRaised = function (raisedAmount, targetAmount) {
-        return (toNumber(raisedAmount || 0) / toNumber(targetAmount || 0)) * 100;
-      };
+        return (toNumber(raisedAmount || 0) / toNumber(targetAmount || 0)) * 100
+      }
 
-      scope.targetDate = moment(scope.date).fromNow(true);
-      scope.percentageRaised = calculateAmountRaised(scope.raised, scope.target);
+      scope.targetDate = moment(scope.date).fromNow(true)
+      scope.percentageRaised = calculateAmountRaised(scope.raised, scope.target)
 
-      scope.symbol = config.CURRENCIES[scope.symbol];
+      scope.symbol = config.CURRENCIES[scope.symbol]
     }
-  };
+  }
 }
 
-module.exports = fundraiserTotalDirective;
+module.exports = fundraiserTotalDirective

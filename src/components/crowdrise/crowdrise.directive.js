@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-crowdriseDirective.$inject = ['config', '$window'];
+crowdriseDirective.$inject = ['config', '$window']
 
-function crowdriseDirective(config, $window) {
+function crowdriseDirective (config, $window) {
   return {
     restrict: 'E',
     templateUrl: '/src/components/crowdrise/crowdrise.template.html',
@@ -10,41 +10,41 @@ function crowdriseDirective(config, $window) {
       account: '='
     },
     link: function (scope, elem) {
-      var crowdriseWidgetId = 'crowdrise' + scope.account;
-      var hasDonated = false;
+      var crowdriseWidgetId = 'crowdrise' + scope.account
+      var hasDonated = false
 
       var addCrowdriseWidget = function () {
-        var crowdriseScript;
+        var crowdriseScript
 
         if (document.querySelector('#' + crowdriseWidgetId)) {
-          return;
+          return
         }
 
-        crowdriseScript = document.createElement('script');
-        crowdriseScript.id = crowdriseWidgetId;
-        crowdriseScript.src = config.CROWDRISE_URL + scope.account + '/?callback=crowdriseCallback';
-        crowdriseScript.async = true;
-        document.querySelector('.crowdrise-widget').appendChild(crowdriseScript);
+        crowdriseScript = document.createElement('script')
+        crowdriseScript.id = crowdriseWidgetId
+        crowdriseScript.src = config.CROWDRISE_URL + scope.account + '/?callback=crowdriseCallback'
+        crowdriseScript.async = true
+        document.querySelector('.crowdrise-widget').appendChild(crowdriseScript)
 
-        addCrowdriseCallback();
-        donateTrack();
-      };
+        addCrowdriseCallback()
+        donateTrack()
+      }
 
-      function addCrowdriseCallback() {
+      function addCrowdriseCallback () {
         $window.crowdriseCallback = function (response) {
           if (!hasDonated) {
-            scope.$emit('donate:complete', response);
+            scope.$emit('donate:complete', response)
           }
-        };
+        }
       }
 
-      function donateTrack() {
-        scope.$emit('donate:addtrack');
+      function donateTrack () {
+        scope.$emit('donate:addtrack')
       }
 
-      addCrowdriseWidget();
+      addCrowdriseWidget()
     }
-  };
+  }
 }
 
-module.exports = crowdriseDirective;
+module.exports = crowdriseDirective
