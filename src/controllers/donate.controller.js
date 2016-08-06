@@ -29,7 +29,7 @@ function donateController (fundraiser, $q, $scope, $state, $stateParams, $error,
     $scope.$on('donate:complete', donationCompleteHandler)
   }
 
-  function donationAddTrackHandler (event, track) {
+  function donationAddTrackHandler (event) {
     // Todo: Move crowdrise specific code to it's own controller for future provider expansion
     var track = {
       playlist: vm.fundraiser.playlist,

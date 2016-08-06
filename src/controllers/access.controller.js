@@ -1,15 +1,22 @@
 'use strict'
 
 accessController.$inject = [
+  '$log',
   '$state',
   '$stateParams',
-  // '$error',
   'AccessService',
   'StorageService',
   'facebookService'
 ]
 
-function accessController ($state, $stateParams, AccessService, StorageService, facebookService) {
+function accessController (
+  $log,
+  $state,
+  $stateParams,
+  AccessService,
+  StorageService,
+  facebookService
+) {
   var vm = this
 
   vm.login = login
@@ -28,14 +35,12 @@ function accessController ($state, $stateParams, AccessService, StorageService, 
   function login (credentials) {
     AccessService.login(credentials)
       .then(function (user) {
-        console.log(user)
         storeUserDetails(user)
         return user
       })
       .then(navigateToState)
       .catch(function (err) {
-        console.log(err)
-        // $error(err);
+        $log(err)
       })
   }
 
@@ -64,8 +69,7 @@ function accessController ($state, $stateParams, AccessService, StorageService, 
       })
       .then(navigateToState)
       .catch(function (err) {
-        console.log(err)
-        // $error(err);
+        $log(err)
       })
   }
 }

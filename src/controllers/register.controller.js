@@ -1,14 +1,24 @@
+/*global FB */
+
 'use strict'
 
-register.$inject = ['$state', 'UserService', 'StorageService']
+register.$inject = [
+  '$log',
+  '$state',
+  'UserService',
+  'StorageService'
+]
 
-function register ($state, userService, storageService) {
+function register (
+  $log,
+  $state,
+  userService,
+  storageService
+) {
   var vm = this
 
   vm.facebookLogin = function () {
-    FB.login(function (response) {
-      console.log(response)
-    }, {scope: 'public_profile,email'})
+    FB.login({scope: 'public_profile,email'})
   }
 
   vm.submit = function (user) {
@@ -20,7 +30,7 @@ function register ($state, userService, storageService) {
         $state.go('home')
       })
       .catch(function (err) {
-        console.error(err)
+        $log(err)
       })
   }
 }

@@ -1,10 +1,22 @@
 'use strict'
 
-var omit = require('lodash/object/omit')
+donateController.$inject = [
+  'fundraiser',
+  '$state',
+  '$scope',
+  'TrackService',
+  'AccessService',
+  'StorageService'
+]
 
-donateController.$inject = ['fundraiser', '$state', '$scope', 'TrackService', 'AccessService', 'StorageService']
-
-function donateController (fundraiser, $state, $scope, TrackService, AccessService, storageService) {
+function donateController (
+  fundraiser,
+  $state,
+  $scope,
+  TrackService,
+  AccessService,
+  storageService
+) {
   var vm = this
 
   vm.fundraiser = fundraiser
@@ -15,61 +27,18 @@ function donateController (fundraiser, $state, $scope, TrackService, AccessServi
 
   $scope.tracks = []
 
-  function broadcastDonate (track) {
-    vm.hasTrackToDonate = true
-    $scope.$broadcast('donate:open', track)
-  }
-
   function donateTrack (track) {
-
-    sessionStorage.setItem('trackToDonate', JSON.stringify(track))
+    sessionStorage.setItem('trackToDonate', angular.toJson(track))
 
     $state.go('fundraisers.one.donate', {
       fundraiser: fundraiser.id,
       playlist: fundraiser.playlist
     })
-
-    // if (!AccessService.isAuthenticated()) {
-    //   FB.getLoginStatus(function (response) {
-    //     console.log('response');
-        // if (response.status === 'connected') {
-          // broadcastDonate(track);
-        // } else if (response.status === 'not_authorized') {
-          // FB.login();
-        // } else {
-        //   console.log('facebook not sure of status');
-        // }
-      // });
-    // }
-
-
-
-    // track = omit(track, '$$hashKey');
-//    track.playlist = playlistId;
-
-    // TrackService
-    //   .create(track)
-    //   .then(function (data) {
-    //     console.log(data);
-    //   })
-    //   .catch(function (err) {
-    //     console.error(err);
-    //   });
-  }
-
-  function donationCompleteHandler (event, donation) {
-    console.log('DONATION FROM CROWDRISE')
-    console.log(donation)
   }
 
   function setup () {
     vm.donateTrack = donateTrack
-
-    $scope.$on('donate:complete', donationCompleteHandler)
-
-    // if (searchResults) {
-    //   $scope.tracks = searchResults;
-    // }
+    // $scope.$on('donate:complete', donationCompleteHandler)
   }
 
   setup()

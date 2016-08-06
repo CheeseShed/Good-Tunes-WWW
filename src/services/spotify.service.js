@@ -5,7 +5,6 @@ var pick = require('lodash/object/pick')
 spotifyService.$inject = ['$http', '$q', 'config']
 
 function spotifyService ($http, $q, config) {
-
   var SPOTIFY_API_URL = config.SPOTIFY_API_URL
   var service = {}
 
