@@ -1,39 +1,39 @@
-'use strict';
+'use strict'
 
-var omit = require('lodash/object/omit');
+var omit = require('lodash/object/omit')
 
-donateController.$inject = ['fundraiser', '$state', '$scope', 'TrackService', 'AccessService', 'StorageService'];
+donateController.$inject = ['fundraiser', '$state', '$scope', 'TrackService', 'AccessService', 'StorageService']
 
-function donateController(fundraiser, $state, $scope, TrackService, AccessService, storageService) {
-  var vm = this;
+function donateController (fundraiser, $state, $scope, TrackService, AccessService, storageService) {
+  var vm = this
 
-  vm.fundraiser = fundraiser;
-  vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade';
-  vm.gender = vm.person === 'ben' ? 'he' : 'she';
-  vm.trackToDonate = null;
-  vm.hasTrackToDonate = false;
+  vm.fundraiser = fundraiser
+  vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade'
+  vm.gender = vm.person === 'ben' ? 'he' : 'she'
+  vm.trackToDonate = null
+  vm.hasTrackToDonate = false
 
-  $scope.tracks = [];
+  $scope.tracks = []
 
-  function broadcastDonate(track) {
-    vm.hasTrackToDonate = true;
-    $scope.$broadcast('donate:open', track);
+  function broadcastDonate (track) {
+    vm.hasTrackToDonate = true
+    $scope.$broadcast('donate:open', track)
   }
 
-  function donateTrack(track) {
+  function donateTrack (track) {
 
-    sessionStorage.setItem('trackToDonate', JSON.stringify(track));
+    sessionStorage.setItem('trackToDonate', JSON.stringify(track))
 
     $state.go('fundraisers.one.donate', {
       fundraiser: fundraiser.id,
       playlist: fundraiser.playlist
-    });
+    })
 
     // if (!AccessService.isAuthenticated()) {
     //   FB.getLoginStatus(function (response) {
     //     console.log('response');
         // if (response.status === 'connected') {
-          //broadcastDonate(track);
+          // broadcastDonate(track);
         // } else if (response.status === 'not_authorized') {
           // FB.login();
         // } else {
@@ -57,22 +57,22 @@ function donateController(fundraiser, $state, $scope, TrackService, AccessServic
     //   });
   }
 
-  function donationCompleteHandler(event, donation) {
-    console.log('DONATION FROM CROWDRISE');
-    console.log(donation);
+  function donationCompleteHandler (event, donation) {
+    console.log('DONATION FROM CROWDRISE')
+    console.log(donation)
   }
 
-  function setup() {
-    vm.donateTrack = donateTrack;
+  function setup () {
+    vm.donateTrack = donateTrack
 
-    $scope.$on('donate:complete', donationCompleteHandler);
+    $scope.$on('donate:complete', donationCompleteHandler)
 
     // if (searchResults) {
     //   $scope.tracks = searchResults;
     // }
   }
 
-  setup();
+  setup()
 }
 
-module.exports = donateController;
+module.exports = donateController

@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-trackService.$inject = ['$resource', 'config'];
+trackService.$inject = ['$resource', 'config']
 
-function trackService($resource, config) {
-  var API_PATH = config.API_URL + '/tracks/:id';
+function trackService ($resource, config) {
+  var API_PATH = config.API_URL + '/tracks/:id'
 
-  var service = {};
+  var service = {}
 
   service.$resource = $resource(API_PATH, {id: '@id'}, {
     create: {
@@ -17,17 +17,17 @@ function trackService($resource, config) {
       url: config.API_URL + '/tracks',
       isArray: true
     }
-  });
+  })
 
   service.readAll = function (data) {
-    return service.$resource.readAll(data).$promise;
-  };
+    return service.$resource.readAll(data).$promise
+  }
 
   service.create = function (data) {
-    return service.$resource.create(data).$promise;
-  };
+    return service.$resource.create(data).$promise
+  }
 
-  return service;
+  return service
 }
 
-module.exports = trackService;
+module.exports = trackService

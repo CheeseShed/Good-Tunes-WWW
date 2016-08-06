@@ -1,37 +1,37 @@
-'use strict';
+'use strict'
 
-thankyouController.$inject = ['$window', '$scope', '$state', '$stateParams', 'StorageService'];
+thankyouController.$inject = ['$window', '$scope', '$state', '$stateParams', 'StorageService']
 
-function thankyouController($window, $scope, $state, $stateParams, storageService) {
-  var vm = this;
+function thankyouController ($window, $scope, $state, $stateParams, storageService) {
+  var vm = this
 
   var setup = function () {
-    vm.donatedTrack = JSON.parse(storageService.getItem('donatedTrack'));
-    vm.sharingUrl = 'http://www.goodtunes.com/fundraisers/' + $stateParams.fundraiser;
+    vm.donatedTrack = JSON.parse(storageService.getItem('donatedTrack'))
+    vm.sharingUrl = 'http://www.goodtunes.com/fundraisers/' + $stateParams.fundraiser
 
     if (!vm.donatedTrack) {
-      navigateToAddState();
+      navigateToAddState()
     } else {
-      clearTrackToDonate();
-      enableSharingPlugins();
+      clearTrackToDonate()
+      enableSharingPlugins()
     }
-  };
-
-  function clearTrackToDonate() {
-    storageService.removeItem('donatedTrack');
   }
 
-  function enableSharingPlugins() {
-    $window.FB.XFBML.parse(document.querySelector('.fundraiser-details'));
+  function clearTrackToDonate () {
+    storageService.removeItem('donatedTrack')
   }
 
-  function navigateToAddState() {
+  function enableSharingPlugins () {
+    $window.FB.XFBML.parse(document.querySelector('.fundraiser-details'))
+  }
+
+  function navigateToAddState () {
     $state.go('fundraisers.one', {
       fundraiser: $stateParams.fundraiser
-    });
+    })
   }
 
-  setup();
+  setup()
 }
 
-module.exports = thankyouController;
+module.exports = thankyouController
