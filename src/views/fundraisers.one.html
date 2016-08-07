@@ -14,12 +14,10 @@
        </div>
     </div>
 
-    <div class="fundraiser__summary">
-      <p>Use music and your wallet to support {{::fundraiser.fundraiser.user.name}} as {{::fundraiser.gender}} raises money for {{::fundraiser.fundraiser.charity}}</p>
-      <p><a class="fundraiser__wtf" ui-sref="fundraisers.one.why({fundraiser: fundraiser.fundraiser.id})">Why am I doing this?</a></p>
-    </div>
-
-    <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> + <b>$</b> now</a>
+    <donate-music-dollar
+      fundraiser="fundraiser.fundraiser.id"
+      playlist="fundraiser.fundraiser.playlist">
+    </donate-music-dollar>
 
     <fundraiser-total
       name="fundraiser.fundraiser.user.name"
@@ -30,8 +28,6 @@
     </fundraiser-total>
 
     <a class="button-primary mix-button" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
-
-    <!-- <p>The Good Tunes Project<br /><a href="mailto:team@goodtunes.org">team@goodtunes.org</a></p> -->
 
   </section>
 
