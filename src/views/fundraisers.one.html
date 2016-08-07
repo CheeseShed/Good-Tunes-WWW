@@ -2,11 +2,13 @@
 
   <section class="fundraiser-overview" ng-hide="fundraiser.hideOverviewPanel()">
 
-    <header class="fundraiser-header">
-      <div class="primary-heading-wrapper">
-        <h1 class="primary-heading">{{::fundraiser.fundraiser.title}}</h1>
-      </div>
-    </header>
+    <fundraiser-summary
+      title="fundraiser.fundraiser.title"
+      charity="fundraiser.fundraiser.charity"
+      name="fundraiser.fundraiser.name"
+      gender="fundraiser.fundraiser.gender"
+      id="fundraiser.fundraiser.id">
+    </fundraiser-summary>
 
     <div class="fundraiser-pictures">
       <div class="fundraiser-picture">
