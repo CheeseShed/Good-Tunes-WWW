@@ -1,8 +1,18 @@
 'use strict'
 
-routing.$inject = ['$locationProvider', '$urlRouterProvider', '$stateProvider', '$httpProvider']
+routing.$inject = [
+  '$locationProvider',
+  '$urlRouterProvider',
+  '$stateProvider',
+  '$httpProvider'
+]
 
-function routing ($locationProvider, $urlRouterProvider, $stateProvider, $httpProvider) {
+function routing (
+  $locationProvider,
+  $urlRouterProvider,
+  $stateProvider,
+  $httpProvider
+) {
   $locationProvider.html5Mode(true)
 
   $stateProvider
