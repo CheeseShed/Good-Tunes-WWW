@@ -119,18 +119,15 @@ function routing (
       }
     })
     .state('fundraisers.one.playlist', {
-      url: '/playlists/:playlist',
+      url: '/playlist',
       views: {
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.one.playlist.html',
           controller: require('./controllers/fundraiser-playlist.controller'),
           controllerAs: 'playlist',
           resolve: {
-            fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-              return fundraiserService.readOne({id: $stateParams.fundraiser})
-            }],
-            playlist: ['$stateParams', 'playlistService', function ($stateParams, playlistService) {
-              return playlistService.readOne({id: $stateParams.playlist})
+            playlist: ['fundraiser', '$stateParams', 'playlistService', function (fundraiser, $stateParams, playlistService) {
+              return playlistService.readOne({id: fundraiser.playlist})
             }]
           }
         }
