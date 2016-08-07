@@ -137,7 +137,7 @@ function routing (
       }
     })
     .state('fundraisers.one.add', {
-      url: '/playlists/:playlist/add?q',
+      url: '/playlist/add?q',
       views: {
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.add.html',
@@ -145,29 +145,19 @@ function routing (
           controllerAs: 'search'
         }
       },
-      resolve: {
-        fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser})
-        }]
-      },
       data: {
         hideOverviewPanel: true
       },
       reloadOnSearch: false
     })
     .state('fundraisers.one.donate', {
-      url: '/playlists/:playlist/donate?provider',
+      url: '/playlist/donate?provider',
       views: {
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.donate.html',
           controller: require('./controllers/donate.controller'),
           controllerAs: 'donate'
         }
-      },
-      resolve: {
-        fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser})
-        }]
       },
       data: {
         roles: [20],
