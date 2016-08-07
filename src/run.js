@@ -2,10 +2,25 @@
 
 'use strict'
 
-runForestRun.$inject = ['$rootScope', '$window', '$state', 'config', 'facebookService', 'AccessService', 'StorageService']
+run.$inject = [
+  '$rootScope',
+  '$window',
+  '$state',
+  'config',
+  'facebookService',
+  'AccessService',
+  'StorageService'
+]
 
-function runForestRun ($rootScope, $window, $state, config, facebookService, AccessService, storageService) {
-
+function run (
+  $rootScope,
+  $window,
+  $state,
+  config,
+  facebookService,
+  AccessService,
+  storageService
+) {
   var scrollToTop = function () {
     $window.scrollTo(0, 0)
   }
@@ -43,30 +58,27 @@ function runForestRun ($rootScope, $window, $state, config, facebookService, Acc
     scrollToTop()
   }
 
+  $rootScope.$on('$stateChangeStart', stateChangeStartHandler);
+  $rootScope.$on('$viewContentLoading', viewContentLoadingHandler);
+
   function fbAsyncInit () {
     FB.init({
       appId: config.FACEBOOK_APP_ID,
-      status: true,
       xfbml: true,
-      version: 'v2.4'
-    })
-
-    facebookService.watchAuthenticationStatusChange()
+      version: 'v2.7'
+    });
+    // facebookService.watchAuthenticationStatusChange()
   }
 
-  $rootScope.$on('$stateChangeStart', stateChangeStartHandler)
-  $rootScope.$on('$viewContentLoading', viewContentLoadingHandler)
-
-  // facebook start
-  $window.fbAsyncInit = fbAsyncInit;
+  window.fbAsyncInit = fbAsyncInit;
 
   (function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0]
-    if (d.getElementById(id)) { return }
-    js = d.createElement(s); js.id = id
-    js.src = '//connect.facebook.net/en_US/sdk.js'
-    fjs.parentNode.insertBefore(js, fjs)
-  }(document, 'script', 'facebook-jssdk'))
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 }
 
 /**
@@ -83,4 +95,4 @@ function getHashParams (query) {
   return hashParams
 }
 
-module.exports = runForestRun
+module.exports = run
