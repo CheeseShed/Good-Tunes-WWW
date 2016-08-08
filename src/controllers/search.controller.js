@@ -3,10 +3,7 @@
 donateController.$inject = [
   'fundraiser',
   '$state',
-  '$scope',
   '$location',
-  'TrackService',
-  'AccessService',
   'StorageService',
   'spotifyService'
 ]
@@ -14,27 +11,29 @@ donateController.$inject = [
 function donateController (
   fundraiser,
   $state,
-  $scope,
   $location,
-  TrackService,
-  AccessService,
   storageService,
   spotifyService
 ) {
   var vm = this
 
   function setup () {
+    const query = $state.params.q;
+
     vm.donateTrack = donateTrack
     vm.fundraiser = fundraiser
     vm.hasTrackToDonate = false
     vm.search = search
-
-    $scope.tracks = []
+    vm.tracks = []
     // $scope.$on('donate:complete', donationCompleteHandler)
+
+    if (query.length) {
+      search(query);
+    }
   }
 
   function donateTrack (track) {
-    sessionStorage.setItem('trackToDonate', angular.toJson(track));
+    // sessionStorage.setItem('trackToDonate', angular.toJson(track));
     $state.go('fundraisers.one.donate', {
       fundraiser: fundraiser.id,
       playlist: fundraiser.playlist
@@ -45,7 +44,7 @@ function donateController (
     spotifyService
       .search(query)
       .then((tracks) => {
-        $scope.tracks = tracks
+        vm.tracks = tracks
       })
       .then(() => {
         $location.search({
