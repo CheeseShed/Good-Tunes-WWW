@@ -4,6 +4,7 @@ donateController.$inject = [
   'fundraiser',
   '$state',
   '$scope',
+  '$location',
   'TrackService',
   'AccessService',
   'StorageService',
@@ -14,6 +15,7 @@ function donateController (
   fundraiser,
   $state,
   $scope,
+  $location,
   TrackService,
   AccessService,
   storageService,
@@ -24,8 +26,6 @@ function donateController (
   function setup () {
     vm.donateTrack = donateTrack
     vm.fundraiser = fundraiser
-    vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade'
-    vm.gender = vm.person === 'ben' ? 'he' : 'she'
     vm.hasTrackToDonate = false
     vm.search = search
 
@@ -43,9 +43,7 @@ function donateController (
 
   function search (query) {
     spotifyService
-      .search({
-        q: query
-      })
+      .search(query)
       .then((tracks) => {
         $scope.tracks = tracks
       })
