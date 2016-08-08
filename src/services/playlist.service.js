@@ -3,7 +3,6 @@
 playlistService.$inject = ['$resource', 'config']
 
 function playlistService ($resource, config) {
-
   var PATH = config.API_URL + '/playlists/:id'
   var service = {}
 

@@ -3,7 +3,6 @@
 userService.$inject = ['$resource', 'config']
 
 function userService ($resource, config) {
-
   var PATH = config.API_URL + '/users/:id'
 
   var service = {}

@@ -2,11 +2,29 @@
 
 var Spotify = require('JMPerez/spotify-web-api-js')
 
-spotifyController.$inject = ['fundraiser', '$window', '$scope', '$stateParams', '$q', 'config', 'StorageService', 'playlistService']
+spotifyController.$inject = [
+  'fundraiser',
+  '$window',
+  '$scope',
+  '$stateParams',
+  '$q',
+  'config',
+  'StorageService',
+  'playlistService'
+]
 
-function spotifyController (fundraiser, $window, $scope, $stateParams, $q, config, storageService, playlistService) {
+function spotifyController (
+  fundraiser,
+  $window,
+  $scope,
+  $stateParams,
+  $q,
+  config,
+  storageService,
+  playlistService
+) {
   var vm = this
-  var spotifyAuthorisation = JSON.parse(storageService.getItem('spotify_authorisation'))
+  var spotifyAuthorisation = angular.fromJson(storageService.getItem('spotify_authorisation'))
   var accessToken
   var storedState = storageService.getItem('spotify_auth_state')
   var sapi
@@ -27,7 +45,7 @@ function spotifyController (fundraiser, $window, $scope, $stateParams, $q, confi
     var clientId = config.SPOTIFY_CLIENT_ID
     var state = generateRandomString(16)
 
-    storageService.setItem('spotify_auth_state_params', JSON.stringify($stateParams))
+    storageService.setItem('spotify_auth_state_params', angular.toJson($stateParams))
     storageService.setItem('spotify_auth_state', state)
 
     path += '?client_id=' + encodeURIComponent(clientId)
@@ -71,7 +89,7 @@ function spotifyController (fundraiser, $window, $scope, $stateParams, $q, confi
   function getPlaylistTracks () {
     sapi.getPlaylist(SPOTIFY_USER_ID, SPOTIFY_PLAYLIST_ID, function (err, playlist) {
       if (err) {
-        return console.error(err)
+        return err
       }
 
       var tracks = playlist.tracks.items.map(function (item) {
@@ -93,7 +111,7 @@ function spotifyController (fundraiser, $window, $scope, $stateParams, $q, confi
     sapi.setAccessToken(accessToken)
     sapi.getMe(function (err, profile) {
       if (err) {
-        return console.error(err)
+        return err
       }
 
       $scope.$apply(function () {
@@ -109,9 +127,7 @@ function spotifyController (fundraiser, $window, $scope, $stateParams, $q, confi
     if (accessToken && (spotifyAuthorisation.state === storedState)) {
       storageService.removeItem('spotify_auth_state')
       vm.hasAccessToken = true
-
       setupSpotify()
-
     } else {
       vm.hasAccessToken = false
     }

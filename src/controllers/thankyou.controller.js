@@ -1,12 +1,26 @@
 'use strict'
 
-thankyouController.$inject = ['$window', '$scope', '$state', '$stateParams', 'StorageService']
+thankyouController.$inject = [
+  '$window',
+  '$document',
+  '$scope',
+  '$state',
+  '$stateParams',
+  'StorageService'
+]
 
-function thankyouController ($window, $scope, $state, $stateParams, storageService) {
+function thankyouController (
+  $window,
+  $document,
+  $scope,
+  $state,
+  $stateParams,
+  storageService
+) {
   var vm = this
 
   var setup = function () {
-    vm.donatedTrack = JSON.parse(storageService.getItem('donatedTrack'))
+    vm.donatedTrack = angular.fromJson(storageService.getItem('donatedTrack'))
     vm.sharingUrl = 'http://www.goodtunes.com/fundraisers/' + $stateParams.fundraiser
 
     if (!vm.donatedTrack) {
@@ -22,7 +36,7 @@ function thankyouController ($window, $scope, $state, $stateParams, storageServi
   }
 
   function enableSharingPlugins () {
-    $window.FB.XFBML.parse(document.querySelector('.fundraiser-details'))
+    $window.FB.XFBML.parse($document.querySelector('.fundraiser-details'))
   }
 
   function navigateToAddState () {

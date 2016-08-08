@@ -4,7 +4,7 @@
   "description": "The public site for Good Tunes",
   "scripts": {
     "deploy:js": "./node_modules/.bin/jspm bundle-sfx ./src/main ./bundle.js --minify --skip-source-maps",
-    "lint": "./node_modules/.bin/eslint --config .eslintrc.json ./src/**/*.js"
+    "lint": "eslint --config .eslintrc.json ./src/**/*.js"
   },
   "repository": {
     "type": "git",

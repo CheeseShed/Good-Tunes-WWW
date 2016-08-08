@@ -3,7 +3,6 @@
 storageService.$inject = ['$window', '$q']
 
 function storageService ($window, $q) {
-
   var service = {}
 
   service.setItem = function (key, value) {

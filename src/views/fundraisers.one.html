@@ -2,24 +2,18 @@
 
   <section class="fundraiser-overview" ng-hide="fundraiser.hideOverviewPanel()">
 
-    <header class="fundraiser-header">
-      <div class="primary-heading-wrapper">
-        <h1 class="primary-heading">{{::fundraiser.fundraiser.title}}</h1>
-      </div>
-    </header>
+    <fundraiser-summary
+      title="fundraiser.fundraiser.title"
+      charity="fundraiser.fundraiser.charity"
+      name="fundraiser.fundraiser.name"
+      id="fundraiser.fundraiser.id">
+    </fundraiser-summary>
 
-    <div class="fundraiser-pictures">
-      <div class="fundraiser-picture">
-         <img src="/src/images/{{::fundraiser.person}}.jpg" alt="">
-       </div>
-    </div>
-
-    <div class="fundraiser__summary">
-      <p>Use music and your wallet to support {{::fundraiser.fundraiser.user.name}} as {{::fundraiser.gender}} raises money for {{::fundraiser.fundraiser.charity}}</p>
-      <p><a class="fundraiser__wtf" ui-sref="fundraisers.one.why({fundraiser: fundraiser.fundraiser.id})">Why am I doing this?</a></p>
-    </div>
-
-    <a class="button__donate" ui-sref="fundraisers.one.add({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">Give <b>♫</b> + <b>$</b> now</a>
+    <donate-music-dollar
+      fundraiser="fundraiser.fundraiser.id"
+      playlist="fundraiser.fundraiser.playlist"
+      ng-if="fundraiser.isActive">
+    </donate-music-dollar>
 
     <fundraiser-total
       name="fundraiser.fundraiser.user.name"
@@ -31,12 +25,10 @@
 
     <a class="button-primary mix-button" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
 
-    <!-- <p>The Good Tunes Project<br /><a href="mailto:team@goodtunes.org">team@goodtunes.org</a></p> -->
-
   </section>
 
   <section class="fundraiser-background-pictures">
-    <div class="fundraiser-picture" style="background-image: url(/src/images/{{::fundraiser.person}}.jpg);"></div>
+    <div class="fundraiser-picture"></div>
     <div ng-show="fundraiser.hasMask()" class="fundraiser-picture__mask"></div>
   </section>
 

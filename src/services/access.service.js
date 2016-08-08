@@ -5,7 +5,6 @@ var includes = require('lodash/collection/includes')
 accessService.$inject = ['$resource', 'config', 'StorageService']
 
 function accessService ($resource, config, storageService) {
-
   var service = {}
 
   service.$resource = $resource(config.API_URL, {}, {

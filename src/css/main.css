@@ -12,7 +12,7 @@ $white: #fff;
 
 body {
   background: #fa6346;
-  font-family: "NeueHaasGroteskText W01";
+  font-family: Helvetica, sans-serif;
 }
 
 a {
@@ -76,7 +76,7 @@ h1,h2 {
   padding: 0.5rem;
   text-align: center;
   text-decoration: none;
-  font-family: "NHaasGroteskTXW01-75Bd";
+  font-family: Helvetica, sans-serif;
 }
 
 .button__donate b {
@@ -317,12 +317,12 @@ h1,h2 {
 .fundraiser-total .fundraiser-total__reached,
 .fundraiser-total .fundraiser-total__target {
   font-size: 3rem;
-  font-family: "NHaasGroteskTXW01-75Bd";
+  font-family: Helvetica, sans-serif;
 }
 
 .fundraiser-total .fundraiser-total__target-date {
   color: #fff;
-  font-family: "NHaasGroteskTXW01-75Bd";
+  font-family: Helvetica, sans-serif;
 }
 
 .totalator {
@@ -607,9 +607,8 @@ h1,h2 {
   }
 }
 
-.fundraiser-pictures .fundraiser-picture img {
-  display: block;
-  height: auto;
+.fundraiser-pictures .fundraiser-picture {
+  background: #fff;
   width: 100%;
 }
 
@@ -647,6 +646,7 @@ h1,h2 {
   }
 
   .fundraiser-background-pictures .fundraiser-picture {
+    background: #fff;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;

@@ -1,8 +1,18 @@
 'use strict'
 
-routing.$inject = ['$locationProvider', '$urlRouterProvider', '$stateProvider', '$httpProvider']
+routing.$inject = [
+  '$locationProvider',
+  '$urlRouterProvider',
+  '$stateProvider',
+  '$httpProvider'
+]
 
-function routing ($locationProvider, $urlRouterProvider, $stateProvider, $httpProvider) {
+function routing (
+  $locationProvider,
+  $urlRouterProvider,
+  $stateProvider,
+  $httpProvider
+) {
   $locationProvider.html5Mode(true)
 
   $stateProvider
@@ -109,18 +119,15 @@ function routing ($locationProvider, $urlRouterProvider, $stateProvider, $httpPr
       }
     })
     .state('fundraisers.one.playlist', {
-      url: '/playlists/:playlist',
+      url: '/playlist',
       views: {
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.one.playlist.html',
           controller: require('./controllers/fundraiser-playlist.controller'),
           controllerAs: 'playlist',
           resolve: {
-            fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-              return fundraiserService.readOne({id: $stateParams.fundraiser})
-            }],
-            playlist: ['$stateParams', 'playlistService', function ($stateParams, playlistService) {
-              return playlistService.readOne({id: $stateParams.playlist})
+            playlist: ['fundraiser', '$stateParams', 'playlistService', function (fundraiser, $stateParams, playlistService) {
+              return playlistService.readOne({id: fundraiser.playlist})
             }]
           }
         }
@@ -130,7 +137,7 @@ function routing ($locationProvider, $urlRouterProvider, $stateProvider, $httpPr
       }
     })
     .state('fundraisers.one.add', {
-      url: '/playlists/:playlist/add?q',
+      url: '/playlist/add?q',
       views: {
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.add.html',
@@ -138,29 +145,19 @@ function routing ($locationProvider, $urlRouterProvider, $stateProvider, $httpPr
           controllerAs: 'search'
         }
       },
-      resolve: {
-        fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser})
-        }]
-      },
       data: {
         hideOverviewPanel: true
       },
       reloadOnSearch: false
     })
     .state('fundraisers.one.donate', {
-      url: '/playlists/:playlist/donate?provider',
+      url: '/playlist/donate?provider',
       views: {
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.donate.html',
           controller: require('./controllers/donate.controller'),
           controllerAs: 'donate'
         }
-      },
-      resolve: {
-        fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser})
-        }]
       },
       data: {
         roles: [20],

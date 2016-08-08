@@ -1,19 +1,29 @@
 'use strict'
 
 accessController.$inject = [
+  '$log',
   '$state',
   '$stateParams',
-  // '$error',
   'AccessService',
   'StorageService',
   'facebookService'
 ]
 
-function accessController ($state, $stateParams, AccessService, StorageService, facebookService) {
-  var vm = this
+function accessController (
+  $log,
+  $state,
+  $stateParams,
+  AccessService,
+  StorageService,
+  facebookService
+) {
+  const vm = this;
 
-  vm.login = login
-  vm.facebookLogin = facebookLogin
+  setup();
+
+  function setup () {
+    vm.facebookLogin = facebookLogin;
+  }
 
   function navigateToState (user) {
     $state.go($state.params.toState, $state.params.toParams)
@@ -23,20 +33,6 @@ function accessController ($state, $stateParams, AccessService, StorageService, 
     StorageService.setItem('access_level', user.access_level)
     StorageService.setItem('access_token', user.access_token)
     StorageService.setItem('user_id', user.id)
-  }
-
-  function login (credentials) {
-    AccessService.login(credentials)
-      .then(function (user) {
-        console.log(user)
-        storeUserDetails(user)
-        return user
-      })
-      .then(navigateToState)
-      .catch(function (err) {
-        console.log(err)
-        // $error(err);
-      })
   }
 
   function facebookLogin () {
@@ -63,11 +59,10 @@ function accessController ($state, $stateParams, AccessService, StorageService, 
         storeUserDetails(user)
       })
       .then(navigateToState)
-      .catch(function (err) {
-        console.log(err)
-        // $error(err);
-      })
+      .catch((err) => {
+        $log.log(err);
+      });
   }
 }
 
-module.exports = accessController
+module.exports = accessController;
