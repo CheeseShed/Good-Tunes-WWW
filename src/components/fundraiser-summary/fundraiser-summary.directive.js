@@ -8,7 +8,6 @@ function fundraiserSummaryDirective () {
       title: '=',
       charity: '=',
       name: '=',
-      gender: '=',
       id: '='
     }
   }

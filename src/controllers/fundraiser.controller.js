@@ -22,9 +22,7 @@ function fundraiserController (
   const mediaQuery = $window.matchMedia('(max-width: 768px)')
 
   function setup () {
-    vm.fundraiser = fundraiser
-    vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade'
-    vm.gender = vm.person === 'ben' ? 'he' : 'she'
+    vm.fundraiser = fundraiser;
     vm.description = $sce.trustAsHtml(fundraiser.description)
     $scope.overlayVisible = false
     vm.title = fundraiser.title

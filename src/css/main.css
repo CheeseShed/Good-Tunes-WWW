@@ -607,9 +607,8 @@ h1,h2 {
   }
 }
 
-.fundraiser-pictures .fundraiser-picture img {
-  display: block;
-  height: auto;
+.fundraiser-pictures .fundraiser-picture {
+  background: #fff;
   width: 100%;
 }
 
@@ -647,6 +646,7 @@ h1,h2 {
   }
 
   .fundraiser-background-pictures .fundraiser-picture {
+    background: #fff;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
