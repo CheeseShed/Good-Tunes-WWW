@@ -2,6 +2,8 @@
 
 'use strict'
 
+const FACEBOOK_SCOPE = 'public_profile,email';
+
 facebookService.$inject = ['$q']
 
 function facebookService ($q) {
@@ -47,8 +49,12 @@ function facebookService ($q) {
         defer.resolve(response.authResponse)
       } else if (response.status === 'not_authorized' || response.status === 'unknown') {
         FB.login(function (response) {
-          defer.resolve(response.authResponse)
-        }, {scope: 'public_profile,email'})
+          if (response.status === 'not_authorized') {
+            defer.reject();
+          } else {
+            defer.resolve(response.authResponse)
+          }         
+        }, { scope: FACEBOOK_SCOPE });
       } else {
         defer.reject()
       }

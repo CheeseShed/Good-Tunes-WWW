@@ -2,14 +2,4 @@
   <h1>Sign in</h1>
   <p>Please sign in with your Facebook account to add your track to the playlist.</p>
   <button class="button-primary" type="button" ng-click="access.facebookLogin()">Facebook Login</button>
-
-  <form name="loginForm" ng-submit="access.login(credentials)" class="login__form">
-    <label for="email">Email</login>
-      <input class="field" type="text" id="email" name="email" ng-model="credentials.email" required>
-
-      <label for="password">Password</login>
-        <input class="field" type="password" id="password" name="password" ng-model="credentials.password" required>
-
-        <button class="button-primary" type="submit" name="button">Login</button>
-  </form>
 </section>
