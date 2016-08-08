@@ -17,10 +17,13 @@ function accessController (
   StorageService,
   facebookService
 ) {
-  var vm = this
+  const vm = this;
 
-  vm.login = login
-  vm.facebookLogin = facebookLogin
+  setup();
+
+  function setup () {
+    vm.facebookLogin = facebookLogin;
+  }
 
   function navigateToState (user) {
     $state.go($state.params.toState, $state.params.toParams)
@@ -30,18 +33,6 @@ function accessController (
     StorageService.setItem('access_level', user.access_level)
     StorageService.setItem('access_token', user.access_token)
     StorageService.setItem('user_id', user.id)
-  }
-
-  function login (credentials) {
-    AccessService.login(credentials)
-      .then(function (user) {
-        storeUserDetails(user)
-        return user
-      })
-      .then(navigateToState)
-      .catch(function (err) {
-        $log(err)
-      })
   }
 
   function facebookLogin () {
@@ -68,10 +59,10 @@ function accessController (
         storeUserDetails(user)
       })
       .then(navigateToState)
-      .catch(function (err) {
-        $log(err)
-      })
+      .catch((err) => {
+        $log.log(err);
+      });
   }
 }
 
-module.exports = accessController
+module.exports = accessController;
