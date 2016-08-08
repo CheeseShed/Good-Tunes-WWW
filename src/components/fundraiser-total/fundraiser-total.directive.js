@@ -24,7 +24,7 @@ function fundraiserTotalDirective (config) {
         return (toNumber(raisedAmount || 0) / toNumber(targetAmount || 0)) * 100
       }
 
-      scope.targetDate = moment(scope.date).fromNow(true)
+      scope.targetDate = moment(scope.date).fromNow()
       scope.percentageRaised = calculateAmountRaised(scope.raised, scope.target)
 
       scope.symbol = config.CURRENCIES[scope.symbol]
