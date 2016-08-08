@@ -27,7 +27,7 @@ function donateController (
     vm.tracks = []
     // $scope.$on('donate:complete', donationCompleteHandler)
 
-    if (query.length) {
+    if (query && query.length) {
       search(query);
     }
   }
