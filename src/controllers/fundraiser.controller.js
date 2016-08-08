@@ -1,5 +1,7 @@
 'use strict'
 
+const moment = require('moment');
+
 fundraiserController.$inject = [
   'fundraiser',
   '$scope',
@@ -29,14 +31,10 @@ function fundraiserController (
     vm.charity = fundraiser.charity
     vm.id = fundraiser.id
     vm.name = fundraiser.name
-
+    vm.isActive = moment().isBefore(fundraiser.target_date);
     vm.hasMask = hasMask
     vm.hideOverviewPanel = hideOverviewPanel
     vm.fetchPlaylist = fetchPlaylist
-
-    $scope.toggleOverlay = toggleOverlay
-    $scope.toggleSearchOverlay = toggleSearchOverlay
-
     mediaQuery.addListener(mediaQueryEventHandler)
   }
 
@@ -56,14 +54,6 @@ function fundraiserController (
 
   function hideOverviewPanel () {
     return $state.current.data.hideOverviewPanel && isSmallView()
-  }
-
-  function toggleOverlay () {
-    $scope.overlayVisible = !$scope.overlayVisible
-  }
-
-  function toggleSearchOverlay () {
-    $scope.searchOverlayVisible = !$scope.searchOverlayVisible
   }
 
   function fetchPlaylist (id) {
