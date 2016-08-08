@@ -1,10 +1,32 @@
 'use strict'
 
-var moment = require('moment')
+const moment = require('moment');
 
-fundraiserTotalDirective.$inject = ['config']
+fundraiserTotalDirective.$inject = ['config'];
 
 function fundraiserTotalDirective (config) {
+
+  function toNumber (value) {
+    return parseInt(value, 10);
+  }
+
+  function calculateAmountRaised (raisedAmount, targetAmount) {
+    return (toNumber(raisedAmount || 0) / toNumber(targetAmount || 0)) * 100;
+  }
+
+  function link (scope) {
+    const { date, raised, symbol } = scope;
+    let target = scope.target;
+
+    if (raised > target) {
+      target += target * 0.25;
+    }
+
+    scope.targetDate = moment(date).fromNow();
+    scope.percentageRaised = calculateAmountRaised(raised, target);
+    scope.symbol = config.CURRENCIES[symbol];
+  }
+
   return {
     templateUrl: '/src/components/fundraiser-total/fundraiser-total.template.html',
     restrict: 'E',
@@ -15,21 +37,8 @@ function fundraiserTotalDirective (config) {
       raised: '=',
       date: '='
     },
-    link: function (scope) {
-      var toNumber = function (value) {
-        return parseInt(value, 10)
-      }
-
-      var calculateAmountRaised = function (raisedAmount, targetAmount) {
-        return (toNumber(raisedAmount || 0) / toNumber(targetAmount || 0)) * 100
-      }
-
-      scope.targetDate = moment(scope.date).fromNow()
-      scope.percentageRaised = calculateAmountRaised(scope.raised, scope.target)
-
-      scope.symbol = config.CURRENCIES[scope.symbol]
-    }
-  }
+    link
+  };
 }
 
 module.exports = fundraiserTotalDirective
