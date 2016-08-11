@@ -34,8 +34,9 @@ function fundraiserController (
     vm.isActive = moment().isBefore(fundraiser.target_date);
     vm.hasMask = hasMask
     vm.hideOverviewPanel = hideOverviewPanel
-    vm.fetchPlaylist = fetchPlaylist
-    mediaQuery.addListener(mediaQueryEventHandler)
+    vm.fetchPlaylist = fetchPlaylist;
+    vm.hasSpotifyPlaylist = hasSpotifyPlaylist;
+    mediaQuery.addListener(mediaQueryEventHandler);
   }
 
   function mediaQueryEventHandler (mediaQueryEvent) {
@@ -46,6 +47,10 @@ function fundraiserController (
 
   function isSmallView () {
     return mediaQuery.matches
+  }
+
+  function hasSpotifyPlaylist () {
+    return !!(vm.fundraiser.spotify_user_id && vm.fundraiser.spotify_playlist_id);
   }
 
   function hasMask () {
