@@ -1,42 +1,38 @@
 'use strict'
 
 thankyouController.$inject = [
+  'fundraiser',
   '$window',
   '$document',
-  '$scope',
   '$state',
   '$stateParams',
   'StorageService'
 ]
 
 function thankyouController (
+  fundraiser,
   $window,
   $document,
-  $scope,
   $state,
   $stateParams,
   storageService
 ) {
-  var vm = this
+  const vm = this;
+  const donatedTrack = angular.fromJson(storageService.getItem('trackToDonate'))
 
-  var setup = function () {
-    vm.donatedTrack = angular.fromJson(storageService.getItem('donatedTrack'))
-    vm.sharingUrl = 'http://www.goodtunes.com/fundraisers/' + $stateParams.fundraiser
-
-    if (!vm.donatedTrack) {
-      navigateToAddState()
-    } else {
-      clearTrackToDonate()
-      enableSharingPlugins()
+  function setup () {
+    if (!donatedTrack) {
+      navigateToAddState();
     }
+
+    vm.track = donatedTrack.name;
+    vm.name = '';
+    vm.fundraiser = fundraiser.id;
+    clearTrackToDonate();
   }
 
   function clearTrackToDonate () {
-    storageService.removeItem('donatedTrack')
-  }
-
-  function enableSharingPlugins () {
-    $window.FB.XFBML.parse($document.querySelector('.fundraiser-details'))
+    storageService.removeItem('trackToDonate');
   }
 
   function navigateToAddState () {

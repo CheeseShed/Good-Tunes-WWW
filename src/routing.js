@@ -137,7 +137,7 @@ function routing (
       }
     })
     .state('fundraisers.one.add', {
-      url: '/playlist/add?q',
+      url: '/add?q',
       views: {
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.add.html',
@@ -151,7 +151,7 @@ function routing (
       reloadOnSearch: false
     })
     .state('fundraisers.one.donate', {
-      url: '/playlist/donate?provider',
+      url: '/donate?trackToDonate',
       views: {
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.playlist.donate.html',
@@ -170,13 +170,8 @@ function routing (
         'fundraiser@fundraisers.one': {
           templateUrl: '/src/views/fundraisers.thankyou.html',
           controller: require('./controllers/thankyou.controller'),
-          controllerAs: 'thankyou'
+          controllerAs: 'thanks'
         }
-      },
-      resolve: {
-        fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser})
-        }]
       },
       data: {
         hideOverviewPanel: true

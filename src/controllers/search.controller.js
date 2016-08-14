@@ -22,10 +22,8 @@ function donateController (
 
     vm.donateTrack = donateTrack
     vm.fundraiser = fundraiser
-    vm.hasTrackToDonate = false
     vm.search = search
     vm.tracks = []
-    // $scope.$on('donate:complete', donationCompleteHandler)
 
     if (query && query.length) {
       search(query);
@@ -33,10 +31,12 @@ function donateController (
   }
 
   function donateTrack (track) {
-    // sessionStorage.setItem('trackToDonate', angular.toJson(track));
+    console.log('track', track);
+    storageService.setItem('trackToDonate', angular.toJson(track));
     $state.go('fundraisers.one.donate', {
       fundraiser: fundraiser.id,
-      playlist: fundraiser.playlist
+      playlist: fundraiser.playlist,
+      trackToDonate: track.id
     });
   }
 

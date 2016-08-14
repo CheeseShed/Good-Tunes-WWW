@@ -2,76 +2,72 @@
 
 donateController.$inject = [
   'fundraiser',
-  '$q',
   '$scope',
   '$state',
   '$stateParams',
-  '$error',
   'StorageService',
   'TrackService',
   'donationService'
 ]
 
-function donateController (fundraiser, $q, $scope, $state, $stateParams, $error, storageService, trackService, donationService) {
-  var vm = this
+function donateController (
+  fundraiser,
+  $scope,
+  $state,
+  $stateParams,
+  storageService,
+  trackService,
+  donationService
+) {
+  const vm = this;
+  const { playlist } = fundraiser;
 
   function setup () {
-    vm.fundraiser = fundraiser
-    vm.trackToDonate = angular.fromJson(storageService.getItem('trackToDonate'))
-    vm.person = fundraiser.user.name.toLowerCase().indexOf('ben') > -1 ? 'ben' : 'jade'
-    vm.gender = vm.person === 'ben' ? 'he' : 'she'
-
-    if (!vm.trackToDonate) {
-      navigateToState('fundraisers.one.add')
-    }
-
-    $scope.$on('donate:addtrack', donationAddTrackHandler)
-    $scope.$on('donate:complete', donationCompleteHandler)
+    vm.fundraiser = fundraiser;
+    $scope.$on('crowdrise:complete', crowdriseCompleteHandler);
   }
 
-  function donationAddTrackHandler (event) {
-    // Todo: Move crowdrise specific code to it's own controller for future provider expansion
-    var track = {
-      playlist: vm.fundraiser.playlist,
-      name: vm.trackToDonate.name,
-      spotify_id: vm.trackToDonate.id,
-      duration_ms: vm.trackToDonate.duration_ms,
-      link: vm.trackToDonate.href,
-      artists: vm.trackToDonate.artists
-    }
+  function createTrack (track) {
+    const {
+      href,
+      id,
+      name
+    } = track;
 
-    trackService
-      .create(track)
-      .then(function (response) {
-        storageService.removeItem('trackToDonate')
-        storageService.setItem('donatedTrack', angular.toJson(response))
-      })
-      .catch(function (err) {
-        $error(err)
-      })
+    return trackService.create({
+      href,
+      name,
+      playlist,
+      spotify_id: id
+    });
   }
 
-  function donationCompleteHandler (event, donation) {
-    var donatedTrack = angular.fromJson(storageService.getItem('donatedTrack'))
+  function createDonation (track, fundraiser, amount) {
+    return donationService.create({
+      amount,
+      fundraiser,
+      track
+    });
+  }
 
-    donationService.create({
-      track: donatedTrack.id,
-      fundraiser: vm.fundraiser.id,
-      amount: donation.amount
-    })
-      .then(function () {
-        navigateToState('fundraisers.one.thankyou')
+  function crowdriseCompleteHandler (event, donation) {
+    const { amount } = donation;
+    const trackToDonate = angular.fromJson(storageService.getItem('trackToDonate'))
+
+    createTrack(trackToDonate)
+      .then((response) => createDonation(response.id, fundraiser.id, amount))
+      .then((response) => {
+        navigateToState('fundraisers.one.thankyou');
       })
-      .catch(function (err) {
-        $error(err)
-      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   function navigateToState (stateName) {
     $state.go(stateName, {
-      fundraiser: $stateParams.fundraiser,
-      playlist: $stateParams.playlist
-    })
+      fundraiser: $stateParams.fundraiser
+    });
   }
 
   setup()

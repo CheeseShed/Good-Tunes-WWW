@@ -1,50 +1,41 @@
 'use strict'
 
-crowdriseDirective.$inject = ['config', '$window']
+crowdriseDirective.$inject = [
+  'config',
+  '$window'
+];
 
 function crowdriseDirective (config, $window) {
   return {
     restrict: 'E',
     templateUrl: '/src/components/crowdrise/crowdrise.template.html',
     scope: {
-      account: '='
+      id: '='
     },
-    link: function (scope, elem) {
-      var crowdriseWidgetId = 'crowdrise' + scope.account
-      var hasDonated = false
+    link
+  };
 
-      var addCrowdriseWidget = function () {
-        var crowdriseScript
+  function link (scope, elem) {
+    const id = scope.id;
+    const url = `${config.CROWDRISE_URL}${id}/?callback=crowdriseCallback`;
 
-        if (document.querySelector('#' + crowdriseWidgetId)) {
-          return
-        }
+    if (id && !document.querySelector(`#crowdrise${id}`)) {
+      addCrowdriseWidget(id, url);
+    }
 
-        crowdriseScript = document.createElement('script')
-        crowdriseScript.id = crowdriseWidgetId
-        crowdriseScript.src = config.CROWDRISE_URL + scope.account + '/?callback=crowdriseCallback'
-        crowdriseScript.async = true
-        document.querySelector('.crowdrise-widget').appendChild(crowdriseScript)
+    function addCrowdriseWidget (id, url) {
+      const script = document.createElement('script');
+      script.src = url;
+      script.id = 'crowdrise' + id;
+      script.async = true;
+      document.querySelector('.crowdrise-widget').appendChild(script)
+      $window.crowdriseCallback = crowdriseCallback;
+    }
 
-        addCrowdriseCallback()
-        donateTrack()
-      }
-
-      function addCrowdriseCallback () {
-        $window.crowdriseCallback = function (response) {
-          if (!hasDonated) {
-            scope.$emit('donate:complete', response)
-          }
-        }
-      }
-
-      function donateTrack () {
-        scope.$emit('donate:addtrack')
-      }
-
-      addCrowdriseWidget()
+    function crowdriseCallback (response) {
+      scope.$emit('crowdrise:complete', response);
     }
   }
 }
 
-module.exports = crowdriseDirective
+module.exports = crowdriseDirective;

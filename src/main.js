@@ -39,6 +39,7 @@ angular.module('goodtunes')
   .directive('map', require('./components/map/map.directive'))
   .directive('donateMusicDollar', require('./components/donate-music-dollar/donate-music-dollar.directive'))
   .directive('fundraiserSummary', require('./components/fundraiser-summary/fundraiser-summary.directive'))
+  .directive('thankYou', require('./components/thank-you/thank-you.directive'))
 
 // configure the routing and then start the app
 angular.module('goodtunes')
