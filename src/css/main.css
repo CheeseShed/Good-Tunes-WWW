@@ -11,12 +11,15 @@ $white: #fff;
 }
 
 body {
-  background: #fa6346;
   font-family: Helvetica, sans-serif;
 }
 
 a {
   color: #225bad;
+}
+
+.page--light a {
+  color: #0033ff;
 }
 
 .cf:before,
@@ -67,6 +70,11 @@ h1,h2 {
   text-decoration: none;
 }
 
+.page--light .button-primary {
+  background: #0033ff;
+  color: #fff;
+}
+
 .button__donate {
   background: #fff;
   color: #225bad;
@@ -79,8 +87,17 @@ h1,h2 {
   font-family: Helvetica, sans-serif;
 }
 
+.page--light .button__donate {
+  background: #0033ff;
+  color: #fff;
+}
+
 .button__donate b {
   color: #fa6346;
+}
+
+.page--light .button__donate b {
+  color: #4ce957;
 }
 
 @media (max-width: 768px) {
@@ -130,6 +147,10 @@ h1,h2 {
   position: relative;
 }
 
+.page--light .track-list__track {
+  border-bottom-color: #4ce957;
+}
+
 .track-list__track-data {
   display: block;
   float: left;
@@ -143,10 +164,18 @@ h1,h2 {
   font-weight: bold;
 }
 
+.page--light .track-list__track-title {
+  color: #0033ff;
+}
+
 .track-list__track-artist {
   color: #225bad;
   display: inline-block;
   font-size: 0.8125rem;
+}
+
+.page--light .track-list__track-artist {
+  color: #0033ff;
 }
 
 .track-list__donor {
@@ -155,6 +184,10 @@ h1,h2 {
   font-size: 1rem;
   text-align: right;
   width: 50%;
+}
+
+.page--light .track-list__donor {
+  color: #0033ff;
 }
 
 .track-list__track .button__donate {
@@ -173,22 +206,25 @@ h1,h2 {
   width: auto;
 }
 
+.page--light .track-list__track .button__donate {
+  background: #0033ff;
+}
+
 @media (min-width: 769px) {
   .track-list__track .button__donate {
     right: .5rem;
   }
 }
 
-/*.primary-heading-wrapper {
-  background: url(../images/heading-underline.png) 0 0px;
-  padding: 0 30% 3px 0;
-}*/
-
 .primary-heading {
   color: #fff;
   display: inline;
   font-size: 3rem;
   font-weight: normal;
+}
+
+.page--light .primary-heading {
+  color: #0033ff;
 }
 
 .secondary-heading {
@@ -203,6 +239,10 @@ h1,h2 {
 
 .fundraiser-header .primary-heading-wrapper {
   background: url(../images/heading-underline.png) top left repeat;
+}
+
+.page--light .fundraiser-header .primary-heading-wrapper {
+  background-image: url(../images/heading-underline-green.png);
 }
 
 .fundraiser-header .primary-heading {
@@ -268,6 +308,10 @@ h1,h2 {
   line-height: 1.5;
 }
 
+.page--light .fundraiser__summary {
+  color: #333;
+}
+
 .fundraiser__summary p {
   font-size: 1.25rem;
 }
@@ -304,6 +348,10 @@ h1,h2 {
   margin-bottom: 0;
 }
 
+.page--light .fundraiser-total .secondary-heading {
+  color: #333;
+}
+
 .fundraiser-total .fundraiser-total__summary {
   margin: 0 auto 1rem auto;
 }
@@ -312,6 +360,10 @@ h1,h2 {
   color: #225bad;
   display: inline-block;
   font-weight: bold;
+}
+
+.fundraiser-total .fundraiser-total__summary span {
+  color: #4ce957;
 }
 
 .fundraiser-total .fundraiser-total__reached,
@@ -323,6 +375,10 @@ h1,h2 {
 .fundraiser-total .fundraiser-total__target-date {
   color: #fff;
   font-family: Helvetica, sans-serif;
+}
+
+.page--light .fundraiser-total .fundraiser-total__target-date {
+  color: #333;
 }
 
 .totalator {
@@ -348,12 +404,20 @@ h1,h2 {
   z-index: 1;
 }
 
+.page--light .totalator .totalator__raised {
+  background: #4ce957;
+}
+
 .totalator .totalator__dividers {
   background: url(../images/totalator-divider.png) repeat 0 0;
   display: block;
   height: 1.4rem;
   width: 100%;
   z-index: 2;
+}
+
+.totalator .totalator__dividers {
+  background-image: url(../images/totalator-divider-green.png);
 }
 
 .totalator .totalator__raised,
@@ -422,6 +486,11 @@ h1,h2 {
   line-height: 70px;
   font-size: 50px;
   margin: -3rem 0 2rem;
+}
+
+.page--light #musiclabel,
+.page--light #dollarlabel {
+  background: #0033ff;
 }
 
 #musiclabel span {
@@ -598,6 +667,11 @@ h1,h2 {
     z-index: 20;
   }
 
+  .page--light .fundraiser-details::before,
+  .page--light .fundraiser-details::after {
+    background: #fff;
+  }
+
   .fundraiser-details::after {
     bottom: 0;
   }
@@ -694,6 +768,11 @@ h1,h2 {
   margin: 0 0 1rem;
 }
 
+.page--light .fundraiser-why,
+.page--light .fundraiser-why p {
+  color: #0033ff;
+}
+
 .fundraiser-why h2 {
   margin-top: 0;
 }
@@ -720,6 +799,11 @@ h1,h2 {
   height: 50px;
   position: absolute;
   width: 3px;
+}
+
+.page--light .backToFundraiser::before,
+.page--light .backToFundraiser::after {
+  background: #0033ff;
 }
 
 .backToFundraiser::before {
@@ -907,6 +991,10 @@ h1,h2 {
   border-bottom: 1px solid #fa6346;
 }
 
+.page--light .search-form {
+  border-bottom-color: #4ce957;
+}
+
 .search-form .form-field {
   float: left;
   width: 85%;
@@ -990,4 +1078,13 @@ h1,h2 {
   top: 0;
   left: 0;
   width: 100%;
+}
+
+.app {
+  background: #fa6346;
+}
+
+.page--light {
+  background: #fff;
+  color: #333;
 }

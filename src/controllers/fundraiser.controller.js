@@ -23,7 +23,17 @@ function fundraiserController (
   const stateToCheck = 'fundraisers.one'
   const mediaQuery = $window.matchMedia('(max-width: 768px)')
 
+  let theme;
+
+  if (moment(fundraiser.target_data).isAfter('2016-01-01')) {
+    theme = 'page--light';
+  } else {
+    theme = 'page--orange';
+  }
+
   function setup () {
+    vm.backgroundImage = getBackgroundImage(fundraiser.id);
+    vm.theme = theme;
     vm.fundraiser = fundraiser;
     vm.description = $sce.trustAsHtml(fundraiser.description)
     $scope.overlayVisible = false
@@ -47,6 +57,21 @@ function fundraiserController (
 
   function isSmallView () {
     return mediaQuery.matches
+  }
+
+  function getBackgroundImage(id) {
+    let image;
+
+    switch (id) {
+      default:
+      case '56154723229562110033f747':
+        image = '/src/images/ben.jpg';
+        break;
+      case '56154ee4229562110033f74a':
+        image = '/src/images/jade.jpg';
+    }
+
+    return image;
   }
 
   function hasSpotifyPlaylist () {

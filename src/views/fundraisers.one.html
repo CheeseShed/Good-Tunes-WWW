@@ -1,4 +1,4 @@
-<div class="page cf">
+<div class="page {{::fundraiser.theme}} cf">
 
   <section class="fundraiser-overview" ng-hide="fundraiser.hideOverviewPanel()">
 
@@ -28,7 +28,7 @@
   </section>
 
   <section class="fundraiser-background-pictures">
-    <div class="fundraiser-picture"></div>
+    <div class="fundraiser-picture" style="background-image: url({{::fundraiser.backgroundImage}});"></div>
     <div ng-show="fundraiser.hasMask()" class="fundraiser-picture__mask"></div>
   </section>
 
