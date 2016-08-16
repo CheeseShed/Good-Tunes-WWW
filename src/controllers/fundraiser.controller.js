@@ -62,16 +62,12 @@ function fundraiserController (
   function getBackgroundImage(id) {
     let image;
 
-    switch (id) {
-      default:
-      case '56154723229562110033f747':
-        image = '/src/images/ben.jpg';
-        break;
-      case '56154ee4229562110033f74a':
-        image = '/src/images/jade.jpg';
-      case '57b36842e82387f52d26af3b':
-        image = '/src/images/rek-ben.jpg';
-        break;
+    if (id === '56154723229562110033f747') {
+      image = '/src/images/ben.jpg';
+    } else if (id === '56154ee4229562110033f74a') {
+      image = '/src/images/jade.jpg';
+    } else {
+      image = '/src/images/ben-rek.jpg';
     }
 
     return image;
