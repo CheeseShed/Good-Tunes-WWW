@@ -69,6 +69,9 @@ function fundraiserController (
         break;
       case '56154ee4229562110033f74a':
         image = '/src/images/jade.jpg';
+      case '57b36842e82387f52d26af3b':
+        image = '/src/images/rek-ben.jpg';
+        break;
     }
 
     return image;
