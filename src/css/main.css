@@ -719,6 +719,10 @@ h1,h2 {
     z-index: 15;
   }
 
+  .page--light .fundraiser-background-pictures::before {
+    background-image: url('../images/good-tunes-navy.png');
+  }
+
   .fundraiser-background-pictures .fundraiser-picture {
     background: #fff;
     background-repeat: no-repeat;
