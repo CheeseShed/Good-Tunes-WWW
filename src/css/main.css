@@ -829,6 +829,7 @@ h1,h2 {
 
 /* VIEW: HOMEPAGE */
 .homepage {
+  background: #fff;
   position: relative;
   width: 100%;
 }
@@ -883,15 +884,15 @@ h1,h2 {
   .homepage .fundraiser {
     float: left;
     height: 100vh;
-    width: 50%;
+    width: 100%;
   }
 }
 
 .homepage .fundraiser a {
   display: block;
-  position: absolute;
+  /*position: absolute;
   bottom: 0;
-  top: 0;
+  top: 0;*/
   text-decoration: none;
   width: 100%;
 }
@@ -930,13 +931,13 @@ h1,h2 {
 
 @media (min-width: 769px) {
   .homepage .fundraiser__title {
-    background: url(../images/heading-underline.png) 0 0px;
+    background: url(../images/heading-underline-green.png) 0 0px;
     bottom: initial;
     font-size: 2.8rem;
-    margin: 1.875rem;
+    margin: 250px 1.875rem auto;
     padding: 0 0 3px 0;
     text-align: left;
-    width: 70%;
+    width: 40%;
     top: 0;
   }
 }
@@ -1091,4 +1092,11 @@ h1,h2 {
 .page--light {
   background: #fff;
   color: #333;
+}
+
+.homepage .logo {
+  left: 40px;
+  position: absolute;
+  top: 40px;
+  z-index: 2;
 }
