@@ -8,5 +8,6 @@
         "angular"
     ],
     "rules": {
+      "semi": ["error", "always"]
     }
 }
