@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function fundraiserSummaryDirective () {
   return {
@@ -10,7 +10,7 @@ function fundraiserSummaryDirective () {
       name: '=',
       id: '='
     }
-  }
+  };
 }
 
-module.exports = fundraiserSummaryDirective
+module.exports = fundraiserSummaryDirective;

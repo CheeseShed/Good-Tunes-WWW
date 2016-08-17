@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const moment = require('moment');
 
@@ -41,4 +41,4 @@ function fundraiserTotalDirective (config) {
   };
 }
 
-module.exports = fundraiserTotalDirective
+module.exports = fundraiserTotalDirective;

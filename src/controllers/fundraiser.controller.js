@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const moment = require('moment');
 
@@ -9,7 +9,7 @@ fundraiserController.$inject = [
   '$sce',
   '$window',
   'playlistService'
-]
+];
 
 function fundraiserController (
   fundraiser,
@@ -19,9 +19,9 @@ function fundraiserController (
   $window,
   playlistService
 ) {
-  const vm = this
-  const stateToCheck = 'fundraisers.one'
-  const mediaQuery = $window.matchMedia('(max-width: 768px)')
+  const vm = this;
+  const stateToCheck = 'fundraisers.one';
+  const mediaQuery = $window.matchMedia('(max-width: 768px)');
 
   let theme;
 
@@ -35,15 +35,15 @@ function fundraiserController (
     vm.backgroundImage = getBackgroundImage(fundraiser.id);
     vm.theme = theme;
     vm.fundraiser = fundraiser;
-    vm.description = $sce.trustAsHtml(fundraiser.description)
-    $scope.overlayVisible = false
-    vm.title = fundraiser.title
-    vm.charity = fundraiser.charity
-    vm.id = fundraiser.id
-    vm.name = fundraiser.name
+    vm.description = $sce.trustAsHtml(fundraiser.description);
+    $scope.overlayVisible = false;
+    vm.title = fundraiser.title;
+    vm.charity = fundraiser.charity;
+    vm.id = fundraiser.id;
+    vm.name = fundraiser.name;
     vm.isActive = moment().isBefore(fundraiser.target_date);
-    vm.hasMask = hasMask
-    vm.hideOverviewPanel = hideOverviewPanel
+    vm.hasMask = hasMask;
+    vm.hideOverviewPanel = hideOverviewPanel;
     vm.fetchPlaylist = fetchPlaylist;
     vm.hasSpotifyPlaylist = hasSpotifyPlaylist;
     mediaQuery.addListener(mediaQueryEventHandler);
@@ -51,15 +51,15 @@ function fundraiserController (
 
   function mediaQueryEventHandler (mediaQueryEvent) {
     $scope.$apply(function () {
-      vm.hideOverviewPanel()
-    })
+      vm.hideOverviewPanel();
+    });
   }
 
   function isSmallView () {
-    return mediaQuery.matches
+    return mediaQuery.matches;
   }
 
-  function getBackgroundImage(id) {
+  function getBackgroundImage (id) {
     let image;
 
     if (id === '56154723229562110033f747') {
@@ -78,22 +78,22 @@ function fundraiserController (
   }
 
   function hasMask () {
-    return $state.current.name !== stateToCheck
+    return $state.current.name !== stateToCheck;
   }
 
   function hideOverviewPanel () {
-    return $state.current.data.hideOverviewPanel && isSmallView()
+    return $state.current.data.hideOverviewPanel && isSmallView();
   }
 
   function fetchPlaylist (id) {
     playlistService.readOne({id: id})
       .then(function (playlist) {
-        vm.playlist = playlist.data.playlist
-        vm.tracks = playlist.data.tracks
-      })
+        vm.playlist = playlist.data.playlist;
+        vm.tracks = playlist.data.tracks;
+      });
   }
 
-  setup()
+  setup();
 }
 
-module.exports = fundraiserController
+module.exports = fundraiserController;

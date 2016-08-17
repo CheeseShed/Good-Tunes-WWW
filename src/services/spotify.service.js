@@ -1,18 +1,18 @@
-'use strict'
+'use strict';
 
-var pick = require('lodash/object/pick')
+var pick = require('lodash/object/pick');
 
-spotifyService.$inject = ['$http', '$q', 'config']
+spotifyService.$inject = ['$http', '$q', 'config'];
 
 function spotifyService ($http, $q, config) {
-  var SPOTIFY_API_URL = config.SPOTIFY_API_URL
-  var service = {}
+  var SPOTIFY_API_URL = config.SPOTIFY_API_URL;
+  var service = {};
 
   service.search = function (query) {
     return $q(function (resolve, reject) {
       $http.get(SPOTIFY_API_URL + '/search?q=' + query + '&type=artist,track&limit=50&market=GB')
         .then(function (response) {
-          return response.data.tracks.items
+          return response.data.tracks.items;
         })
         .then(function (tracks) {
           return tracks.map(function (track) {
@@ -28,19 +28,19 @@ function spotifyService ($http, $q, config) {
               'preview_url',
               'type',
               'uri'
-            ])
-          })
+            ]);
+          });
         })
         .then(function (tracks) {
-          resolve(tracks)
+          resolve(tracks);
         })
         .catch(function (err) {
-          reject(err)
-        })
-    })
-  }
+          reject(err);
+        });
+    });
+  };
 
-  return service
+  return service;
 }
 
-module.exports = spotifyService
+module.exports = spotifyService;

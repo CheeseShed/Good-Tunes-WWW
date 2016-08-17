@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 accessController.$inject = [
   '$log',
@@ -7,7 +7,7 @@ accessController.$inject = [
   'AccessService',
   'StorageService',
   'facebookService'
-]
+];
 
 function accessController (
   $log,
@@ -26,19 +26,19 @@ function accessController (
   }
 
   function navigateToState (user) {
-    $state.go($state.params.toState, $state.params.toParams)
+    $state.go($state.params.toState, $state.params.toParams);
   }
 
   function storeUserDetails (user) {
-    StorageService.setItem('access_level', user.access_level)
-    StorageService.setItem('access_token', user.access_token)
-    StorageService.setItem('user_id', user.id)
+    StorageService.setItem('access_level', user.access_level);
+    StorageService.setItem('access_token', user.access_token);
+    StorageService.setItem('user_id', user.id);
   }
 
   function facebookLogin () {
     facebookService.login()
       .then(function (response) {
-        StorageService.setItem('facebook', angular.toJson(response))
+        StorageService.setItem('facebook', angular.toJson(response));
       })
       .then(facebookService.getInfo)
       .then(function (response) {
@@ -51,12 +51,12 @@ function accessController (
           link: response.link,
           picture: response.picture.data.url,
           verified: response.verified
-        }
+        };
 
-        return AccessService.facebookLogin(payload)
+        return AccessService.facebookLogin(payload);
       })
       .then(function (user) {
-        storeUserDetails(user)
+        storeUserDetails(user);
       })
       .then(navigateToState)
       .catch((err) => {

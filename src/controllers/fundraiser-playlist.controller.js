@@ -1,15 +1,15 @@
-'use strict'
+'use strict';
 
-fundraiserPlaylistController.$inject = ['playlist']
+fundraiserPlaylistController.$inject = ['playlist'];
 
 function fundraiserPlaylistController (playlist) {
-  const vm = this
+  const vm = this;
 
   function setup () {
-    vm.tracks = playlist.data.tracks
+    vm.tracks = playlist.data.tracks;
   }
 
-  setup()
+  setup();
 }
 
-module.exports = fundraiserPlaylistController
+module.exports = fundraiserPlaylistController;

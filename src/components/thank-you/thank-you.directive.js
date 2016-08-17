@@ -1,6 +1,6 @@
 'use strict';
 
-function thankYouDirective() {
+function thankYouDirective () {
   return {
     restrict: 'E',
     scope: {

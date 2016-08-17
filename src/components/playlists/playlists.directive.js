@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function playlistsDirective () {
   return {
@@ -7,7 +7,7 @@ function playlistsDirective () {
     scope: {
       items: '='
     }
-  }
+  };
 }
 
-module.exports = playlistsDirective
+module.exports = playlistsDirective;

@@ -1,13 +1,13 @@
 /*global FB */
 
-'use strict'
+'use strict';
 
 register.$inject = [
   '$log',
   '$state',
   'UserService',
   'StorageService'
-]
+];
 
 function register (
   $log,
@@ -15,24 +15,24 @@ function register (
   userService,
   storageService
 ) {
-  var vm = this
+  var vm = this;
 
   vm.facebookLogin = function () {
-    FB.login({scope: 'public_profile,email'})
-  }
+    FB.login({scope: 'public_profile,email'});
+  };
 
   vm.submit = function (user) {
     userService.register(user)
       .then(function setAccessToken (profile) {
-        storageService.setAccessToken(profile.token)
+        storageService.setAccessToken(profile.token);
       })
       .then(function navigateToPlaylists () {
-        $state.go('home')
+        $state.go('home');
       })
       .catch(function (err) {
-        $log(err)
-      })
-  }
+        $log(err);
+      });
+  };
 }
 
-module.exports = register
+module.exports = register;

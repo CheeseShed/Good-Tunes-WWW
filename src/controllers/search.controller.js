@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 donateController.$inject = [
   'fundraiser',
@@ -6,7 +6,7 @@ donateController.$inject = [
   '$location',
   'StorageService',
   'spotifyService'
-]
+];
 
 function donateController (
   fundraiser,
@@ -15,15 +15,15 @@ function donateController (
   storageService,
   spotifyService
 ) {
-  var vm = this
+  var vm = this;
 
   function setup () {
     const query = $state.params.q;
 
-    vm.donateTrack = donateTrack
-    vm.fundraiser = fundraiser
-    vm.search = search
-    vm.tracks = []
+    vm.donateTrack = donateTrack;
+    vm.fundraiser = fundraiser;
+    vm.search = search;
+    vm.tracks = [];
 
     if (query && query.length) {
       search(query);
@@ -43,19 +43,19 @@ function donateController (
     spotifyService
       .search(query)
       .then((tracks) => {
-        vm.tracks = tracks
+        vm.tracks = tracks;
       })
       .then(() => {
         $location.search({
           q: query
-        })
+        });
       })
       .catch((err) => {
-        console.error(err)
-      })
+        console.error(err);
+      });
   }
 
-  setup()
+  setup();
 }
 
-module.exports = donateController
+module.exports = donateController;

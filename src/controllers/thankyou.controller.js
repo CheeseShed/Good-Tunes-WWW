@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 thankyouController.$inject = [
   'fundraiser',
@@ -7,7 +7,7 @@ thankyouController.$inject = [
   '$state',
   '$stateParams',
   'StorageService'
-]
+];
 
 function thankyouController (
   fundraiser,
@@ -18,7 +18,7 @@ function thankyouController (
   storageService
 ) {
   const vm = this;
-  const donatedTrack = angular.fromJson(storageService.getItem('trackToDonate'))
+  const donatedTrack = angular.fromJson(storageService.getItem('trackToDonate'));
 
   function setup () {
     if (!donatedTrack) {
@@ -38,10 +38,10 @@ function thankyouController (
   function navigateToAddState () {
     $state.go('fundraisers.one', {
       fundraiser: $stateParams.fundraiser
-    })
+    });
   }
 
-  setup()
+  setup();
 }
 
-module.exports = thankyouController
+module.exports = thankyouController;

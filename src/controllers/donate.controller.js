@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 donateController.$inject = [
   'fundraiser',
@@ -8,7 +8,7 @@ donateController.$inject = [
   'StorageService',
   'TrackService',
   'donationService'
-]
+];
 
 function donateController (
   fundraiser,
@@ -52,7 +52,7 @@ function donateController (
 
   function crowdriseCompleteHandler (event, donation) {
     const { amount } = donation;
-    const trackToDonate = angular.fromJson(storageService.getItem('trackToDonate'))
+    const trackToDonate = angular.fromJson(storageService.getItem('trackToDonate'));
 
     createTrack(trackToDonate)
       .then((response) => createDonation(response.id, fundraiser.id, amount))
@@ -70,7 +70,7 @@ function donateController (
     });
   }
 
-  setup()
+  setup();
 }
 
-module.exports = donateController
+module.exports = donateController;

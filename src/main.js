@@ -1,19 +1,19 @@
-'use strict'
+'use strict';
 
-var angular = require('angular')
-var ngResource = require('angular-resource')
-var uiRouter = require('angular-ui-router')
-var sanitize = require('angular-sanitize')
+var angular = require('angular');
+var ngResource = require('angular-resource');
+var uiRouter = require('angular-ui-router');
+var sanitize = require('angular-sanitize');
 
-angular.module('goodtunes', ['ngResource', 'ui.router'])
+angular.module('goodtunes', ['ngResource', 'ui.router']);
 
 // interceptors
 angular.module('goodtunes')
-  .factory('httpInterceptors', require('./services/interceptors.service'))
+  .factory('httpInterceptors', require('./services/interceptors.service'));
 
 // constants
 angular.module('goodtunes')
-  .constant('config', require('./constants/config.constants'))
+  .constant('config', require('./constants/config.constants'));
 
 // services
 angular.module('goodtunes')
@@ -25,7 +25,7 @@ angular.module('goodtunes')
   .service('donationService', require('./services/donation.service'))
   .service('fundraiserService', require('./services/fundraiser.service'))
   .service('spotifyService', require('./services/spotify.service'))
-  .service('facebookService', require('./services/facebook.service'))
+  .service('facebookService', require('./services/facebook.service'));
 
 // directives
 angular.module('goodtunes')
@@ -39,17 +39,17 @@ angular.module('goodtunes')
   .directive('map', require('./components/map/map.directive'))
   .directive('donateMusicDollar', require('./components/donate-music-dollar/donate-music-dollar.directive'))
   .directive('fundraiserSummary', require('./components/fundraiser-summary/fundraiser-summary.directive'))
-  .directive('thankYou', require('./components/thank-you/thank-you.directive'))
+  .directive('thankYou', require('./components/thank-you/thank-you.directive'));
 
 // configure the routing and then start the app
 angular.module('goodtunes')
   .config(require('./routing'))
-  .run(require('./run'))
+  .run(require('./run'));
 
 angular.element(document).ready(function () {
   angular.bootstrap(document.querySelector('[data-good-tunes]'), [
     'goodtunes'
   ], {
     strictDi: true
-  })
-})
+  });
+});

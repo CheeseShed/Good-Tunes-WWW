@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function fundraiserFormDirective () {
   return {
@@ -10,7 +10,7 @@ function fundraiserFormDirective () {
     bindToController: true,
     controller: require('./fundraiser-form.controller'),
     controllerAs: 'ctrl',
-  }
+  };
 }
 
-module.exports = fundraiserFormDirective
+module.exports = fundraiserFormDirective;

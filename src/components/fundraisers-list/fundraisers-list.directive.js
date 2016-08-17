@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function fundraisersListDirective () {
   return {
@@ -7,7 +7,7 @@ function fundraisersListDirective () {
     scope: {
       listItems: '='
     }
-  }
+  };
 }
 
-module.exports = fundraisersListDirective
+module.exports = fundraisersListDirective;

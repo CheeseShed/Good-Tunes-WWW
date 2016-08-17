@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 crowdriseDirective.$inject = [
   'config',
@@ -28,7 +28,7 @@ function crowdriseDirective (config, $window) {
       script.src = url;
       script.id = 'crowdrise' + id;
       script.async = true;
-      document.querySelector('.crowdrise-widget').appendChild(script)
+      document.querySelector('.crowdrise-widget').appendChild(script);
       $window.crowdriseCallback = crowdriseCallback;
     }
 

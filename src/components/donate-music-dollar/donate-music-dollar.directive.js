@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function donateMusicDollarDirective () {
   return {
@@ -8,7 +8,7 @@ function donateMusicDollarDirective () {
       fundraiser: '=',
       playlist: '='
     }
-  }
+  };
 }
 
-module.exports = donateMusicDollarDirective
+module.exports = donateMusicDollarDirective;

@@ -1,11 +1,11 @@
-'use strict'
+'use strict';
 
 routing.$inject = [
   '$locationProvider',
   '$urlRouterProvider',
   '$stateProvider',
   '$httpProvider'
-]
+];
 
 function routing (
   $locationProvider,
@@ -13,7 +13,7 @@ function routing (
   $stateProvider,
   $httpProvider
 ) {
-  $locationProvider.html5Mode(true)
+  $locationProvider.html5Mode(true);
 
   $stateProvider
     .state('home', {
@@ -23,7 +23,7 @@ function routing (
       templateUrl: '/src/views/base.html',
       resolve: {
         fundraisers: ['fundraiserService', function (fundraiserService) {
-          return fundraiserService.readAll()
+          return fundraiserService.readAll();
         }]
       },
       data: {
@@ -74,7 +74,7 @@ function routing (
       controllerAs: 'fundraiser',
       resolve: {
         fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-          return fundraiserService.readOne({id: $stateParams.fundraiser, populate: 'user'})
+          return fundraiserService.readOne({id: $stateParams.fundraiser, populate: 'user'});
         }]
       },
       data: {
@@ -97,7 +97,7 @@ function routing (
           controllerAs: 'fundraiser',
           resolve: {
             fundraiser: ['$stateParams', 'fundraiserService', function ($stateParams, fundraiserService) {
-              return fundraiserService.readOne({id: $stateParams.fundraiser})
+              return fundraiserService.readOne({id: $stateParams.fundraiser});
             }]
           }
         }
@@ -127,7 +127,7 @@ function routing (
           controllerAs: 'playlist',
           resolve: {
             playlist: ['fundraiser', '$stateParams', 'playlistService', function (fundraiser, $stateParams, playlistService) {
-              return playlistService.readOne({id: fundraiser.playlist})
+              return playlistService.readOne({id: fundraiser.playlist});
             }]
           }
         }
@@ -209,11 +209,11 @@ function routing (
     .state('notFound', {
       url: '/404',
       templateUrl: '/src/views/404.html'
-    })
+    });
 
-  $urlRouterProvider.otherwise('/')
+  $urlRouterProvider.otherwise('/');
 
-  $httpProvider.interceptors.push('httpInterceptors')
+  $httpProvider.interceptors.push('httpInterceptors');
 }
 
-module.exports = routing
+module.exports = routing;

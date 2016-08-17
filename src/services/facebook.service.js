@@ -1,69 +1,69 @@
 /* global FB */
 
-'use strict'
+'use strict';
 
 const FACEBOOK_SCOPE = 'public_profile,email';
 
-facebookService.$inject = ['$q']
+facebookService.$inject = ['$q'];
 
 function facebookService ($q) {
-  var service = {}
+  var service = {};
 
   service.watchAuthenticationStatusChange = function () {
     FB.Event.subscribe('auth.statusChange', function (response) {
       // console.log('statusChange', response);
-    })
-  }
+    });
+  };
 
   service.getLoginStatus = function () {
-    var defer = $q.defer()
+    var defer = $q.defer();
 
     FB.getLoginStatus(function (response) {
       if (response.status === 'connected') {
-        defer.resolve(response.authResponse)
+        defer.resolve(response.authResponse);
       } else if (response.status === 'not_authorized') {
-        defer.reject(response.status)
+        defer.reject(response.status);
       } else {
-        defer.reject(response.status)
+        defer.reject(response.status);
       }
-    })
+    });
 
-    return defer.promise
-  }
+    return defer.promise;
+  };
 
   service.getInfo = function () {
-    var defer = $q.defer()
+    var defer = $q.defer();
 
     FB.api('/me', {fields: 'id,name,email,first_name,last_name,gender,link,verified,picture'}, function (response) {
-      defer.resolve(response)
-    })
+      defer.resolve(response);
+    });
 
-    return defer.promise
-  }
+    return defer.promise;
+  };
 
   service.login = function () {
-    var defer = $q.defer()
+    var defer = $q.defer();
 
     FB.getLoginStatus(function (response) {
       if (response.status === 'connected') {
-        defer.resolve(response.authResponse)
+        defer.resolve(response.authResponse);
       } else if (response.status === 'not_authorized' || response.status === 'unknown') {
         FB.login(function (response) {
           if (response.status === 'not_authorized') {
             defer.reject();
           } else {
-            defer.resolve(response.authResponse)
-          }         
+            defer.resolve(response.authResponse);
+          }
         }, { scope: FACEBOOK_SCOPE });
       } else {
-        defer.reject()
+        defer.reject();
       }
-    })
+    });
 
-    return defer.promise
-  }
+    return defer.promise;
+  };
 
-  return service
+  return service;
 }
 
-module.exports = facebookService
+module.exports = facebookService;

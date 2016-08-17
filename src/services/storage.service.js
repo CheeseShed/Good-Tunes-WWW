@@ -1,35 +1,35 @@
-'use strict'
+'use strict';
 
-storageService.$inject = ['$window', '$q']
+storageService.$inject = ['$window', '$q'];
 
 function storageService ($window, $q) {
-  var service = {}
+  var service = {};
 
   service.setItem = function (key, value) {
-    return $window.sessionStorage.setItem(key, value)
-  }
+    return $window.sessionStorage.setItem(key, value);
+  };
 
   service.getItem = function (key) {
-    return $window.sessionStorage.getItem(key)
-  }
+    return $window.sessionStorage.getItem(key);
+  };
 
   service.removeItem = function (key) {
-    return $window.sessionStorage.removeItem(key)
-  }
+    return $window.sessionStorage.removeItem(key);
+  };
 
   service.getAccessToken = function () {
-    return $window.sessionStorage.getItem('access_token')
-  }
+    return $window.sessionStorage.getItem('access_token');
+  };
 
   service.storeItem = function (key, value) {
-    return $window.localStorage.setItem(key, value)
-  }
+    return $window.localStorage.setItem(key, value);
+  };
 
   service.getStoredItem = function (key) {
-    return $window.localStorage.getItem(key)
-  }
+    return $window.localStorage.getItem(key);
+  };
 
-  return service
+  return service;
 }
 
-module.exports = storageService
+module.exports = storageService;

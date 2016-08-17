@@ -1,11 +1,11 @@
-'use strict'
+'use strict';
 
-var includes = require('lodash/collection/includes')
+var includes = require('lodash/collection/includes');
 
-accessService.$inject = ['$resource', 'config', 'StorageService']
+accessService.$inject = ['$resource', 'config', 'StorageService'];
 
 function accessService ($resource, config, storageService) {
-  var service = {}
+  var service = {};
 
   service.$resource = $resource(config.API_URL, {}, {
     login: {
@@ -16,26 +16,26 @@ function accessService ($resource, config, storageService) {
       method: 'POST',
       url: config.API_URL + '/auth/facebook'
     }
-  })
+  });
 
   service.login = function (data) {
-    return this.$resource.login(data).$promise
-  }
+    return this.$resource.login(data).$promise;
+  };
 
   service.facebookLogin = function (data) {
-    return this.$resource.facebookLogin(data).$promise
-  }
+    return this.$resource.facebookLogin(data).$promise;
+  };
 
   service.isAuthenticated = function () {
-    return !!storageService.getItem('access_token')
-  }
+    return !!storageService.getItem('access_token');
+  };
 
   service.isAuthorised = function (roles) {
-    var accessLevel = storageService.getItem('access_level') || null
-    return includes(roles, accessLevel)
-  }
+    var accessLevel = storageService.getItem('access_level') || null;
+    return includes(roles, accessLevel);
+  };
 
-  return service
+  return service;
 }
 
-module.exports = accessService
+module.exports = accessService;
