@@ -1,6 +1,6 @@
 'use strict';
 
-var includes = require('lodash/collection/includes');
+var includes = require('lodash.includes');
 
 accessService.$inject = ['$resource', 'config', 'StorageService'];
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var pick = require('lodash/object/pick');
+var pick = require('lodash.pick');
 
 spotifyService.$inject = ['$http', '$q', 'config'];
 
