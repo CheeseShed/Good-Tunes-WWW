@@ -28,7 +28,7 @@ function fundraiserTotalDirective (config) {
   }
 
   return {
-    templateUrl: '/src/components/fundraiser-total/fundraiser-total.template.html',
+    templateUrl: '/components/fundraiser-total/fundraiser-total.template.html',
     restrict: 'E',
     scope: {
       name: '=',

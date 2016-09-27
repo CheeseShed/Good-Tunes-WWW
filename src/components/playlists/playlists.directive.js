@@ -2,7 +2,7 @@
 
 function playlistsDirective () {
   return {
-    templateUrl: '/src/components/playlists/playlists.template.html',
+    templateUrl: '/components/playlists/playlists.template.html',
     restrict: 'E',
     scope: {
       items: '='

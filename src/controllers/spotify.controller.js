@@ -1,6 +1,6 @@
 'use strict';
 
-var Spotify = require('JMPerez/spotify-web-api-js');
+var Spotify = require('spotify-web-api-js');
 
 spotifyController.$inject = [
   'fundraiser',

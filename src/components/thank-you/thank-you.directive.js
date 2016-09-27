@@ -8,7 +8,7 @@ function thankYouDirective () {
       track: '=',
       fundraiser: '='
     },
-    templateUrl: '/src/components/thank-you/thank-you.template.html'
+    templateUrl: '/components/thank-you/thank-you.template.html'
   };
 }
 

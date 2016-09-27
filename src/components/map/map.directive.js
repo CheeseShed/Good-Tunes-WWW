@@ -12,7 +12,7 @@ function addSpotifyPlayerWidget (runnerId) {
 function mapDirective () {
   return {
     restrict: 'E',
-    templateUrl: '/src/components/map/map.template.html',
+    templateUrl: '/components/map/map.template.html',
     scope: {
       runnerId: '='
     },

@@ -3,7 +3,7 @@
 function fundraiserSummaryDirective () {
   return {
     restrict: 'E',
-    templateUrl: 'src/components/fundraiser-summary/fundraiser-summary.template.html',
+    templateUrl: '/components/fundraiser-summary/fundraiser-summary.template.html',
     scope: {
       title: '=',
       charity: '=',

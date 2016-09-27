@@ -2,7 +2,7 @@
 
 function trackListDirective () {
   return {
-    templateUrl: '/src/components/track-list/track-list.template.html',
+    templateUrl: '/components/track-list/track-list.template.html',
     restrict: 'E',
     scope: {
       tracks: '=', // two way binding

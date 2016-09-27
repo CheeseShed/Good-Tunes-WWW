@@ -63,11 +63,11 @@ function fundraiserController (
     let image;
 
     if (id === '56154723229562110033f747') {
-      image = '/src/images/ben.jpg';
+      image = '/images/ben.jpg';
     } else if (id === '56154ee4229562110033f74a') {
-      image = '/src/images/jade.jpg';
+      image = '/images/jade.jpg';
     } else {
-      image = '/src/images/ben-rek.jpg';
+      image = '/images/ben-rek.jpg';
     }
 
     return image;

@@ -8,7 +8,7 @@ crowdriseDirective.$inject = [
 function crowdriseDirective (config, $window) {
   return {
     restrict: 'E',
-    templateUrl: '/src/components/crowdrise/crowdrise.template.html',
+    templateUrl: '/components/crowdrise/crowdrise.template.html',
     scope: {
       id: '='
     },

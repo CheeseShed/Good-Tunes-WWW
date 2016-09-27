@@ -2,7 +2,7 @@
 
 function spotifyPlayerDirective () {
   return {
-    templateUrl: '/src/components/spotify-player/spotify-player.template.html',
+    templateUrl: '/components/spotify-player/spotify-player.template.html',
     restrict: 'E',
     scope: {
       userId: '=',

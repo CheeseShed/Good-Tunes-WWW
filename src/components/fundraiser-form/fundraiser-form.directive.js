@@ -3,7 +3,7 @@
 function fundraiserFormDirective () {
   return {
     restrict: 'E',
-    templateUrl: '/src/components/fundraiser-form/fundraiser-form.template.html',
+    templateUrl: '/components/fundraiser-form/fundraiser-form.template.html',
     scope: {
       model: '='
     },
