@@ -38,7 +38,6 @@
     "angular-sanitize": "^1.4.6",
     "angular-ui-router": "^0.2.15",
     "async": "^1.4.2",
-    "lodash": "^3.10.1",
     "lodash.includes": "^4.3.0",
     "lodash.pick": "^4.4.0",
     "minifyify": "^7.3.3",
