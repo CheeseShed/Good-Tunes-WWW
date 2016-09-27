@@ -621,6 +621,7 @@ h1,h2 {
 }
 
 .fundraiser-overview {
+  padding-bottom: 80px;
   width: 100%;
 }
 
@@ -875,9 +876,8 @@ h1,h2 {
 }
 
 .homepage .fundraiser {
-  height: 50vh;
+  height: 100vh;
   position: relative;
-  width: 100%;
 }
 
 @media (min-width: 769px) {
@@ -900,8 +900,8 @@ h1,h2 {
 .homepage .fundraiser__picture {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top center;
-  height: 50vh;
+  background-position: center center;
+  height: 100vh;
   width: 100%;
   z-index: 10;
 }
@@ -912,33 +912,32 @@ h1,h2 {
   }
 }
 
-.homepage .ben .fundraiser__picture {
-  background-position: right top;
-}
-
 .homepage .fundraiser__title {
-  background: #fff;
-  bottom: 0;
+  background: url(../images/heading-underline-green.png) 0 0px;
+  color: #fff;
   display: block;
-  font-size: 1.5rem;
+  font-size: 2.8rem;
   margin: 0;
-  padding: 1rem 0;
+  padding: 0 0 3px;
   position: absolute;
   text-align: center;
+  transform: translateY(-50%);
+  top: 70%;
   width: 100%;
   z-index: 20;
 }
 
 @media (min-width: 769px) {
   .homepage .fundraiser__title {
-    background: url(../images/heading-underline-green.png) 0 0px;
     bottom: initial;
     font-size: 2.8rem;
     margin: 250px 1.875rem auto;
     padding: 0 0 3px 0;
+    position: absolute;
     text-align: left;
     width: 40%;
     top: 0;
+    z-index: 20;
   }
 }
 
@@ -1024,10 +1023,6 @@ h1,h2 {
   width: 15%;
 }
 
-.search-form .form-button span {
-  display: none;
-}
-
 @media (min-width: 769px) {
   .search-form .form-button {
     font-size: 1.5rem;
@@ -1085,18 +1080,23 @@ h1,h2 {
   width: 100%;
 }
 
-.app {
-  background: #fa6346;
-}
-
 .page--light {
   background: #fff;
   color: #333;
 }
 
 .homepage .logo {
-  left: 40px;
+  left: 50%;
   position: absolute;
+  transform: translateX(-50%);
   top: 40px;
   z-index: 2;
+}
+
+@media (min-width: 769px) {
+  .homepage .logo {
+    left: 40px;
+    top: 40px;
+    transform: none;
+  }
 }
