@@ -12,7 +12,10 @@ const server = new Hapi.Server({
   }
 });
 
-server.connection({ port: 7080 });
+server.connection({
+  host: 'localhost',
+  port: 3000
+});
 server.register(Inert, () => {});
 server.route({
   method: 'GET',
