@@ -250,10 +250,12 @@ h1,h2 {
   line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-  .fundraiser-header {
-    margin: 1.875rem;
-  }
+.fundraiser-header svg {
+  width: 2.25rem;
+}
+
+.fundraiser-header svg .icon--play {
+  stroke: #03f;
 }
 
 .wrapper {

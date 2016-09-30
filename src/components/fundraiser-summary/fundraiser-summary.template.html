@@ -1,12 +1,18 @@
-<header class="fundraiser-header">
-  <div class="primary-heading-wrapper">
-    <h1 class="primary-heading">{{::title}}</h1>
-  </div>
-</header>
+<div>
+  <header class="fundraiser-header">
+    <div class="primary-heading-wrapper">
+      <h1 class="primary-heading">
+        {{::title}}
+        <svg viewBox="0 0 45 44">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <polygon class="icon--play" stroke-width="5" points="3 40 3 4 39 22"></polygon>
+          </g>
+        </svg>
+      </h1>
+    </div>
+  </header>
 
-<div class="fundraiser__summary">
-  <p>Use music and your wallet to support {{::name}} as raises money for {{::charity}}</p>
-  <p>
-    <a class="fundraiser__wtf" ui-sref="fundraisers.one.why({fundraiser: id})">Why am I doing this?</a>
-  </p>
+  <div class="fundraiser__summary">
+    <p>Use music and your wallet to support {{::name}} as raises money for {{::charity}}</p>
+  </div>
 </div>
