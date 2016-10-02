@@ -4,30 +4,30 @@
 
   <div class="fundraiser-total__summary">
     <span class="fundraiser-total__reached">{{::symbol}}{{::raised}}</span>
+    /
+    <span class="fundraiser-total__target">{{::symbol}}{{::target}}</span>
   </div>
 
   <div class="totalator">
     <span class="totalator__raised" style="width: {{::percentageRaised}}%;"></span>
-    <span class="totalator__dividers"></span>
+    <span class="totalator__target"></span>
   </div>
 
   <span class="fundraiser-total__target-date">{{::targetDate}}</span>
 
   <span>
-      <a href="#" onclick="FB.ui({method: 'share', href: 'http://google.com', name: 'Good Tunes', description: 'Use music and your wallet to support Ben as he raises money for Every Mother Counts'}, function(response){});">
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" xml:space="preserve" fill="#225bad">
-        <g>
-          <path d="M15.915,4.003L13.841,4c-2.331,0-3.838,1.545-3.838,3.938v1.816H7.917c-0.181,0-0.327,0.146-0.327,0.327v2.63
-    c0,0.18,0.146,0.326,0.327,0.326h2.086v6.639c0,0.18,0.146,0.326,0.326,0.326h2.722c0.181,0,0.326-0.146,0.326-0.326v-6.639h2.44
-    c0.179,0,0.325-0.146,0.325-0.326l0.002-2.63c0-0.087-0.034-0.17-0.097-0.231c-0.062-0.061-0.145-0.096-0.23-0.096h-2.44V8.214
-    c0-0.741,0.176-1.116,1.14-1.116h1.398c0.181,0,0.327-0.146,0.327-0.327V4.329C16.242,4.149,16.096,4.003,15.915,4.003z"/>
-        </g>
-      </svg>
+      <a href="#" onclick="FB.ui({method: 'share', href: 'https://www.goodtunes.org', name: 'Good Tunes', description: 'Use music and your wallet to support Ben as he raises money for Every Mother Counts'}, function(response){});">
+        <svg class="icon--facebook" viewbox="0 0 20 20">
+          <g>
+            <path d="M15.915,4.003L13.841,4c-2.331,0-3.838,1.545-3.838,3.938v1.816H7.917c-0.181,0-0.327,0.146-0.327,0.327v2.63
+      c0,0.18,0.146,0.326,0.327,0.326h2.086v6.639c0,0.18,0.146,0.326,0.326,0.326h2.722c0.181,0,0.326-0.146,0.326-0.326v-6.639h2.44
+      c0.179,0,0.325-0.146,0.325-0.326l0.002-2.63c0-0.087-0.034-0.17-0.097-0.231c-0.062-0.061-0.145-0.096-0.23-0.096h-2.44V8.214
+      c0-0.741,0.176-1.116,1.14-1.116h1.398c0.181,0,0.327-0.146,0.327-0.327V4.329C16.242,4.149,16.096,4.003,15.915,4.003z"/>
+          </g>
+        </svg>
       </a>
       <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Use%20music%20and%20your%20wallet%20to%20support%20Ben%20as%20he%20raises%20money%20for%20Every%20Mother%20Counts&url=http://goodtunes.com&via=goodtunes">
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" fill="#225bad" xml:space="preserve">
-        <g>
+        <svg class="icon--twitter" viewbox="0 0 20 20">
           <g>
             <path d="M21.848,5.894c-0.723,0.32-1.504,0.538-2.316,0.637c0.833-0.5,1.473-1.293,1.773-2.236
               c-0.781,0.462-1.645,0.799-2.567,0.982C18.003,4.489,16.953,4,15.788,4c-2.231,0-4.04,1.81-4.04,4.041
@@ -37,8 +37,7 @@
               c-1.382,1.084-3.127,1.729-5.019,1.729c-0.326,0-0.646-0.021-0.963-0.055C3.939,19.334,6.065,20,8.35,20
               c7.426,0,11.495-6.156,11.495-11.496L19.826,7.98C20.62,7.414,21.31,6.704,21.848,5.894z"/>
           </g>
-        </g>
-      </svg>
+        </svg>
       </a>
   </ul>
 </div>

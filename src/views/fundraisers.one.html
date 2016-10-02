@@ -15,6 +15,10 @@
       ng-if="fundraiser.isActive">
     </donate-music-dollar>
 
+    <a class="link--why" ui-sref="fundraisers.one.why({fundraiser: fundraiser.id})">WTF am I doing this?</a>
+
+    <hr>
+
     <fundraiser-total
       name="fundraiser.fundraiser.user.name"
       symbol="fundraiser.fundraiser.currency"
@@ -23,7 +27,7 @@
       date="fundraiser.fundraiser.target_date">
     </fundraiser-total>
 
-    <a class="button-primary mix-button" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">View the mix</a>
+    <a class="button--secondary button--see-mix" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">See the mix</a>
 
   </section>
 
@@ -40,9 +44,9 @@
     <div ui-view="fundraiser"></div>
   </section>
 
-  <spotify-player
+  <!-- <spotify-player
     user-id="fundraiser.fundraiser.spotify_user_id"
     playlist-id="fundraiser.fundraiser.spotify_playlist_id"
     ng-if="fundraiser.hasSpotifyPlaylist()">
-  </spotify-player>
+  </spotify-player> -->
 </div>

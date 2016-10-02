@@ -4,8 +4,7 @@ const moment = require('moment');
 
 fundraiserTotalDirective.$inject = ['config'];
 
-function fundraiserTotalDirective (config) {
-
+function fundraiserTotalDirective ({ CURRENCIES }) {
   function toNumber (value) {
     return parseInt(value, 10);
   }
@@ -24,11 +23,12 @@ function fundraiserTotalDirective (config) {
 
     scope.targetDate = moment(date).fromNow();
     scope.percentageRaised = calculateAmountRaised(raised, target);
-    scope.symbol = config.CURRENCIES[symbol];
+    scope.symbol = CURRENCIES[symbol];
   }
 
   return {
-    templateUrl: '/components/fundraiser-total/fundraiser-total.template.html',
+    link,
+    replace: true,
     restrict: 'E',
     scope: {
       name: '=',
@@ -37,7 +37,7 @@ function fundraiserTotalDirective (config) {
       raised: '=',
       date: '='
     },
-    link
+    templateUrl: '/components/fundraiser-total/fundraiser-total.template.html'
   };
 }
 

@@ -2,6 +2,8 @@
   <div class="donate">
 	  <div class="donate__search" ng-show="!search.hasTrackToDonate">
 
+      <span class="step step--search" aria-label="Step 1 of 3" aria-hidden="true">1 /</span>
+
       <spotify-search></spotify-search>
 	    <track-list
         track-press-handler="search.donateTrack(track)"

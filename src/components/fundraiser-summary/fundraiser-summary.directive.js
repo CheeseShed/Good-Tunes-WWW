@@ -2,14 +2,15 @@
 
 function fundraiserSummaryDirective () {
   return {
+    replace: true,
     restrict: 'E',
-    templateUrl: '/components/fundraiser-summary/fundraiser-summary.template.html',
     scope: {
       title: '=',
       charity: '=',
       name: '=',
       id: '='
-    }
+    },
+    templateUrl: '/components/fundraiser-summary/fundraiser-summary.template.html'
   };
 }
 

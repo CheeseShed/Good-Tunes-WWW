@@ -1,7 +1,14 @@
 <div class="fundraiser-details__inner">
   <div class="fundraiser-why">
-    <h2>Why am I doing this?</h2>
+    <h2>WTF am I doing this?</h2>
     <div ng-bind-html="fundraiser.description"></div>
-    <a href="http://www.everymothercounts.org/"><img src="/src/images/every-mother-counts.png" alt="" width="194" height="76"></a>
+    <a class="fundraiser-why__logo" href="http://www.everymothercounts.org" target="_blank">
+      <img src="/images/every-mother-counts.png" alt="Every Mother Counts company logo" width="194" height="76">
+    </a>
+    <donate-music-dollar
+      fundraiser="fundraiser.fundraiser.id"
+      playlist="fundraiser.fundraiser.playlist"
+      ng-if="fundraiser.isActive">
+    </donate-music-dollar>
   </div>
 </div>

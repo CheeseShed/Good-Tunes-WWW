@@ -2,12 +2,13 @@
 
 function donateMusicDollarDirective () {
   return {
+    replace: true,
     restrict: 'E',
-    templateUrl: '/components/donate-music-dollar/donate-music-dollar.template.html',
     scope: {
       fundraiser: '=',
       playlist: '='
-    }
+    },
+    templateUrl: '/components/donate-music-dollar/donate-music-dollar.template.html'
   };
 }
 

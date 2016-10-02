@@ -31,7 +31,6 @@ function donateController (
   }
 
   function donateTrack (track) {
-    console.log('track', track);
     storageService.setItem('trackToDonate', angular.toJson(track));
     $state.go('fundraisers.one.donate', {
       fundraiser: fundraiser.id,

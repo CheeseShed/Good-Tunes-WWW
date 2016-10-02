@@ -8,7 +8,8 @@ fundraiserController.$inject = [
   '$state',
   '$sce',
   '$window',
-  'playlistService'
+  'playlistService',
+  'config'
 ];
 
 function fundraiserController (
@@ -17,7 +18,8 @@ function fundraiserController (
   $state,
   $sce,
   $window,
-  playlistService
+  playlistService,
+  config
 ) {
   const vm = this;
   const stateToCheck = 'fundraisers.one';
@@ -46,6 +48,7 @@ function fundraiserController (
     vm.hideOverviewPanel = hideOverviewPanel;
     vm.fetchPlaylist = fetchPlaylist;
     vm.hasSpotifyPlaylist = hasSpotifyPlaylist;
+    vm.symbol = config.CURRENCIES[fundraiser.currency];
     mediaQuery.addListener(mediaQueryEventHandler);
   }
 

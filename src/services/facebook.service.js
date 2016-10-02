@@ -11,7 +11,6 @@ function facebookService ($q) {
 
   service.watchAuthenticationStatusChange = function () {
     FB.Event.subscribe('auth.statusChange', function (response) {
-      // console.log('statusChange', response);
     });
   };
 

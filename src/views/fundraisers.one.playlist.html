@@ -1,9 +1,15 @@
 <div class="fundraiser-details__inner">
   <div class="playlist">
+    <h2>The Marathon Mix</h2>
 	  <track-list
 	    tracks="playlist.tracks"
       show-button="false"
 	    empty-list-message="Be the first to donate a good tune to fill up the playlist.">
 	  </track-list>
+    <donate-music-dollar
+      fundraiser="fundraiser.fundraiser.id"
+      playlist="fundraiser.fundraiser.playlist"
+      ng-if="fundraiser.isActive">
+    </donate-music-dollar>
   </div>
 </div>
