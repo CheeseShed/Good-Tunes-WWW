@@ -38,6 +38,7 @@ function fundraiserController (
     vm.theme = theme;
     vm.fundraiser = fundraiser;
     vm.description = $sce.trustAsHtml(fundraiser.description);
+    vm.summary = fundraiser.summary;
     $scope.overlayVisible = false;
     vm.title = fundraiser.title;
     vm.charity = fundraiser.charity;

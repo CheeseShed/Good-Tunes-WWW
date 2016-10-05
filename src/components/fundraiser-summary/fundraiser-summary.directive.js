@@ -6,8 +6,7 @@ function fundraiserSummaryDirective () {
     restrict: 'E',
     scope: {
       title: '=',
-      charity: '=',
-      name: '=',
+      summary: '=',
       id: '='
     },
     templateUrl: '/components/fundraiser-summary/fundraiser-summary.template.html'
