@@ -8,15 +8,13 @@
       id="fundraiser.fundraiser.id">
     </fundraiser-summary>
 
+    <a class="link--why" ui-sref="fundraisers.one.why({fundraiser: fundraiser.id})">WTF am I doing this?</a>
+
     <donate-music-dollar
       fundraiser="fundraiser.fundraiser.id"
       playlist="fundraiser.fundraiser.playlist"
       ng-if="fundraiser.isActive">
     </donate-music-dollar>
-
-    <a class="link--why" ui-sref="fundraisers.one.why({fundraiser: fundraiser.id})">WTF am I doing this?</a>
-
-    <hr>
 
     <fundraiser-total
       name="fundraiser.fundraiser.user.name"
@@ -27,6 +25,8 @@
     </fundraiser-total>
 
     <a class="button--secondary button--see-mix" ui-sref="fundraisers.one.playlist({id: fundraiser.fundraiser.id, playlist: fundraiser.fundraiser.playlist})">See the mix</a>
+
+    <p class="powered">Powered by <a ui-sref="about">Good Tunes</a></p>
 
   </section>
 

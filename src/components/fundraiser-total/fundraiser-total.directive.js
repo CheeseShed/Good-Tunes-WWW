@@ -1,7 +1,5 @@
 'use strict';
 
-const moment = require('moment');
-
 fundraiserTotalDirective.$inject = ['config'];
 
 function fundraiserTotalDirective ({ CURRENCIES }) {
@@ -21,7 +19,10 @@ function fundraiserTotalDirective ({ CURRENCIES }) {
       target += target * 0.25;
     }
 
-    scope.targetDate = moment(date).fromNow();
+    const day = (((1000 * 60) * 60) * 24);
+    const inDays = Math.floor((new Date(date).getTime() - Date.now()) / day);
+
+    scope.targetDate = `in ${inDays} days`;
     scope.percentageRaised = calculateAmountRaised(raised, target);
     scope.symbol = CURRENCIES[symbol];
   }

@@ -39,7 +39,9 @@ function routing (
     })
     .state('about', {
       url: '/wtf',
-      templateUrl: '/views/about.html'
+      templateUrl: '/views/about.html',
+      controller: require('./controllers/about.controller'),
+      controllerAs: 'about'
     })
     .state('login', {
       url: '/login',
