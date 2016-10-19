@@ -1,6 +1,6 @@
 {
   "name": "Good-Tunes-WWW",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The public site for Good Tunes",
   "scripts": {
     "css": "node-sass ./src/css/styles.scss --output ./src/css/",
